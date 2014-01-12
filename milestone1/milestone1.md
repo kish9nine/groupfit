@@ -48,13 +48,11 @@ Site Design
 
 1. Draw out, by hand, three different designs for this page. Scan these for your submission. 
 
-    **User Page 1**
+    **User Page 1** -> Please refer to UserPage1.JPG in this directory. 
     
-    ![Alt text](/UserPage1.JPG)
+    **User Page 2** -> Please refer to UserPage1.JPG in this directory. 
 
-    **User Page 2**
-
-    **User Page 3**
+    **User Page 3** -> Please refer to UserPage1.JPG in this directory. 
 
 2. Make a list of 3 pros and 3 cons for each design.
     
@@ -78,6 +76,7 @@ Site Design
 
 3. Pick the best design and mock it up using an image editing program (i.e. Photoshop or Gimp) or using HTML/CSS. Submit a screenshot of this mockup.
 
+    Please refer to Mockup.png final copy.png in this directory.
 Minimal Viable Product
 -------------
 1. What features do you plan to implement? How critical are they to the proper functioning of your application?
