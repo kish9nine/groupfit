@@ -77,8 +77,10 @@ Site Design
 3. Pick the best design and mock it up using an image editing program (i.e. Photoshop or Gimp) or using HTML/CSS. Submit a screenshot of this mockup.
 
     Please refer to Mockup.png final copy.png in this directory.
+
 Minimal Viable Product
 -------------
+
 1. What features do you plan to implement? How critical are they to the proper functioning of your application?
 
     * Creating a group/add members to a group
