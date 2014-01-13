@@ -1,0 +1,22 @@
+# Copied from github's recommended .gitignore files
+
+lib-cov
+lcov.info
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+
+pids
+logs
+results
+build
+.grunt
+
+node_modules
+
+# OS generated files
+.DS_Store
