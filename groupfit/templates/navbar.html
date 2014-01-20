@@ -11,12 +11,11 @@
     <div class="navbar-collapse collapse" id="navbar-main">
 
       <ul class="nav navbar-nav">
-        <li><a href="#">About</a></li>
+        <li><a href="{% url 'groupfit.views.about' %}">About</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Search</a></li>
-        <li><a href="#">Log In</a></li>
+        <li><a href="{% url 'django.contrib.auth.views.login' %}">Log In</a></li>
       </ul>
 
     </div>
