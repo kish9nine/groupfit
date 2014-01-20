@@ -9,6 +9,7 @@ lcov.info
 *.out
 *.pid
 *.gz
+*.swp
 
 pids
 logs
@@ -21,3 +22,6 @@ node_modules
 
 # OS generated files
 .DS_Store
+
+
+/groupfit/groupfit/secret.py
