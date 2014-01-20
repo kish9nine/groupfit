@@ -8,7 +8,7 @@ urlpatterns = patterns('',
 
     # Website default pages.
     url(r'^$', home),
-    url(r'^about/$', about),
+    url(r'^about$', about),
     url(r'^contact$', contact),
     url(r'^terms$', terms),
 
