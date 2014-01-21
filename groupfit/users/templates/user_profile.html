@@ -12,27 +12,48 @@ GroupFit
 
   <div class="col-md-4">
 
-    <h3>{{ profile.user.first_name }} {{ profile.user.last_name }}</h3>
+    <h1>{{ profile.user.first_name }}</h1>
 
     <div class="row">
+
       <div class="col-xs-4 col-md-6">
-        <a href="{% gravatar_url profile.user.email 512 %}" class="thumbnail">
-          {% gravatar profile.user.email 256 "Your Gravatar photo." %}
-        </a>
+        <div class="thumbnail">
+
+          <a href="{% gravatar_url profile.user.email 512 %}">
+            {% gravatar profile.user.email 256 "Your Gravatar photo." %}
+          </a>
+
+        </div>
       </div>
+
       <div class="col-xs-8 col-md-6">
-        <div style="background-color: #FF6699;">info goes here</div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <button class="btn btn-info btn-sm btn-block">Edit Profile</button>
+          </div>
+        </div>
       </div>
+
     </div>
 
     <div class="row">
       <div class="col-lg-12">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h1 class="panel-title">My Trophies</h1>
+            <h1 class="panel-title text-center">
+              <span class="pull-left">
+                <i class="fa fa-trophy"></i>
+              </span>
+              My Trophies
+            </h1>
           </div>
           <div class="panel-body">
-            Trophies.
+            {% for trophy in profile.trophies.all %}
+            {% empty %}
+            <div class="text-center">
+              No trophies won yet.
+            </div>
+            {% endfor %}
           </div>
         </div>
       </div>
@@ -42,10 +63,26 @@ GroupFit
       <div class="col-lg-12">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h1 class="panel-title">My Groups</h1>
+            <h1 class="panel-title text-center">
+              <span class="pull-left"><i class="fa fa-users"></i></span>
+              My Groups
+              <span class="pull-right">
+                <a href="#">
+                  <i class="fa fa-plus-square"></i>
+                </a>
+              </span>
+            </h1>
           </div>
           <div class="panel-body">
-            Trophies.
+            {% for group in profile.groups.all %}
+              <a href="{{ group.get_absolute_url }}">
+                {{ group.name }}
+              </a>
+            {% empty %}
+            <div class="text-center">
+              You do not belong to any groups yet.
+            </div>
+            {% endfor %}
           </div>
         </div>
       </div>
@@ -55,10 +92,23 @@ GroupFit
       <div class="col-lg-12">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h1 class="panel-title">My Playlists</h1>
+            <h1 class="panel-title text-center">
+              <span class="pull-left"><i class="fa fa-music"></i></span>
+              My Playlists
+              <span class="pull-right">
+                <a href="#">
+                  <i class="fa fa-plus-square"></i>
+                </a>
+              </span>
+            </h1>
           </div>
           <div class="panel-body">
-            Trophies.
+            {% for playlist in profile.playlists.all %}
+            {% empty %}
+            <div class="text-center">
+              You haven't made any playlists.
+            </div>
+            {% endfor %}
           </div>
         </div>
       </div>
