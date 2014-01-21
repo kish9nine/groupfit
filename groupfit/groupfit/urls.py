@@ -2,14 +2,14 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-from groupfit.views import home, about, contact, terms, privacy
+from groupfit.views import landing_page, about, contact, terms, privacy
 from django.contrib.auth.views import login, logout
 from users.views import view_user
 
 urlpatterns = patterns('',
 
     # Website default pages.
-    url(r'^$', home),
+    url(r'^$', landing_page),
     url(r'^about$', about),
     url(r'^contact$', contact),
     url(r'^terms$', terms),
