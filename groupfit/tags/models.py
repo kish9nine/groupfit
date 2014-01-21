@@ -16,5 +16,5 @@ class Tag( models.Model ):
     )
 
     def __unicode__(self):
-        return "%s" % tag
+        return "%s" % self.tag
 
