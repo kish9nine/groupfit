@@ -55,6 +55,7 @@ INSTALLED_APPS = (
     'users',
     'django_gravatar',
     'south',
+    'easy_thumbnails',
 )
 
 TEMPLATE_LOADERS = (
@@ -111,6 +112,20 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+###############################################################################
+
+###############################################################################
+
+"""
+Thumbnail alias configuration for easy_thumbnails.
+"""
+
+THUMBNAIL_ALIASES = {
+    '': {
+        'gravatar-full': {'size': (512, 512), 'crop': True},
+    },
+}
 
 ###############################################################################
 
