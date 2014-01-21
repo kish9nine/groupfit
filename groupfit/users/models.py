@@ -12,11 +12,13 @@ class UserProfile( models.Model ):
 
     groups = models.ManyToManyField(
         WorkoutGroup,
+        blank = True,
         related_name = "members",
     )
 
     tags = models.ManyToManyField(
-        Tag
+        Tag,
+        blank = True,
     )
 
     def __unicode__(self):
