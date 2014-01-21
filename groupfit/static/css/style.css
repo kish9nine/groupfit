@@ -25,3 +25,6 @@ height: 35px;
 /* Custom CSS extensions
 -------------------------------------------------- */
 
+.vertical-offset-100 {
+  margin-top: 100px;
+}
