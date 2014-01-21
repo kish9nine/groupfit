@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+GroupFit
+{% endblock %}
+
+{% block content %}
+
+
+{% if user.is_authenticated %}
+  {% include 'newsfeed.html' %}
+{% else %}
+  {% include 'visitor_banners.html' %}
+{% endif %}
+
+
+{% endblock %}
