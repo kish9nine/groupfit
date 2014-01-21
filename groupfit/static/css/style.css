@@ -28,6 +28,13 @@ height: 35px;
 .vertical-offset-100 {
   margin-top: 100px;
 }
+
+p.lead {
+  display: inline;
+}
+
+/* Navbar avatar icon tweaks
+-------------------------------------------------- */
 .navbar-avatar {
   margin-top: 0px;
   margin-bottom: 0px;
