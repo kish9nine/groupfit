@@ -29,7 +29,7 @@ height: 35px;
   margin-top: 100px;
 }
 
-p.lead {
+h1 p.lead {
   display: inline;
 }
 
