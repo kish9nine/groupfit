@@ -53,10 +53,12 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'groupfit',
     'users',
+    'groups',
+    'tags',
+    'trophies',
     'django_gravatar',
     'south',
     'easy_thumbnails',
-    'easy_maps',
 )
 
 TEMPLATE_LOADERS = (
