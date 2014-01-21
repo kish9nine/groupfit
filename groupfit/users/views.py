@@ -1,7 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from users.models import UserProfile
 
-def home(request):
-    return render(request, 'user_home.html', {
+def view_user(request, user_pk=-1):
+    if user_pk == -1:
+        user_pk = request.user.userprofile.pk
+    user = get_object_or_404( UserProfile, pk=user_pk )
+    return render(request, 'user_profile.html', {
+        'profile': user,
     },
     )

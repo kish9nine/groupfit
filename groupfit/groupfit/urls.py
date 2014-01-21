@@ -4,6 +4,7 @@ admin.autodiscover()
 
 from groupfit.views import home, about, contact, terms, privacy
 from django.contrib.auth.views import login, logout
+from users.views import view_user
 
 urlpatterns = patterns('',
 
@@ -15,6 +16,7 @@ urlpatterns = patterns('',
     url(r'^privacy$', privacy),
 
     # User accounts app pages.
+    url(r'^me$', view_user),
     url(r'^user/', include('users.urls')),
 
     # Group app pages.
