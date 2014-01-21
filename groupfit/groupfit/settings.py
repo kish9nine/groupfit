@@ -56,6 +56,7 @@ INSTALLED_APPS = (
     'django_gravatar',
     'south',
     'easy_thumbnails',
+    'easy_maps',
 )
 
 TEMPLATE_LOADERS = (
@@ -168,5 +169,13 @@ LOGGING = {
         },
     }
 }
+
+###############################################################################
+
+"""
+EasyMap settings, specfically default map center.
+"""
+
+#EASY_MAPS_CENTER = (42.361138,-71.092374)
 
 ###############################################################################
