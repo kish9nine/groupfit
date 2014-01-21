@@ -7,3 +7,8 @@ def view_group(request, group_pk=-1):
         'group': group,
     },
     )
+
+def create_group(request):
+    return render(request, 'group_create.html', {
+    },
+    )
