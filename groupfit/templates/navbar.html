@@ -1,3 +1,5 @@
+{% load gravatar %}
+
 <div class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
@@ -16,6 +18,14 @@
 
       <ul class="nav navbar-nav navbar-right">
         {% if user.is_authenticated %}
+        <li class="navbar-avatar">
+          {% gravatar user.email 32 user.email %}
+        </li>
+        <li>
+          <a href="{% url 'users.views.home' %}">
+            {{ user.first_name }}
+          </a>
+        </li>
         <li><a href="{% url 'django.contrib.auth.views.logout' %}">Log Out</a></li>
         {% else %}
         <li><a href="{% url 'django.contrib.auth.views.login' %}">Log In</a></li>
@@ -23,5 +33,7 @@
       </ul>
 
     </div>
+
+
   </div>
 </div>
