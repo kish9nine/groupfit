@@ -20,9 +20,6 @@ urlpatterns = patterns('',
     # Group app pages.
     url(r'^group/', include('groups.urls')),
 
-    # Trophy app pages.
-    url(r'^trophy/', include('trophies.urls')),
-
     # Tags app pages.
     url(r'tag/', include('tags.urls')),
 
