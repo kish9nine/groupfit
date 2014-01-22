@@ -32,6 +32,6 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     # Authentication urls.
-    url(r'^login$', login, {'template_name': 'login.html'}),
-    url(r'^logout$', logout, {'next_page': '/'}),
+    url(r'^login/$', login, {'template_name': 'login.html'}),
+    url(r'^logout/$', logout, {'next_page': '/'}),
 )
