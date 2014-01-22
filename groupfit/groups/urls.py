@@ -3,7 +3,7 @@ from groups.views import view_group, create_group
 
 urlpatterns = patterns('',
 
-    url(r'^create/$', create_group),
-    url(r'^(?P<group_pk>\d+)$', view_group),
+    url(r'^create/$', create_group),            # matches /groups/create
+    url(r'^(?P<group_pk>\d+)$', view_group),    # matches /groups/<pk>
 
 )

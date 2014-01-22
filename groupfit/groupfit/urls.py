@@ -9,24 +9,24 @@ from users.views import view_user
 urlpatterns = patterns('',
 
     # Website default pages.
-    url(r'^$', landing_page),
-    url(r'^about$', about),
-    url(r'^contact$', contact),
-    url(r'^terms$', terms),
-    url(r'^privacy$', privacy),
+    url(r'^$', landing_page),   # matches /
+    url(r'^about$', about),     # matches /about
+    url(r'^contact$', contact), # matches /contact
+    url(r'^terms$', terms),     # matches /terms
+    url(r'^privacy$', privacy), # matches /privacy
 
     # User accounts app pages.
-    url(r'^me$', view_user),
-    url(r'^user/', include('users.urls')),
+    url(r'^me$', view_user),                     # matches /me
+    url(r'^user/', include('users.urls')),       # matches /user/...
 
     # Group app pages.
-    url(r'^group/', include('groups.urls')),
+    url(r'^group/', include('groups.urls')),    # matches /group/...
 
     # Tags app pages.
-    url(r'tag/', include('tags.urls')),
+    url(r'tag/', include('tags.urls')),         # matches /tag/...
 
     # Playlist app pages.
-    url(r'^playlist/', include('playlists.urls')),
+    url(r'^playlist/', include('playlists.urls')), # matches /playlist/...
 
     # Administrator view.
     url(r'^admin/', include(admin.site.urls)),
@@ -34,4 +34,5 @@ urlpatterns = patterns('',
     # Authentication urls.
     url(r'^login/$', login, {'template_name': 'login.html'}),
     url(r'^logout/$', logout, {'next_page': '/'}),
+
 )

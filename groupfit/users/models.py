@@ -7,6 +7,12 @@ from tags.models import Tag
 
 
 class UserProfile( models.Model ):
+    """
+    This UserProfile model wraps the default Django auth User model with
+    additional information, including their groups, playlists, tags
+    (interests), etc.
+    """
+
     user = models.OneToOneField(
         User,
     )
@@ -32,6 +38,10 @@ class UserProfile( models.Model ):
         )
 
 
+"""
+This post_save function is triggered when a User object is created,
+creating a UserProfile object along with it.
+"""
 def create_user_profile( sender, instance, created, **kwargs ):
     if created:
         UserProfile.objects.create(user=instance)

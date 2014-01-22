@@ -4,6 +4,10 @@ from tags.models import Tag
 
 
 class WorkoutGroup( models.Model ):
+    """
+    This model represents a group of individuals. It should contain all the
+    information needed to manage and display their progress.
+    """
 
     name = models.CharField(
         blank = False,

@@ -2,6 +2,10 @@ from django.db import models
 
 
 class Tag( models.Model ):
+    """
+    This model represents the tag/interest feature, which lets groups and
+    users be tagged based on their interests or features.
+    """
 
     tag = models.CharField(
         blank = False,
