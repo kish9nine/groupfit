@@ -55,6 +55,7 @@ INSTALLED_APPS = (
     'users',
     'groups',
     'tags',
+    'playlists',
     'django_gravatar',
     'south',
     'easy_thumbnails',

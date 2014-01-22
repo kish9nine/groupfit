@@ -25,6 +25,9 @@ urlpatterns = patterns('',
     # Tags app pages.
     url(r'tag/', include('tags.urls')),
 
+    # Playlist app pages.
+    url(r'^playlist/', include('playlists.urls')),
+
     # Administrator view.
     url(r'^admin/', include(admin.site.urls)),
 
