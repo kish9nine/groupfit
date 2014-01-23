@@ -10,7 +10,7 @@ from django.contrib.auth.models import Group
 # template, and JQuery can fill out these hidden forms, dynamically adding
 # them as needed.
 class EmailForm( forms.Form ):
-    email = forms.CharField(
+    email = forms.EmailField(
         required = True,
         widget = forms.HiddenInput(),
     )
