@@ -22,7 +22,7 @@ def create_user(request):
  
             #Render a Welcome to GroupFit page if the input info is valid. 
             #No need to customize welcome page unless we want to just switch the name: Welcome, username!
-            return redirect('users.views.welcome') 
+            return render(request, 'welcome.html')
  
             #Send an email as well.
     else:
@@ -39,12 +39,5 @@ def view_user(request, user_pk=-1):
     user = get_object_or_404( UserProfile, pk=user_pk )
     return render(request, 'view_user.html', {
         'profile': user,
-    },
-    )
-
-
-def welcome(request):
-    return render(request, 'welcome.html',
-    {
     },
     )
