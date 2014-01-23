@@ -59,10 +59,7 @@ def delete_playlist(request, playlist_pk):
     if playlist in user_playlists:
         request.user.userprofile.playlists.remove( playlist )
 
-    return render(request, 'view_playlist.html', {
-        'playlist': playlist,
-    },
-    )
+    return redirect('users.views.view_user', request.user.userprofile.pk)
 
 @login_required
 def view_playlist(request, playlist_pk):
