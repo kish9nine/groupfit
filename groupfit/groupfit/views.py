@@ -39,4 +39,7 @@ def privacy(request):
 
 
 def register(request):
-    return render(request, 'createuser.html', {},)
+    return render(request, 'register.html', {},)
+
+def forgot(request):
+    return render(request, 'forgot.html', {},)
