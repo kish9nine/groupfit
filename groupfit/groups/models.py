@@ -14,6 +14,34 @@ class WorkoutGroup( models.Model ):
         help_text = "The name of your workout group.",
         max_length = 50,
     )
+    
+    
+    goal = models.CharField(
+        blank = False,
+        help_text = "Your Group Goal (e.g. Weight Loss)",
+        max_length = 50,
+    )
+    
+    goal_num = models.CharField(
+        blank = False,
+        help_text = "Your Group Goal Number (e.g. 100lbs)",
+        max_length = 50,
+    )
+    
+    time = models.CharField(
+        blank = False,
+        help_text = "The time frame to reach goal number",
+        max_length = 50,
+    )
+
+    members = models.ManyToManyField(
+        Member,
+        blank = True,
+        help_text = "Member emails.",
+    )
+    #
+    
+    
 
     tags = models.ManyToManyField(
         Tag
