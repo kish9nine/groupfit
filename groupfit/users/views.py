@@ -28,7 +28,7 @@ def create_user(request):
     else:
         #If the user didn't plug in anything, create_user_form will be an empty shell?
         create_user_form = RegisterForm()
-    return render(request, 'create_user.html', {})
+    return render(request, 'create_user.html', {'create_user_form': create_user_form})
         
         
 
