@@ -13,16 +13,16 @@ def create_user(request):
         if create_user_form.is_valid():
             #Don't save the user in creation as a new user yet. 
             new_user = create_user_form.save(commit=False)
-            
+ 
             #Then create UserProfile object from User object.
             new_UserProfile = UserProfile()
             new_UserProfile.user = new_user
             new_UserProfile.save() #Then save. 
-            
+ 
             #Render a Welcome to GroupFit page if the input info is valid. 
             #No need to customize welcome page unless we want to just switch the name: Welcome, username!
             return redirect('users.views.welcome') 
-            
+ 
             #Send an email as well.
     else:
         #If the user didn't plug in anything, create_user_form will be an empty shell?
@@ -43,7 +43,7 @@ def view_user(request, user_pk=-1):
 
 
 def welcome(request):
-    return render(request, 'welcome.html', {})
-    
-    
-
+    return render(request, 'welcome.html',
+    {
+    },
+    )
