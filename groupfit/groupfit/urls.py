@@ -2,9 +2,9 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-from groupfit.views import landing_page, about, contact, terms, privacy, register, forgot
+from groupfit.views import landing_page, about, contact, terms, privacy, forgot
 from django.contrib.auth.views import login, logout
-from users.views import view_user
+from users.views import view_user, register
 
 urlpatterns = patterns('',
 
