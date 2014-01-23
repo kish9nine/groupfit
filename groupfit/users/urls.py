@@ -1,10 +1,7 @@
 from django.conf.urls import patterns, include, url
-from users.views import view_user
+from users.views import view_user, create_user
 
 urlpatterns = patterns('',
-    # Register
-    url(r'^register', register),
-    
     # Create a user profile.
     url(r'^create/$', create_user),
 
