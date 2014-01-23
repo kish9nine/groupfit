@@ -18,6 +18,9 @@ urlpatterns = patterns('',
     # User accounts app pages.
     url(r'^me$', view_user),                     # matches /me
     url(r'^user/', include('users.urls')),       # matches /user/...
+    
+    ## Forgot password?
+    url(r'^forgot/$', forgot, {'template_name': 'forgot.html'}),
 
     # Group app pages.
     url(r'^group/', include('groups.urls')),    # matches /group/...
