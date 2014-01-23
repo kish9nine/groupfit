@@ -46,15 +46,26 @@ def privacy(request):
 #And if the username and email belong to the same user, a password reset email will be sent. 
 def forgot(request):
     
-    #If the request input any information.
+    #If the request input any information. 
     if (request.method == 'POST'):
+        #Create an object of ForgotPasswordForm from the user input.
         forgot_password_form = ForgotPasswordForm(request.POST)
+        
+        #These are the username and email that the user put in. 
         inp_username = forgot_password_form.username
         inp_email = forgot_password_form.email
+        
+        #If the input username is in User database and email corresponds to that username return email_sent page.
         if User.objects.get(username=inp_username) is not User.DoesNotExist:
             if User.objects.get(username=inp_username).email == inp_email:
                 send_email('Reset Password', 'Reset Password link', 'admin@groupfit.rouly.net', inp_email)
                 return render(request, 'email_sent.html') #It might be nice if we could turn this into a pop-up instead.
+                
     else: 
         forgot_password_form = ForgotPasswordForm(request.POST)
+        
+    #Otherwise, stay on that page with the incompelete form. 
     return render(request, 'forgot.html', {'forgot_password_form': forgot_password_form},)
+    
+    
+    
