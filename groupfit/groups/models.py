@@ -32,7 +32,7 @@ class WorkoutGroup( models.Model ):
 This post_save function is triggered when Group object is created,
 creating a WorkoutGroup object along with it.
 """
-def create_group_profile( sender, instance, created, **kwargs ):
-    if created:
-        WorkoutGroup.objects.create(group=instance)
+#def create_group_profile( sender, instance, created, **kwargs ):
+#    if created:
+#        WorkoutGroup.objects.create(group=instance)
 #post_save.connect(create_group_profile, sender=User)
