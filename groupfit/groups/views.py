@@ -20,6 +20,8 @@ def create_group(request):
     This view presents the user with a form which lets them create a new
     group.
     """
+    create_group_form = GroupRegisterForm(request.POST)
+    
 
     return render(request, 'create_group.html', {
     },
