@@ -1,59 +1,56 @@
 from django import forms
-from django.forms import ModelForm, TextInput, PasswordInput, EmailInput
-from groups.models import GroupProfile
+from django.forms import ModelForm
+from groups.models import WorkoutGroup
 from django.contrib.auth.models import Group
 
 
+# This form will be used in a formset, or a dynamically resizable
+# collection of forms, to provide a storage point for user emails.
+# Ideally, there will be some sort of master input box defined in a
+# template, and JQuery can fill out these hidden forms, dynamically adding
+# them as needed.
+class EmailForm( forms.Form ):
+    email = forms.CharField(
+        required = True,
+        widget = forms.HiddenInput(),
+    )
+
+# This form will fill out a WorkoutGroup object. The members will be empty,
+# but if a Formset of EmailForms is provided, we will be able to stick
+# those into the WorkoutGroup model in the processing view.
 class GroupRegisterForm(ModelForm):
     class Meta:
+
         #This model form is based on WorkoutGroup.
-        model = Group
-        #These are the fields that the user will be inputing. 
-        fields = ['groupname', 'group_goal', 'goal_num', 'email1','email2', 'email3']
-        #group_num is the e.g. 50 miles for group_goal of running
-        
+        model = WorkoutGroup
+
+        # These are the fields that the user will be inputing. 
+        # Note -- because 'members' is the reverse of a ManyToManyField, we
+        # can't actually define it as a field. Instead, we need to separate
+        # out that functionality into some logic in the view, then add this
+        # new group to all the invited users.
+        fields = ['name']
+
+        # REMAINING FIELDS TO IMPLEMENT:
+        # 'goal', 'group_num' -- need to be implemented in the WorkoutGroup
+        # model before we can add them in here safely...
+
+        #goal_num is the e.g. 50 miles for group_goal of running
+
         #Labels for each field.
         label = {
-            'groupname': 'GROUPNAME',
-            'group_goal': 'GROUPGOAL',
-            'goal_num': 'GOALNUM',
-            'email1': 'EMAIL1,
-            'email2': 'EMAIL2',
-            'email3': 'EMAIL3',
+            'name': 'Name Your Group',
+            #'goal': 'Set a Goal',
+            #'group_num': 'GOALNUM',
             }
 
         widgets = {
-            'groupname': TextInput(attrs={
+            'name': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Groupname',
+                'placeholder': 'Group Name',
             }),
-            'group_goal': TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Group Goal (e.g. Weight Loss)',
-            }),
-            'goal_num': TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Goal Number (e.g. 10 lbs) ',
-            #how to handle units?
-            
-            }),
-            'email1': PasswordInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Email of Member 1',
-            }),
-            'email2': EmailInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Email of Member 2',
-            }),
-            
-            'email3': EmailInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Email of Member 3',
-            }),
-            
-            #think of how to add more emails/ how to pop up users
+            #'goal': forms.TextInput(attrs={
+            #    'class': 'form-control',
+            #    'placeholder': 'Group Goal (e.g. Weight Loss)',
+            #}),
         }
-
-    #groupname = forms.CharField(max_length = 20)
-    #group_goal = forms.CharField(max_length = 50)
-    #email = forms.EmailField()
