@@ -35,7 +35,7 @@ class WorkoutGroup( models.Model ):
     )
 
     members = models.ManyToManyField(
-        Member,
+        UserProfile,
         blank = True,
         help_text = "Member emails.",
     )
