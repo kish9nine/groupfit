@@ -9,50 +9,63 @@ GroupFit
 
 {% block content %}
 
-<div class="page-header">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1>
-        Create Playlist
-      </h1>
-    </div>
-  </div>
-</div>
 
+<div class="row vertical-offset-100">
+  <div class="col-md-10 col-md-offset-1 col-lg-6 col-lg-offset-3">
+    <div class="panel panel-default">
 
-<div class="row">
+      <div class="panel-heading">
+        <h1 class="panel-title">
+          Create a New Playlist
+        </h1>
+      </div>
 
-  <div class="col-md-6">
-    <div class="well">
-      <form class="form-horizontal" action="" method="post">
-        {% csrf_token %}
+      <div class="panel-body">
+        <form class="form-horizontal" action="" method="post">
+          {% csrf_token %}
 
-        <div class="form-group{%if playlist_form.errors%} has-error{%endif%}">
-          {% for error in playlist_form.non_field_errors %}
-            <span class="col-lg-2 control-label"></span>
-            <span class="col-lg-10 help-block">{{error}}</span>
-          {% endfor %}
-        </div>
-
-        <div class="form-group{%if playlist_form.name.errors%} has-error{%endif%}">
-          <label for="{{playlist_form.name.id_for_label}}" class="col-lg-2
-          control-label">{{playlist_form.name.label}}</label>
-          <div class="col-lg-10">
-            {{ playlist_form.name }}
-            {% for error in playlist_form.name.errors %}
-              <span class="help-block">{{ error }}</span>
+          <div class="form-group{%if playlist_form.errors%} has-error{%endif%}">
+            {% for error in playlist_form.non_field_errors %}
+              <span class="col-lg-2 control-label"></span>
+              <span class="col-lg-10 help-block">{{error}}</span>
             {% endfor %}
           </div>
-        </div>
 
-        <div class="form-group">
-          <div class="col-lg-12">
-            <input type="submit" class="btn btn-success btn-lg btn-block"
-            value="Create Playlist" />
+          <div class="form-group{%if playlist_form.name.errors%} has-error{%endif%}">
+            <label for="{{playlist_form.name.id_for_label}}"
+            class="col-lg-3 col-sm-3 control-label">{{playlist_form.name.label}}</label>
+            <div class="col-lg-9 col-sm-9">
+              {{ playlist_form.name }}
+              {% for error in playlist_form.name.errors %}
+                <span class="help-block">{{ error }}</span>
+              {% endfor %}
+            </div>
           </div>
-        </div>
 
-      </form>
+          {{ track_formset.management_form }}
+          {% for track_form in track_formset %}
+          <div class="form-group{%if track_form.name.errors%} has-error{%endif%}">
+            <label for="{{track_form.name.id_for_label}}"
+            class="col-lg-3 col-sm-3 control-label">{{track_form.name.label}}</label>
+            <div class="col-lg-9 col-sm-9">
+              {{ track_form.name }}
+              {% for error in track_form.name.errors %}
+                <span class="help-block">{{ error }}</span>
+              {% endfor %}
+            </div>
+          </div>
+          {% endfor %}
+
+          <div class="form-group">
+            <div class="col-lg-12">
+              <input type="submit" class="btn btn-success btn-lg btn-block"
+              value="Create Playlist" />
+            </div>
+          </div>
+
+        </form>
+      </div>
+
     </div>
   </div>
 

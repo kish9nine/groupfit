@@ -1,23 +1,33 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from django.forms.formsets import formset_factory
-from playlists.models import Playlist
+from django.forms.models import modelformset_factory
+from playlists.models import Playlist, Track
 from playlists.forms import PlaylistForm, TrackForm
 
 @login_required
 def create_playlist(request):
 
+    # A FormSet basically allows you to have a dynamic number of the same
+    # kind of form, in this case "Track" forms.
+    TrackFormset = modelformset_factory(Track, TrackForm, max_num=10, extra=1)
+    track_formset = TrackFormset(queryset=Track.objects.none())
+
     # If the user submitted the form (POST), then process it.
     if request.method == 'POST':
         # Fill out the Form object with POST variables from the user.
         playlist_form = PlaylistForm( request.POST )
+        track_formset = TrackFormset( request.POST )
+
         # Validate the form.
-        if playlist_form.is_valid():
+        if playlist_form.is_valid() and track_formset.is_valid():
+
             # Construct an object from the form fields, but don't save it
             # yet, in case we want to process it some (ie. adding more
             # values to its fields).
             playlist = playlist_form.save(commit=False)
-            ## add tracks to the playlist
+            track_formset.save()
+
+            ## Add tracks to the playlist
 
             # Save the object.
             playlist.save()
@@ -34,6 +44,7 @@ def create_playlist(request):
 
     return render(request, 'create_playlist.html', {
         'playlist_form': playlist_form,
+        'track_formset' : track_formset,
     },
     )
 

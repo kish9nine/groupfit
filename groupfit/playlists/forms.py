@@ -8,13 +8,12 @@ class PlaylistForm( ModelForm ):
         # The model this form refers to
         model = Playlist
         # The fields of the model we're going to use
-        fields = ['name', 'tracks']
+        fields = ['name']
         # And fields we don't want to use
-        exclude = []
+        exclude = ['tracks']
         # Lables for each field, if you want any.
         labels = {
-            'name': 'Name',
-            'tracks': 'Tracks',
+            'name': 'Playlist Name',
         }
         # A Widget is an HTML object. Check the documentation for more.
         widgets = {
@@ -31,7 +30,7 @@ class TrackForm( ModelForm ):
         fields = ['name']
         exclude = []
         labels = {
-            'name': 'Track name',
+            'name': 'Track Title',
         }
         widgets = {
             'name': TextInput(attrs={
