@@ -6,16 +6,30 @@ from playlists.forms import PlaylistForm, TrackForm
 
 @login_required
 def create_playlist(request):
+
+    # If the user submitted the form (POST), then process it.
     if request.method == 'POST':
+        # Fill out the Form object with POST variables from the user.
         playlist_form = PlaylistForm( request.POST )
+        # Validate the form.
         if playlist_form.is_valid():
+            # Construct an object from the form fields, but don't save it
+            # yet, in case we want to process it some (ie. adding more
+            # values to its fields).
             playlist = playlist_form.save(commit=False)
             ## add tracks to the playlist
+
+            # Save the object.
             playlist.save()
+
+            # Add the object to the user object's playlist list.
             user = request.user.userprofile
             user.playlists.add( playlist )
+
+            # Finally, redirect the user.
             return redirect( 'playlists.views.view_playlist', playlist.pk )
     else:
+        # If the user did not submit the form, give them an empty one.
         playlist_form = PlaylistForm()
 
     return render(request, 'create_playlist.html', {
