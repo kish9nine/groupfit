@@ -27,8 +27,10 @@ GroupFit &middot; Register
                   <span class="input-group-addon">
                     <i class="fa fa-user"></i>
                   </span>
-                  <input type="text" name="username" id="username"
-                  placeholder="Username" class="form-control" />
+                  {{ create_user_form.username }}
+                  {% for error in create_user_form.name.errors %}
+                    <span class="help-block">{{ error }}</span>
+                  {% endfor %}
                 </div>
               </div>
             </div>
