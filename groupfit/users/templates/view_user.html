@@ -108,6 +108,9 @@ GroupFit
           </div>
           <div class="panel-body">
             {% for playlist in profile.playlists.all %}
+            <a href="{{ playlist.get_absolute_url }}">
+              {{ playlist.name }}
+            </a>
             {% empty %}
             <div class="text-center">
               You haven't made any playlists.
