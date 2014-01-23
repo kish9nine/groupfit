@@ -110,7 +110,11 @@ GroupFit
             {% for playlist in profile.playlists.all %}
             <a href="{{ playlist.get_absolute_url }}">
               {{ playlist.name }}
-            </a> &middot; <a href="#">(delete)</a><br/>
+            </a> &middot;
+            <a href="{% url 'playlists.views.delete_playlist' playlist.pk %}">
+              (delete)
+            </a>
+            <br/>
             {% empty %}
             <div class="text-center">
               You haven't made any playlists.
