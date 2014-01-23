@@ -6,7 +6,7 @@ from users.models import UserProfile
 class RegisterForm(ModelForm):
     class Meta:
         #This model form is based on UserProfile.
-        model = UserProfile.user
+        model = User
         #These are the fields that the user will be inputing. 
         fields = ['username', 'first_name', 'last_name','password', 'confirm_password', 'email']
         
