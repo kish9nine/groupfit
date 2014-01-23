@@ -36,7 +36,13 @@
             My Playlists <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li><a href="#">cats</a></li>
+            {% for playlist in user.userprofile.playlists.all %}
+            <li><a href="{{ playlist.get_absolute_url }}">{{ playlist.name }}</a></li>
+            {% empty %}
+            <li class="disabled"><a>None Found</a></li>
+            {% endfor %}
+            <li class="divider"></li>
+            <li><a href="{% url 'playlists.views.create_playlist' %}">Create Playlist</a></li>
           </ul>
         </li>
         {% endif %}
