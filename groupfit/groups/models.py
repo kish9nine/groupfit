@@ -33,13 +33,13 @@ class WorkoutGroup( models.Model ):
         help_text = "The time frame to reach goal number",
         max_length = 50,
     )
-    """
+    
     members = models.ManyToManyField(
         UserProfile,
         blank = True,
         help_text = "Member emails.",
     )
-    """   
+       
 
     tags = models.ManyToManyField(
         Tag
