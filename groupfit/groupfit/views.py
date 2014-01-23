@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+from forms import ForgotPasswordForm  #This is where forgot password? form is.
 
 def landing_page(request):
     """
@@ -37,6 +39,16 @@ def privacy(request):
     },
     )
 
+
 #This is for forgot password? section on the login page. 
+#This page will take in username and email information from the user  
+#And if the username and email belong to the same user, a password reset email will be sent. 
 def forgot(request):
+    
+    #If the request input any information.
+    if (request.method == 'POST'):
+        forgot_password_form = ForgotPasswordForm(request.POST)
+        username = forgot_password_form.username
+        if username in User.objects.all() and forgot_password_form.pass
+    
     return render(request, 'forgot.html', {},)
