@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.urlresolvers import reverse
 from tags.models import Tag
+from users.models import UserProfile
 
 
 class WorkoutGroup( models.Model ):
