@@ -1,6 +1,7 @@
 from django import forms
-from django.forms import ModelForm
+from django.forms import ModelForm, TextInput, PasswordInput, EmailInput
 from users.models import UserProfile
+from django.contrib.auth.models import User
 
 
 class RegisterForm(ModelForm):
@@ -19,8 +20,30 @@ class RegisterForm(ModelForm):
             'confirm_password': 'CONFIRM PASSWORD',
             'email': 'EMAIL',
             }
-        
-        
+
+        widgets = {
+            'username': TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Username',
+            }),
+            'first_name': TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'First Name',
+            }),
+            'last_name': TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Last Name',
+            }),
+            'password': PasswordInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Password',
+            }),
+            'email': EmailInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Email',
+            }),
+        }
+
     #username = forms.CharField(max_length = 20)
     #password = forms.CharField(max_length = 50)
     #email = forms.EmailField()
