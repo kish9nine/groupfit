@@ -20,10 +20,10 @@ urlpatterns = patterns('',
     url(r'^user/', include('users.urls')),       # matches /user/...
     
     ## Forgot password?
-    url(r'^forgot/$', forgot, {'template_name': 'forgot.html'}),
+    url(r'^forgot/$', forgot),
     
     ## Register?
-    url(r'^register/$', register, {'template_name': 'register.html'}),
+    url(r'^register/$', register),
 
     # Group app pages.
     url(r'^group/', include('groups.urls')),    # matches /group/...
