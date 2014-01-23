@@ -45,90 +45,13 @@ GroupFit
         <div class="panel panel-default">
           <div class="panel-heading">
             <h1 class="panel-title text-center">
-              <span class="pull-left">
-                <i class="fa fa-trophy"></i>
-              </span>
-              My Trophies
-            </h1>
-          </div>
-          <div class="panel-body">
-            {% for trophy in profile.trophies.all %}
-            {% empty %}
-            <div class="text-center">
-              No trophies won yet.
-            </div>
-            {% endfor %}
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h1 class="panel-title text-center">
               <span class="pull-left"><i class="fa fa-users"></i></span>
-              My Groups
-              <span class="pull-right">
-                <a href="{% url 'groups.views.create_group' %}">
-                  <i class="fa fa-plus-square"></i>
-                </a>
-              </span>
+              Group Members
             </h1>
-          </div>
-          <div class="panel-body">
-            {% for group in profile.groups.all %}
-              <a href="{{ group.get_absolute_url }}">
-                {{ group.name }}
-              </a> &middot;
-              <a href="{% url 'groups.views.leave_group' group.pk %}">
-              (leave)
-              </a>
-              <br/>
-            {% empty %}
-            <div class="text-center">
-              You do not belong to any groups yet.
-            </div>
-            {% endfor %}
           </div>
         </div>
       </div>
     </div>
-
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h1 class="panel-title text-center">
-              <span class="pull-left"><i class="fa fa-music"></i></span>
-              My Playlists
-              <span class="pull-right">
-                <a href="{% url 'playlists.views.create_playlist' %}">
-                  <i class="fa fa-plus-square"></i>
-                </a>
-              </span>
-            </h1>
-          </div>
-          <div class="panel-body">
-            {% for playlist in profile.playlists.all %}
-            <a href="{{ playlist.get_absolute_url }}">
-              {{ playlist.name }}
-            </a> &middot;
-            <a href="{% url 'playlists.views.delete_playlist' playlist.pk %}">
-              (delete)
-            </a>
-            <br/>
-            {% empty %}
-            <div class="text-center">
-              You haven't made any playlists.
-            </div>
-            {% endfor %}
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
 
   <div class="col-md-8">
@@ -155,7 +78,7 @@ GroupFit
           <button class="btn btn-primary btn-lg btn-block">
             <i class="fa fa-plus"></i>
             &nbsp;
-            Add Workout
+            Add Goal
           </button>
         </div>
 
