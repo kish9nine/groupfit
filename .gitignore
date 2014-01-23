@@ -18,6 +18,7 @@ results
 build
 .grunt
 .virtualenv
+restart-server
 
 node_modules
 
