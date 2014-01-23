@@ -14,8 +14,8 @@ class RegisterForm(ModelForm):
         #Labels for each field.
         label = {
             'username': 'USERNAME',
-            'first_name': 'FIRST NAME',
-            'last_name': 'LAST NAME',
+            'first_name': 'FIRSTNAME',
+            'last_name': 'LASTNAME',
             'password': 'PASSWORD',
             'confirm_password': 'CONFIRM PASSWORD',
             'email': 'EMAIL',
