@@ -52,8 +52,8 @@ def forgot(request):
         forgot_password_form = ForgotPasswordForm(request.POST)
         
         #These are the username and email that the user put in. 
-        inp_username = forgot_password_form.username
-        inp_email = forgot_password_form.email
+        inp_username = forgot_password_form.get(username)
+        inp_email = forgot_password_form.get(email)
         
         #If the input username is in User database and email corresponds to that username return email_sent page.
         if User.objects.get(username=inp_username) is not User.DoesNotExist:
