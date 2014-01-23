@@ -40,14 +40,19 @@ class GroupRegisterForm(ModelForm):
         #Labels for each field.
         label = {
             'name': 'Name Your Group',
-            #'goal': 'Set a Goal',
-            #'group_num': 'GOALNUM',
+            'member': 'Member',
+            #'goal_name': 'Set a Goal',
+            #'goal_num': '',
             }
 
         widgets = {
             'name': forms.TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Group Name',
+            }),
+            'member': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Member Name',
             }),
             #'goal': forms.TextInput(attrs={
             #    'class': 'form-control',
