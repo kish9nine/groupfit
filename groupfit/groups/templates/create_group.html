@@ -11,6 +11,7 @@ GroupFit
 <script>
   function toggleGoal(){
       var value = document.getElementById('select').value;
+      document.getElementById('goalname').style.display = "none";
       if(value == 'weightloss'){
         document.getElementById('measure').innerHTML = "lbs";
       }
@@ -23,6 +24,7 @@ GroupFit
       if(value == 'other'){
         var measure = prompt('Please enter how you would like this Goal to be measured','lbs')
         document.getElementById('measure').innerHTML = measure;
+        document.getElementById('goalname').style.display = "block";
       }
     }
   
@@ -72,6 +74,18 @@ GroupFit
               </div>
             </div>
             
+            
+            <div id="goalname" class="form-group" style="display: none;">
+              <div class="col-lg-12">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="fa fa-flag"></i>
+                  </span>
+                    <input type="text" placeholder="Goal Name" class="form-control"/>
+                </div>
+              </div>
+            </div>
+            
             <div class="form-group">
               <div class="col-lg-12">
                 <div class="input-group">
@@ -82,6 +96,7 @@ GroupFit
                 </div>
               </div>
             </div>
+            
             
             
             
