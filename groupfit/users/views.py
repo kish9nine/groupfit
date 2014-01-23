@@ -10,7 +10,7 @@ def create_user(request):
     if request.method == 'POST':
         #Feed as arguments to RegisterForm the inputs from the user.
         create_user_form = RegisterForm(request.POST)
-        pw = make_password(request.password)
+        pw = make_password(request['password'])
         create_user_form.password = pw
         #If username and password are of the right length and email is of the valid form,
         #And password and confirm password identical, 
