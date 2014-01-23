@@ -81,7 +81,7 @@ GroupFit
             {% for group in profile.groups.all %}
               <a href="{{ group.get_absolute_url }}">
                 {{ group.name }}
-              </a>
+              </a> &middot; <a href="#">(leave)</a><br/>
             {% empty %}
             <div class="text-center">
               You do not belong to any groups yet.
@@ -110,7 +110,7 @@ GroupFit
             {% for playlist in profile.playlists.all %}
             <a href="{{ playlist.get_absolute_url }}">
               {{ playlist.name }}
-            </a>
+            </a> &middot; <a href="#">(delete)</a><br/>
             {% empty %}
             <div class="text-center">
               You haven't made any playlists.
