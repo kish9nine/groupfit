@@ -50,6 +50,21 @@ def create_playlist(request):
     )
 
 @login_required
+def delete_playlist(request, playlist_pk):
+    # Get the playlist and the requesting user
+    playlist = get_object_or_404( Playlist, pk=playlist_pk )
+    user_playlists = request.user.userprofile.playlists.all()
+
+    # If the user does own this playlist, remove it from the user.
+    if playlist in user_playlists:
+        request.user.userprofile.playlists.remove( playlist )
+
+    return render(request, 'view_playlist.html', {
+        'playlist': playlist,
+    },
+    )
+
+@login_required
 def view_playlist(request, playlist_pk):
     playlist = get_object_or_404( Playlist, pk=playlist_pk )
     return render(request, 'view_playlist.html', {
