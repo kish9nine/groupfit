@@ -21,9 +21,12 @@ def create_group(request):
     This view presents the user with a form which lets them create a new
     group.
     """
-    create_group_form = GroupRegisterForm(request.POST)
-    
+    if request.method == 'POST':
+        create_group_form = GroupRegisterForm(request.POST)
+    else:
+        create_group_form = GroupRegisterForm()
 
     return render(request, 'create_group.html', {
+        'group_form': create_group_form,
     },
     )
