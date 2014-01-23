@@ -61,7 +61,7 @@
         </li>
         <li><a href="{% url 'django.contrib.auth.views.logout' %}">Log Out</a></li>
         {% else %}
-        <li><a href="{% url 'groupfit.views.register' %}">Register</a></li>
+        <li><a href="{% url 'users.views.create_user' %}">Register</a></li>
         <li><a href="{% url 'django.contrib.auth.views.login' %}">Log In</a></li>
         {% endif %}
       </ul>
