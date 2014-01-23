@@ -4,7 +4,7 @@ admin.autodiscover()
 
 from groupfit.views import landing_page, about, contact, terms, privacy, forgot
 from django.contrib.auth.views import login, logout
-from users.views import view_user, register
+from users.views import view_user, create_user
 
 urlpatterns = patterns('',
 
@@ -22,8 +22,8 @@ urlpatterns = patterns('',
     ## Forgot password?
     url(r'^forgot/$', forgot),
     
-    ## Register?
-    url(r'^register/$', register),
+    ## Register shortcut
+    url(r'^register/$', create_user),
 
     # Group app pages.
     url(r'^group/', include('groups.urls')),    # matches /group/...
