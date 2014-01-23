@@ -10,13 +10,14 @@ def create_user(request):
     if request.method == 'POST':
         #Feed as arguments to RegisterForm the inputs from the user.
         create_user_form = RegisterForm(request.POST)
-        pw = make_password(request['password'])
-        create_user_form.password = pw
         #If username and password are of the right length and email is of the valid form,
         #And password and confirm password identical, 
         if create_user_form.is_valid():
             #Don't save the user in creation as a new user yet. 
             new_user = create_user_form.save()
+            pw = create_user_form.cleaned_data.get('password')
+            new_user.set_password( pw )
+            new_user.save()
  
             #Then create UserProfile object from User object.
             new_UserProfile = UserProfile(user=new_user)
