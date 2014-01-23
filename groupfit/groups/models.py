@@ -28,3 +28,11 @@ class WorkoutGroup( models.Model ):
             args=[str(self.pk)]
         )
 
+"""
+This post_save function is triggered when Group object is created,
+creating a GroupProfile object along with it.
+"""
+def create_group_profile( sender, instance, created, **kwargs ):
+    if created:
+        GroupProfile.objects.create(user=instance)
+#post_save.connect(create_group_profile, sender=User)
