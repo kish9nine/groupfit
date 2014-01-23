@@ -6,7 +6,7 @@ from django.contrib.auth.models import Group
 
 class GroupRegisterForm(ModelForm):
     class Meta:
-        #This model form is based on GroupProfile.
+        #This model form is based on WorkoutGroup.
         model = Group
         #These are the fields that the user will be inputing. 
         fields = ['groupname', 'group_goal', 'goal_num', 'email1','email2', 'email3']
