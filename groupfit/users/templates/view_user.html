@@ -81,7 +81,11 @@ GroupFit
             {% for group in profile.groups.all %}
               <a href="{{ group.get_absolute_url }}">
                 {{ group.name }}
-              </a> &middot; <a href="#">(leave)</a><br/>
+              </a> &middot;
+              <a href="{% url 'groups.views.leave_group' group.pk %}">
+              (leave)
+              </a>
+              <br/>
             {% empty %}
             <div class="text-center">
               You do not belong to any groups yet.
