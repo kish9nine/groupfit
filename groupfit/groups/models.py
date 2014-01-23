@@ -39,8 +39,6 @@ class WorkoutGroup( models.Model ):
         blank = True,
         help_text = "Member emails.",
     )
-    #
-    
     
 
     tags = models.ManyToManyField(
