@@ -28,9 +28,11 @@ GroupFit &middot; Reset Password
                   <span class="input-group-addon">
                     <i class="fa fa-user"></i>
                   </span>
-                  <input type="text" name="username" id="username"
-                  placeholder="Username" class="form-control" />
+                  {{ forgot_password_form.username }}
                 </div>
+                {% for error in forgot_password_form.username.errors %}
+                  <span class="help-block">{{ error }}</span>
+                {% endfor %}
               </div>
             </div>
 
@@ -40,9 +42,11 @@ GroupFit &middot; Reset Password
                   <span class="input-group-addon">
                     <i class="fa fa-envelope"></i>
                   </span>
-                  <input type="text" name="email" id="email"
-                  placeholder="Email" class="form-control" />
+                  {{ forgot_password_form.username }}
                 </div>
+                {% for error in forgot_password_form.email.errors %}
+                  <span class="help-block">{{ error }}</span>
+                {% endfor %}
               </div>
             </div>
 
