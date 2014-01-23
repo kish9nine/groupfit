@@ -51,6 +51,8 @@ def forgot(request):
         #Create an object of ForgotPasswordForm from the user input.
         forgot_password_form = ForgotPasswordForm(request.POST)
         
+        forgot_password_form.save()
+            
         #These are the username and email that the user put in. 
         inp_username = forgot_password_form.get(username)
         inp_email = forgot_password_form.get(email)
