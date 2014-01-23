@@ -13,11 +13,14 @@ def create_user(request):
             #Don't save the user in creation as a new user yet. 
             new_user = create_user_form.save(commit=False)
             
-            #Then create UserProfile object from 
-            new_userProfile = create_user_profile(new_user)
+            #Then create UserProfile object from User object.
+            new_UserProfile = UserProfile()
+            new_UserProfile.user = new_user
+            new_UserProfile.save() #Then save. 
             
             #Render a Welcome to GroupFit page if the input info is valid. 
-            return redirect('users.views.welcome', new_user.username)
+            #No need to customize welcome page unless we want to just switch the name: Welcome, username!
+            return redirect('users.views.welcome') 
             
             #Send an email as well. 
             
