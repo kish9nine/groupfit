@@ -24,13 +24,14 @@ def create_playlist(request):
             # Construct an object from the form fields, but don't save it
             # yet, in case we want to process it some (ie. adding more
             # values to its fields).
-            playlist = playlist_form.save(commit=False)
+            playlist = playlist_form.save()
             track_formset.save()
 
             ## Add tracks to the playlist
-
-            # Save the object.
-            playlist.save()
+            for track_form in track_formset:
+                if track_form.is_valid():
+                    track = track_form.save()
+                    playlist.tracks.add( track )
 
             # Add the object to the user object's playlist list.
             user = request.user.userprofile
@@ -48,6 +49,7 @@ def create_playlist(request):
     },
     )
 
+@login_required
 def view_playlist(request, playlist_pk):
     playlist = get_object_or_404( Playlist, pk=playlist_pk )
     return render(request, 'view_playlist.html', {
