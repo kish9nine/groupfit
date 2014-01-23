@@ -13,7 +13,7 @@ def create_user(request):
         #And password and confirm password identical, 
         if create_user_form.is_valid():
             #Don't save the user in creation as a new user yet. 
-            new_user = create_user_form.save(commit=False)
+            new_user = create_user_form.save()
  
             #Then create UserProfile object from User object.
             new_UserProfile = UserProfile()
