@@ -2,6 +2,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from users.models import UserProfile, create_user_profile
 
+def register(request):
+    return render(request, 'register.html', {},)
+
 def create_user(request):
     #If the user is trying to add info to the server,
     if request.method == 'POST':
@@ -22,9 +25,7 @@ def create_user(request):
             #No need to customize welcome page unless we want to just switch the name: Welcome, username!
             return redirect('users.views.welcome') 
             
-            #Send an email as well. 
-            
-            
+            #Send an email as well.
     else:
         #If the user didn't plug in anything, create_user_form will be an empty shell?
         create_user_form = RegisterForm()
