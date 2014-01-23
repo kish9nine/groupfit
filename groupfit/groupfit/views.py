@@ -36,3 +36,11 @@ def privacy(request):
     return render(request, 'privacy.html', {
     },
     )
+
+
+def register(request):
+    return render(request, 'register.html', {},)
+
+#This is for forgot password? section on the login page. 
+def forgot(request):
+    return render(request, 'forgot.html', {},)

@@ -2,7 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-from groupfit.views import landing_page, about, contact, terms, privacy
+from groupfit.views import landing_page, about, contact, terms, privacy, register, forgot
 from django.contrib.auth.views import login, logout
 from users.views import view_user
 
@@ -18,6 +18,12 @@ urlpatterns = patterns('',
     # User accounts app pages.
     url(r'^me$', view_user),                     # matches /me
     url(r'^user/', include('users.urls')),       # matches /user/...
+    
+    ## Forgot password?
+    url(r'^forgot/$', forgot),
+    
+    ## Register?
+    url(r'^register/$', register),
 
     # Group app pages.
     url(r'^group/', include('groups.urls')),    # matches /group/...

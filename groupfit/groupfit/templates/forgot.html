@@ -2,21 +2,21 @@
 {% load staticfiles %}
 
 {% block title %}
-GroupFit &middot; Login
+GroupFit &middot; Reset Password
 {% endblock %}
 
 {% block content %}
 
 <div class="row vertical-offset-100">
   <div class="col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
-    <form id="login-form" method="post" class="form-horizontal"
-    action="{% url 'django.contrib.auth.views.login' %}"> {% csrf_token %}
+    <form id="forgot-form" method="post" class="form-horizontal"
+    action=""> {% csrf_token %}
       <fieldset>
         <div class="panel panel-default">
 
           <div class="panel-heading">
             <h1 class="panel-title">
-              Please Log In
+              Please Enter Your User Information
             </h1>
           </div>
 
@@ -28,7 +28,7 @@ GroupFit &middot; Login
                   <span class="input-group-addon">
                     <i class="fa fa-user"></i>
                   </span>
-                  <input type="username" name="username" id="username"
+                  <input type="text" name="username" id="username"
                   placeholder="Username" class="form-control" />
                 </div>
               </div>
@@ -38,19 +38,17 @@ GroupFit &middot; Login
               <div class="col-lg-12">
                 <div class="input-group">
                   <span class="input-group-addon">
-                    <i class="fa fa-pencil"></i>
+                    <i class="fa fa-envelope"></i>
                   </span>
-                  <input type="password" name="password" id="password"
-                  placeholder="Password" class="form-control" />
+                  <input type="text" name="email" id="email"
+                  placeholder="Email" class="form-control" />
                 </div>
               </div>
             </div>
 
             <input type="submit" name="submit" id="submit"
-            style="margin-bottom:10px;"
-            class="btn btn-success btn-lg btn-block" value="Log In" />
-            
-            <a href="/forgot/">Forgot password?</a>
+			onclick="alert('A link to reset your password has been sent to your email.')"
+            class="btn btn-success btn-lg btn-block" value="Submit" />
 
           </div>
 
