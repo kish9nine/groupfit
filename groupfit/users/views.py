@@ -16,8 +16,8 @@ def create_user(request):
             new_user = create_user_form.save()
  
             #Then create UserProfile object from User object.
-            new_UserProfile = UserProfile()
-            new_UserProfile.user = new_user
+            new_UserProfile = UserProfile(user=new_user)
+            #new_UserProfile.user = new_user
             new_UserProfile.save() #Then save. 
  
             #Render a Welcome to GroupFit page if the input info is valid. 
