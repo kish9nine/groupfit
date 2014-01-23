@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from users.models import UserProfile, create_user_profile
+from users.forms import RegisterForm
 
 
 def create_user(request):
