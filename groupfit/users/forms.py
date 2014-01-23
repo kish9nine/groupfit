@@ -9,7 +9,7 @@ class RegisterForm(ModelForm):
         #This model form is based on UserProfile.
         model = User
         #These are the fields that the user will be inputing. 
-        fields = ['username', 'first_name', 'last_name','password', 'confirm_password', 'email']
+        fields = ['username', 'first_name', 'last_name','password', 'email']
         
         #Labels for each field.
         label = {
