@@ -1,7 +1,7 @@
 from django.db import models
 from django.core.urlresolvers import reverse
 from tags.models import Tag
-from users.models import UserProfile
+#from users.models import UserProfile
 
 
 class WorkoutGroup( models.Model ):
@@ -16,7 +16,7 @@ class WorkoutGroup( models.Model ):
         max_length = 50,
     )
     
-    
+    """
     goal = models.CharField(
         blank = False,
         help_text = "Your Group Goal (e.g. Weight Loss)",
@@ -45,6 +45,7 @@ class WorkoutGroup( models.Model ):
     tags = models.ManyToManyField(
         Tag
     )
+    """
 
     def __unicode__(self):
         return "Workout Group %s" % self.pk
