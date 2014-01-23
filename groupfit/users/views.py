@@ -2,8 +2,6 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from users.models import UserProfile, create_user_profile
 
-def register(request):
-    return render(request, 'register.html', {},)
 
 def create_user(request):
     #If the user is trying to add info to the server,
