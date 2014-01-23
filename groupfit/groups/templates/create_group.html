@@ -22,8 +22,9 @@ GroupFit
         document.getElementById('measure').innerHTML = "repetitions";
       }
       if(value == 'other'){
-        var measure = prompt('Please enter how you would like this Goal to be measured','lbs')
         document.getElementById('goalname').style.display = "block";
+        
+        var measure = prompt('Please enter how you would like this Goal to be measured','lbs')
         document.getElementById('measure').innerHTML = measure;
       }
     }
