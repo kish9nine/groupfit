@@ -38,9 +38,7 @@ class UserProfile( models.Model ):
         return "%s" % self.user.username
 
     def get_absolute_url(self):
-        return reverse(
-            'users.views.view_user',
-            args=[str(self.pk)])
+        return reverse('users.views.view_user', args=[str(self.pk)])
 
 
 """
