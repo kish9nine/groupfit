@@ -22,9 +22,6 @@ urlpatterns = patterns('',
     ## Forgot password?
     url(r'^forgot/$', forgot),
     
-    ## Register?
-    url(r'^register/$', register),
-
     # Group app pages.
     url(r'^group/', include('groups.urls')),    # matches /group/...
 
