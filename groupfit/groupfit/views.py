@@ -45,7 +45,7 @@ def privacy(request):
 #This page will take in username and email information from the user  
 #And if the username and email belong to the same user, a password reset email will be sent. 
 def forgot(request):
-    
+    """
     #If the request input any information. 
     if (request.method == 'POST'):
         #Create an object of ForgotPasswordForm from the user input.
@@ -65,9 +65,11 @@ def forgot(request):
                 
     else: 
         forgot_password_form = ForgotPasswordForm(request.POST)
-        
+    """  
     #Otherwise, stay on that page with the incompelete form. 
-    return render(request, 'forgot.html', {'forgot_password_form': forgot_password_form},)
+    #In context, {'forgot_password_form': forgot_password_form},
+    return render(request, 'forgot.html', {})
+    
     
     
     
