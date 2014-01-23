@@ -4,6 +4,7 @@ from groups.models import WorkoutGroup
 from django.db.models.signals import post_save
 from django.core.urlresolvers import reverse
 from tags.models import Tag
+from playlists.models import Playlist
 
 
 class UserProfile( models.Model ):
@@ -25,6 +26,11 @@ class UserProfile( models.Model ):
 
     tags = models.ManyToManyField(
         Tag,
+        blank = True,
+    )
+
+    playlists = models.ManyToManyField(
+        Playlist,
         blank = True,
     )
 
