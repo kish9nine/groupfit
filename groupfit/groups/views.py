@@ -3,7 +3,7 @@ from groups.models import WorkoutGroup
 from groups.forms import GroupRegisterForm
 from django.contrib.auth.decorators import login_required
 
-def view_group(request, group_pk=-1):
+def view_group(request, group_pk):
     """
     This view simply displays the group page to the user, depending on the
     request pk.
@@ -14,6 +14,17 @@ def view_group(request, group_pk=-1):
         'group': group,
     },
     )
+
+
+@login_required
+def leave_group(request, group_pk):
+    group = get_object_or_404( WorkoutGroup, pk=group_pk )
+    user_groups = request.user.userprofile.groups.all()
+
+    if group in user_groups:
+        request.user.userprofile.groups.remove( group )
+
+    return redirect('users.views.view_user', request.user.userprofile.pk)
 
 @login_required
 def create_group(request):
