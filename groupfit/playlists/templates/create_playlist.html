@@ -12,15 +12,21 @@ GroupFit
 
 <div class="row vertical-offset-100">
   <div class="col-md-10 col-md-offset-1 col-lg-6 col-lg-offset-3">
-    <div class="panel panel-default">
+    <form class="form-horizontal" action="" method="post">
+      {% csrf_token %}
 
-      <div class="panel-heading">
-        <h1 class="panel-title">
-          Create a New Playlist
-        </h1>
-      </div>
+      <div class="panel panel-default">
 
+        <div class="panel-heading">
+          <h1 class="panel-title">
+            Create a New Playlist
+          </h1>
+        </div>
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> bad90576e6e10bd74a89ff94423cda7973c56952
         <div class="panel-body">
 
           <div class="form-group{%if playlist_form.errors%} has-error{%endif%}">

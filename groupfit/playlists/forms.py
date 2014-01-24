@@ -27,14 +27,24 @@ class PlaylistForm( ModelForm ):
 class TrackForm( ModelForm ):
     class Meta:
         model = Track
-        fields = ['name']
+        fields = ['name', 'artist', 'album']
         exclude = []
         labels = {
             'name': 'Track Title',
+            'artist': 'Track Artist',
+            'album': 'Track Album',
         }
         widgets = {
             'name': TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Track Title',
+            }),
+            'artist': TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Track Artist',
+            }),
+            'album': TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Track Album',
             }),
         }

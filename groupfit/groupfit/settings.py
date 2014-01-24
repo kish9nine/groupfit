@@ -183,6 +183,7 @@ EasyMap settings, specfically default map center.
 ###############################################################################
 
 """
+<<<<<<< HEAD
 Email configuration settings.
 """
 
@@ -193,3 +194,9 @@ EMAIL_USE_TLS = True
 
 EMAIL_HOST_USER = secret.EMAIL_HOST_USER
 EMAIL_HOST_PASSWORD = secret.EMAIL_HOST_PASSWORD
+=======
+Email Settings
+"""
+
+#EMAIL_BACKEND
+>>>>>>> bad90576e6e10bd74a89ff94423cda7973c56952
