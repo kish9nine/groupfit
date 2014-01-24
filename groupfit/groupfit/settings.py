@@ -181,3 +181,15 @@ EasyMap settings, specfically default map center.
 #EASY_MAPS_CENTER = (42.361138,-71.092374)
 
 ###############################################################################
+
+"""
+Email configuration settings.
+"""
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+
+EMAIL_HOST_USER = secret.EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = secret.EMAIL_HOST_PASSWORD

@@ -20,9 +20,8 @@ GroupFit
         </h1>
       </div>
 
-      <div class="panel-body">
-        <form class="form-horizontal" action="" method="post">
-          {% csrf_token %}
+
+        <div class="panel-body">
 
           <div class="form-group{%if playlist_form.errors%} has-error{%endif%}">
             {% for error in playlist_form.non_field_errors %}
@@ -42,12 +41,25 @@ GroupFit
             </div>
           </div>
 
-          <hr/>
+        </div>
+      </div>
 
-          <div id="track-formset">
-            {{ track_formset.management_form }}
-            {% for track_form in track_formset %}
-            <div class="track form-group{%if track_form.name.errors%} has-error{%endif%}">
+      <div id="track-formset">
+
+        {{ track_formset.management_form }}
+        {% for track_form in track_formset %}
+
+        <div class="panel panel-default track">
+
+          <div class="panel-heading">
+            <h1 class="panel-title">
+              New Track
+            </h1>
+          </div>
+
+          <div class="panel-body">
+            
+            <div class="form-group{%if track_form.name.errors%} has-error{%endif%}">
               <label for="{{track_form.name.id_for_label}}"
               class="col-lg-3 col-sm-3 control-label">{{track_form.name.label}}</label>
               <div class="col-lg-9 col-sm-9">
@@ -57,33 +69,53 @@ GroupFit
                 {% endfor %}
               </div>
             </div>
-            {% endfor %}
-          </div>
 
-          <hr/>
-
-          <div class="form-group">
-            <div class="col-xs-6">
-              <a class="btn btn-primary btn-lg btn-block" href="#" id="extender">
-                Add another track!
-              </a>
+            <div class="form-group{%if track_form.artist.errors%} has-error{%endif%}">
+              <label for="{{track_form.artist.id_for_label}}"
+              class="col-lg-3 col-sm-3 control-label">{{track_form.artist.label}}</label>
+              <div class="col-lg-9 col-sm-9">
+                {{ track_form.artist }}
+                {% for error in track_form.artist.errors %}
+                  <span class="help-block">{{ error }}</span>
+                {% endfor %}
+              </div>
             </div>
 
-            <div class="col-xs-6">
-              <input type="submit" class="btn btn-success btn-lg btn-block"
-              value="Create Playlist" />
+            <div class="form-group{%if track_form.album.errors%} has-error{%endif%}">
+              <label for="{{track_form.album.id_for_label}}"
+              class="col-lg-3 col-sm-3 control-label">{{track_form.album.label}}</label>
+              <div class="col-lg-9 col-sm-9">
+                {{ track_form.album }}
+                {% for error in track_form.album.errors %}
+                  <span class="help-block">{{ error }}</span>
+                {% endfor %}
+              </div>
             </div>
+
           </div>
 
-        </form>
+        </div>
+
+        {% endfor %}
+
       </div>
 
-    </div>
-  </div>
 
-  <div class="col-md-6">
-  </div>
+      <div class="form-group">
+        <div class="col-xs-6">
+          <a class="btn btn-primary btn-lg btn-block" href="#" id="extender">
+            Add another track!
+          </a>
+        </div>
 
+        <div class="col-xs-6">
+          <input type="submit" class="btn btn-success btn-lg btn-block"
+          value="Create Playlist" />
+        </div>
+      </div>
+
+    </form>
+  </div>
 </div>
 
 <script>
