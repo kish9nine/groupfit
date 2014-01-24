@@ -68,8 +68,7 @@ def forgot(request):
         forgot_password_form = ForgotPasswordForm(request.POST)
     
     #Otherwise, stay on that page with the incompelete form. 
-    #In context, {'forgot_password_form': forgot_password_form},
-    return render(request, 'forgot.html', {})
+    return render(request, 'forgot.html', {'forgot_password_form': forgot_password_form},)
     
     
     
