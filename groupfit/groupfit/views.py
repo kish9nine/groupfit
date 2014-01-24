@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
-from forms import ForgotPasswordForm  #This is where forgot password? form is.
-from django.core.exceptions import ObjectDoesNotExist #I don't need it while I am using User.DoesNotExist instead
+from forms import ForgotPasswordForm
+from django.core.exceptions import ObjectDoesNotExist
 
 def landing_page(request):
     """
@@ -41,23 +41,25 @@ def privacy(request):
     )
 
 
-#This is for forgot password? section on the login page. 
-#This page will take in username and email information from the user  
-#And if the username and email belong to the same user, a password reset email will be sent. 
+# This is for forgot password? section on the login page.
+# This page will take in username and email information from the user
+# And if the username and email belong to the same user, a password reset
+# email will be sent.
 def forgot(request):
-    
+
     #If the request input any information. 
+
     if (request.method == 'POST'):
         #Create an object of ForgotPasswordForm from the user input.
         forgot_password_form = ForgotPasswordForm(request.POST)
-        
+
         if forgot_password_form.is_valid():
             forgot_password_form.save(commit=False)
-            
+
             #These are the username and email that the user put in. 
-            inp_username = forgot_password_form.fields['username']
-            inp_email = forgot_password_form.fields['email']
-        
+            inp_username = forgot_password_form.cleaned_data.get('username')
+            inp_email = forgot_password_form.cleaned_data.get('email')
+            
             #If the input username is in User database and email corresponds to that username return email_sent page.
             if User.objects.get(username=inp_username) is not User.DoesNotExist:
                 if User.objects.get(username=inp_username).email == inp_email:
@@ -66,10 +68,6 @@ def forgot(request):
                 return render(request, 'email_not_sent.html')
     else: 
         forgot_password_form = ForgotPasswordForm(request.POST)
-    
+
     #Otherwise, stay on that page with the incompelete form. 
     return render(request, 'forgot.html', {'forgot_password_form': forgot_password_form},)
-    
-    
-    
-    
