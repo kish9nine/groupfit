@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+GroupFit &middot; About
+{% endblock %}
+
+{% block content %}
+
+<h1>Email not sent.</h1>
+{{password_forgot_form.fields['email']}}
+
+{% endblock %}
