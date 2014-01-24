@@ -5,7 +5,19 @@ from django.core.urlresolvers import reverse
 class Track( models.Model ):
     name = models.CharField(
         blank = False,
-        help_text = "Track title.",
+        help_text = "Track title",
+        max_length = 100,
+    )
+
+    artist = models.CharField(
+        blank = False,
+        help_text = "Track artist",
+        max_length = 100,
+    )
+
+    album = models.CharField(
+        blank = False,
+        help_text = "Track album",
         max_length = 100,
     )
 
