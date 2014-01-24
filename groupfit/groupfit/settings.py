@@ -181,3 +181,9 @@ EasyMap settings, specfically default map center.
 #EASY_MAPS_CENTER = (42.361138,-71.092374)
 
 ###############################################################################
+
+"""
+Email Settings
+"""
+
+#EMAIL_BACKEND
