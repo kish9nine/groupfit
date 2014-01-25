@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 #from django.contrib.auth.forms import PasswardResetForm
 from django.core.mail import send_mail
-from forms import ForgotPasswordForm
+from groupfit.forms import ForgotPasswordForm, PasswordResetForm
 from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
 
