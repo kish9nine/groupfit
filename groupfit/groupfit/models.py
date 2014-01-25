@@ -6,6 +6,12 @@ class WorkoutGoal( models.Model ):
     This model represents the goal of an individual or group.
     """
 
+    name = models.CharField(
+        blank = False,
+        help_text = "Name Your Goal",
+        max_length = 50,
+    )
+
     amount = models.CharField(
         blank = False,
         help_text = "How far do you need to go to achieve this goal?",
@@ -13,7 +19,7 @@ class WorkoutGoal( models.Model ):
     )
 
     activity = models.CharField(
-        blank = True,
+        blank = False,
         help_text = "What activity does this goal use?",
         max_length = 50,
     )
