@@ -21,7 +21,7 @@ def create_user(request):
             pw = create_user_form.cleaned_data.get('password')
             confirm_pw = create_user_form.cleaned_data.get('confirm_password')
             if pw != confirm_pw:
-                raise ValidationError("Password do not match.")
+                raise ValidationError("Passwords do not match.")
             new_user.set_password( pw )
             new_user.save()
  
