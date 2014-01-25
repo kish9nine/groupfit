@@ -24,6 +24,12 @@ class WorkoutGroup( models.Model ):
         related_name = "groups",
     )
 
+    description = models.CharField(
+        blank = True,
+        help_text = "Describe your group.",
+        max_length = 400,
+    )
+
     tags = models.ManyToManyField(
         Tag,
         blank = True,
