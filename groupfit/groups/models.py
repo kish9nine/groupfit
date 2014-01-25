@@ -18,6 +18,7 @@ class WorkoutGroup( models.Model ):
 
     goal = models.ForeignKey(
         WorkoutGoal,
+        null = True,
         blank = True,
         help_text = "Your Group Goal (e.g. Weight Loss)",
     )
