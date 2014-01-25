@@ -13,7 +13,10 @@ from django.contrib.auth.models import Group
 class EmailForm( forms.Form ):
     email = forms.EmailField(
         required = True,
-        widget = forms.HiddenInput(),
+        widget = forms.EmailInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Member Email',
+        }),
     )
 
 

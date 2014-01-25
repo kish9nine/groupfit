@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.forms.models import formset_factory
 from groups.models import WorkoutGroup
-from groups.forms import GroupRegisterForm
+from groups.forms import GroupRegisterForm, EmailForm
 from groupfit.forms import WorkoutGoalForm
 from django.contrib.auth.decorators import login_required
 
@@ -33,8 +34,12 @@ def create_group(request):
     This view presents the user with a form which lets them create a new
     group.
     """
+
+    EmailFormset = formset_factory(EmailForm, max_num=10, extra=1)
+
     if request.method == 'POST':
         create_group_form = GroupRegisterForm(request.POST)
+        email_formset = EmailFormset(request.POST)
         if create_group_form.is_valid():
 
             # 0) create a group object from the form
@@ -55,8 +60,10 @@ def create_group(request):
 
     else:
         create_group_form = GroupRegisterForm()
+        email_formset = EmailFormset()
 
     return render(request, 'create_group.html', {
         'group_form': create_group_form,
+        'email_formset': email_formset,
     },
     )
