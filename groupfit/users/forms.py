@@ -23,17 +23,17 @@ class RegisterForm(ModelForm):
     password = models.CharField(
         required = True, 
         label="PASSWORD", 
-        TextInput(attrs={'class':'form-control', 'placeholer':'Password'}))
+        PasswordInput(attrs={'class':'form-control', 'placeholer':'Password'}))
         
     confirm_password = models.CharField(
         required = True, 
         label="CONFIRM_PASSWORD", 
-        TextInput(attrs={'class':'form-control', 'placeholer':'Confirm password'}))
+        PasswordInput(attrs={'class':'form-control', 'placeholer':'Confirm password'}))
         
     email = models.CharField(
         required = True, 
         label="EMAIL", 
-        TextInput(attrs={'class':'form-control', 'placeholer':'Email'}))
+        EmailInput(attrs={'class':'form-control', 'placeholer':'Email'}))
     
     class Meta:
         model = User
