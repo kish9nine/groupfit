@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 #from django.contrib.auth.forms import PasswardResetForm
 from django.core.mail import send_mail
 from groupfit.forms import ForgotPasswordForm, PasswordResetForm
+from groups.models import WorkoutGroup
+from users.models import UserProfile
 from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
 
@@ -40,6 +42,15 @@ def terms(request):
 
 def privacy(request):
     return render(request, 'privacy.html', {
+    },
+    )
+
+def community(request):
+    users = UserProfile.objects.all()
+    groups = WorkoutGroup.objects.all()
+    return render(request, 'community.html', {
+        'users' : users,
+        'groups' : groups,
     },
     )
 
