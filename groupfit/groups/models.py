@@ -16,16 +16,18 @@ class WorkoutGroup( models.Model ):
         max_length = 50,
     )
 
-    goal = models.ForeignKey(
+    goal = models.ManyToManyField(
         WorkoutGoal,
         null = True,
         blank = True,
         help_text = "Your Group Goal (e.g. Weight Loss)",
+        related_name = "groups",
     )
 
     tags = models.ManyToManyField(
         Tag,
         blank = True,
+        related_name = "groups",
     )
 
     def __unicode__(self):
