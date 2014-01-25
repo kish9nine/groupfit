@@ -5,7 +5,6 @@ from users.forms import RegisterForm
 from django.contrib.auth.hashers import make_password
 from django.core.mail import send_mail
 from django.conf import settings
-from django.core.exceptions import ValidationError
 
 
 def create_user(request):
@@ -18,10 +17,7 @@ def create_user(request):
         if create_user_form.is_valid():
             #Don't save the user in creation as a new user yet. 
             new_user = create_user_form.save()
-            pw = create_user_form.cleaned_data.get('password')
-            confirm_pw = create_user_form.cleaned_data.get('confirm_password')
-            if pw != confirm_pw:
-                raise ValidationError("Passwords do not match.")
+            pw = create_user_form.clean()
             new_user.set_password( pw )
             new_user.save()
  
