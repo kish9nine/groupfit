@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+GroupFit &middot; Community
+{% endblock %}
+
+{% block content %}
+
+<div class="row vertical-offset-100">
+  <div class="col-md-8 col-md-offset-2">
+
+    <div class="panel panel-default">
+      <div class="panel-body">
+
+        <ul class="nav nav-tabs">
+          <li class="active">
+            <a data-toggle="tab" href="#groups">
+              Groups
+            </a>
+          </li>
+
+          <li>
+            <a data-toggle="tab" href="#users">
+              Users
+            </a>
+          </li>
+        </ul>
+
+        <div class="tab-content">
+
+          <div class="tab-pane fade in active" id="groups">
+            <ul class="list-group">
+              {% for group in groups %}
+              <a href="{{group.get_absolute_url}}" class="list-group-item">
+                {{ group.name }}
+                <span class="badge">
+                  {{ group.members.all|length }}
+                </span>
+              </a>
+              {% empty %}
+              <li class="list-group-item">No groups found.</li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <div class="tab-pane fade" id="users">
+            <ul class="list-group">
+              {% for user in users %}
+              <a href="{{user.get_absolute_url}}" class="list-group-item">
+                {{ user.user.first_name }} {{ user.user.last_name }}
+              </a>
+              {% empty %}
+              <li class="list-group-item">No users found.</li>
+              {% endfor %}
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+{% endblock %}
