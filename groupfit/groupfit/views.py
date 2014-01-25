@@ -49,7 +49,6 @@ def privacy(request):
 def forgot(request):
 
     #If the request input any information. 
-
     if (request.method == 'POST'):
         #Create an object of ForgotPasswordForm from the user input.
         forgot_password_form = ForgotPasswordForm(request.POST)
@@ -71,7 +70,7 @@ def forgot(request):
                 pass 
             return render(request, 'email_not_sent.html')
     else: 
-        forgot_password_form = ForgotPasswordForm(request.POST)
+        forgot_password_form = ForgotPasswordForm()
 
     #Otherwise, stay on that page with the incompelete form. 
     return render(request, 'forgot.html', {'forgot_password_form': forgot_password_form},)
