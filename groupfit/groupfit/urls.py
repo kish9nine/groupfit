@@ -26,7 +26,7 @@ urlpatterns = patterns('',
     #url(r'^password_reset/$', reset_pw),
     
     ## Register shortcut
-    url(r'^register/$', create_user),
+    #url(r'^register/$', create_user),
 
     # Group app pages.
     url(r'^group/', include('groups.urls')),    # matches /group/...
