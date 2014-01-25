@@ -33,3 +33,6 @@ class WorkoutGoal( models.Model ):
     target_date = models.DateField(
         blank = False,
     )
+
+    def __unicode__(self):
+        return "%s" % self.name
