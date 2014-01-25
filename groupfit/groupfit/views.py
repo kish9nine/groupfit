@@ -86,11 +86,11 @@ def forgot(request):
                 user = User.objects.get(username=inp_username)
                 if inp_email == user.email:
                     #send_mail('Reset Password', 'Reset Password link', settings.EMAIL_HOST_USER, [user.email])
-                    """
-                    user.password_reset(request, 
+                    
+                    password_reset(request, 
                         template_name='password_reset_form.html', 
                         email_template_name='password_reset_email.html')
-                    """
+                    
                     return render(request, 'email_sent.html')
             except User.DoesNotExist:
                 pass 
