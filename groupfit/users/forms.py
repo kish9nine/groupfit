@@ -7,25 +7,25 @@ class RegisterForm(ModelForm):
 
     username = forms.CharField(
         required = True, 
-        #label="USERNAME", 
+        label="USERNAME", 
         widget=TextInput(attrs={'class':'form-control', 'placeholer':'Username'})
         )
         
     first_name = forms.CharField(
         required = True, 
-        #label="FIRSTNAME", 
+        label="FIRSTNAME", 
         widget=TextInput(attrs={'class':'form-control', 'placeholer': 'Firstname'})
         )
         
     last_name = forms.CharField(
         required = True, 
-        #label="LASTNAME", 
+        label="LASTNAME", 
         widget=TextInput(attrs={'class':'form-control', 'placeholer':'Lastname'})
         )
         
     password = forms.CharField(
         required = True, 
-        #label="PASSWORD", 
+        label="PASSWORD", 
         widget=PasswordInput(attrs={'class':'form-control', 'placeholer':'Password'})
         )
         
@@ -36,7 +36,7 @@ class RegisterForm(ModelForm):
         
     email = forms.EmailField(
         required = True, 
-        #label="EMAIL", 
+        label="EMAIL", 
         widget=EmailInput(attrs={'class':'form-control', 'placeholer':'Email'})
         )
 
