@@ -40,12 +40,11 @@ class WorkoutGroup( models.Model ):
         blank = True,
         help_text = "Member emails.",
     )
-       
+    """
 
     tags = models.ManyToManyField(
         Tag
     )
-    """
 
     def __unicode__(self):
         return "Workout Group %s" % self.pk
