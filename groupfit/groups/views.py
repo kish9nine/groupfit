@@ -3,7 +3,9 @@ from django.forms.models import formset_factory
 from groups.models import WorkoutGroup
 from groups.forms import GroupRegisterForm, EmailForm
 from groupfit.forms import WorkoutGoalForm
+from groupfit.models import WorkoutGoal
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 def view_group(request, group_pk):
     """
@@ -42,18 +44,21 @@ def create_group(request):
         email_formset = EmailFormset(request.POST)
         if create_group_form.is_valid() and email_formset.is_valid():
 
-            # 0) create a group object from the form
+            # 1) create a group object from the form
             new_group = create_group_form.save()
 
-            # 1) manipulate the new group
+            # 2) get data about emails, add them to roster
+            for email_form in email_formset:
+                if email_form.is_valid():
+                    email = email_form.cleaned_data.get('email')
+                    if email and len(email) > 0:
+                        try:
+                            member = User.objects.get( email = email )
+                            new_group.members.add( member.userprofile )
+                        except User.DoesNotExist:
+                            pass
 
-            # 2) get data about emails
-
-            # 3) get the users corresponding to emails
-
-            # 4) add this group to those members' rosters
-
-            # 5) add the creating user to the groups' roster
+            # 3) add the creating user to the groups' roster
             request.user.userprofile.groups.add( new_group )
 
             return redirect('groups.views.view_group', new_group.pk)
