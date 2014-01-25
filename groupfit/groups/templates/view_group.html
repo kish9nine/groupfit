@@ -31,7 +31,16 @@ GroupFit
             </h1>
           </div>
           <div class="panel-body">
-            Maybe put members of the group here (their avatars, etc)?
+            {% for member in group.members.all %}
+              <a href="{{ member.get_absolute_url }}">
+                {{ member.user.first_name }} {{ member.user.last_name }}
+              </a>
+              <br/>
+            {% empty %}
+            <div class="text-center">
+              No members found.
+            </div>
+            {% endfor %}
           </div>
         </div>
       </div>
@@ -47,7 +56,7 @@ GroupFit
             Member Newsfeed</h1>
           </div>
           <div class="panel-body">
-            We can put latest news from members here
+            Maybe put members of the group here (their avatars, etc)?
           </div>
         </div>
 
