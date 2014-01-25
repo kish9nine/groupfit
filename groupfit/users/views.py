@@ -4,7 +4,7 @@ from users.models import UserProfile, create_user_profile
 from users.forms import RegisterForm
 from django.contrib.auth.hashers import make_password
 from django.core.mail import send_mail
-from django.conf import settings
+import settings
 
 
 def create_user(request):
