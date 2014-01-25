@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from groups.models import WorkoutGroup
 from groups.forms import GroupRegisterForm
+from groupfit.forms import WorkoutGoalForm
 from django.contrib.auth.decorators import login_required
 
 def view_group(request, group_pk):
