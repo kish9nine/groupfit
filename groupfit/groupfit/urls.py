@@ -24,7 +24,7 @@ urlpatterns = patterns('',
     url(r'community$', community),
     
     ## Forgot password?
-    url(r'^forgot$', forgot, name = 'forgot'),
+    #url(r'^forgot$', forgot, name = 'forgot'),
 
     ## Reset password
     url(r'^password_reset/$', password_reset, {'template_name': 'password_reset_form.html'}),
