@@ -32,7 +32,7 @@ class RegisterForm(ModelForm):
     confirm_password = models.CharField(
         required = True, 
         label="CONFIRM_PASSWORD", 
-        PasswordInput(attrs={'class':'form-control', 'placeholder':'Confirm password'}))
+        widget=PasswordInput(attrs={'class':'form-control', 'placeholder':'Confirm password'}))
         
     email = forms.EmailField(
         required = True, 
