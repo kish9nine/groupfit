@@ -22,20 +22,6 @@ class WorkoutGroup( models.Model ):
         help_text = "Your Group Goal (e.g. Weight Loss)",
     )
 
-    """
-    goal_num = models.CharField(
-        blank = False,
-        help_text = "Your Group Goal Number (e.g. 100lbs)",
-        max_length = 50,
-    )
-    
-    time = models.CharField(
-        blank = False,
-        help_text = "The time frame to reach goal number",
-        max_length = 50,
-    )
-    """
-
     tags = models.ManyToManyField(
         Tag
     )
