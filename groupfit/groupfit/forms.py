@@ -20,9 +20,6 @@ class ForgotPasswordForm(forms.Form):
         })
     )
     
-
-
-class ResetPWForm(forms.ModelForm):
     new_pw = forms.CharField(
         required = True,
         widget=forms.PasswordInput(attrs={
@@ -34,6 +31,7 @@ class ResetPWForm(forms.ModelForm):
         widget = forms.PasswordInput(attrs={
             'class': 'form-control',
             'placeholder': 'Confirm New Password'}))
+
             
 
 class WorkoutGoalForm( forms.ModelForm ):
