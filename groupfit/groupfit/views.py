@@ -88,5 +88,4 @@ def reset_pw(request):
         #Create an object of ResetPasswordForm from the user input.
         reset_pw_form = PasswordResetForm(request.POST)
         if reset_pw_form.is_valid():
-            
-
+            pass
