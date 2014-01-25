@@ -36,7 +36,7 @@ class ResetPWForm(forms.ModelForm):
             'placeholder': 'Confirm Current Password'}))
             
     class Meta:
-        model = ResetPasswordForm
+        model = PasswordResetForm
         fields = ['new_pw', 'confirm_new_pw']
 
 
