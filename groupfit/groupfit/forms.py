@@ -12,7 +12,7 @@ class ForgotPasswordForm(forms.Form):
     )
 
     email = forms.EmailField(
-        required = True.
+        required = True,
         widget = forms.EmailInput(attrs={
             'class':'form-control',
             "placeholder": "Password"
