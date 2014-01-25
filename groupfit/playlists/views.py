@@ -31,7 +31,10 @@ def create_playlist(request):
             for track_form in track_formset:
                 if track_form.is_valid():
                     track = track_form.save()
-                    playlist.tracks.add( track )
+                    if len(track.name) > 0:
+                        playlist.tracks.add( track )
+                    else:
+                        track.delete()
 
             # Add the object to the user object's playlist list.
             user = request.user.userprofile
