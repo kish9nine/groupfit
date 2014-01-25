@@ -21,7 +21,7 @@ class ForgotPasswordForm(forms.Form):
     )
     
 
-"""
+
 class ResetPWForm(forms.ModelForm):
     new_pw = forms.CharField(
         required = True,
@@ -35,11 +35,6 @@ class ResetPWForm(forms.ModelForm):
             'class': 'form-control',
             'placeholder': 'Confirm Current Password'}))
             
-    class Meta:
-        model = PasswordResetForm
-        fields = ['new_pw', 'confirm_new_pw']
-
-"""
 
 class WorkoutGoalForm( forms.ModelForm ):
     class Meta:
