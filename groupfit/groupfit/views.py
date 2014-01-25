@@ -2,13 +2,12 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth.views import password_reset
-#from django.contrib.auth.forms import PasswardResetForm
 from django.core.mail import send_mail
-from groupfit.forms import ForgotPasswordForm, PasswordResetForm
+from groupfit.forms import ForgotPasswordForm
 from groups.models import WorkoutGroup
 from users.models import UserProfile
 from tags.models import Tag
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist, ValidationError
 from django.conf import settings
 
 def landing_page(request):
@@ -81,10 +80,14 @@ def forgot(request):
             #These are the username and email that the user put in. 
             inp_username = forgot_password_form.cleaned_data.get('username')
             inp_email = forgot_password_form.cleaned_data.get('email')
+            inp_new_pw = forgot_password_form.cleaned_data.get('new_pw')
+            inp_confirm_new_pw = forgot_password_form.cleaned_data.get('confirm_new_pw')
             
             #If the input username is valid, email them the link.
             try:
                 user = User.objects.get(username=inp_username)
+                if inp_new_pw != inp_confirm_new_pw:
+                    raise forms.ValidationError("Passwords do not match.")
                 if inp_email == user.email:
                     send_mail('Reset Password', 'Your password has been reset.', settings.EMAIL_HOST_USER, [user.email])
                     return render(request, 'email_sent.html')
@@ -98,12 +101,4 @@ def forgot(request):
     return render(request, 'forgot.html', {'forgot_password_form': forgot_password_form},)
     
     
-
-#Reset password upon request.  
-def reset_password(request):
-    if (request.method == 'POST'):
-        #Create an object of ResetPasswordForm from the user input.
-        reset_pw_form = PasswordResetForm(request.POST)
-        if reset_pw_form.is_valid():
-            pass
 
