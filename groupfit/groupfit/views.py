@@ -75,3 +75,16 @@ def forgot(request):
 
     #Otherwise, stay on that page with the incompelete form. 
     return render(request, 'forgot.html', {'forgot_password_form': forgot_password_form},)
+    
+    
+    
+#Reset password upon request.  
+def reset_pw(request):
+    if (request.method == 'POST'):
+        #Create an object of ResetPasswordForm from the user input.
+        reset_pw_form = ResetPasswordForm(request.POST)
+        
+        if reset_pw_form.is_valid():
+            pass
+        
+
