@@ -15,7 +15,11 @@ class WorkoutGroup( models.Model ):
         help_text = "The name of your workout group.",
         max_length = 50,
     )
-    
+
+    target_date = models.DateField(
+        blank = False,
+    )
+
     """
     goal = models.CharField(
         blank = False,
@@ -33,12 +37,6 @@ class WorkoutGroup( models.Model ):
         blank = False,
         help_text = "The time frame to reach goal number",
         max_length = 50,
-    )
-    
-    members = models.ManyToManyField(
-        UserProfile,
-        blank = True,
-        help_text = "Member emails.",
     )
     """
 
