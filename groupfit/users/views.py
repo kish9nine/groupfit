@@ -3,6 +3,8 @@ from django.contrib.auth.decorators import login_required
 from users.models import UserProfile, create_user_profile
 from users.forms import RegisterForm
 from django.contrib.auth.hashers import make_password
+from django.core.mail import send_mail
+import settings
 
 
 def create_user(request):
@@ -29,6 +31,7 @@ def create_user(request):
             return render(request, 'welcome.html')
  
             #Send an email as well.
+            send_email('Welcome to GroupFit!', 'Welcome to GroupFit!', settings.EMAIL_HOST_USER, [user.email])
     else:
         #If the user didn't plug in anything, create_user_form will be an empty shell?
         create_user_form = RegisterForm()
