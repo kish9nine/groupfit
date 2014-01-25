@@ -14,13 +14,13 @@ class RegisterForm(ModelForm):
     first_name = forms.CharField(
         required = True, 
         label="FIRSTNAME", 
-        widget=TextInput(attrs={'class':'form-control', 'placeholder': 'Firstname'})
+        widget=TextInput(attrs={'class':'form-control', 'placeholder': 'First Name'})
         )
         
     last_name = forms.CharField(
         required = True, 
         label="LASTNAME", 
-        widget=TextInput(attrs={'class':'form-control', 'placeholder':'Lastname'})
+        widget=TextInput(attrs={'class':'form-control', 'placeholder':'Last Name'})
         )
         
     password = forms.CharField(
@@ -29,10 +29,10 @@ class RegisterForm(ModelForm):
         widget=PasswordInput(attrs={'class':'form-control', 'placeholder':'Password'})
         )
         
-    """confirm_password = models.CharField(
+    confirm_password = models.CharField(
         required = True, 
         label="CONFIRM_PASSWORD", 
-        PasswordInput(attrs={'class':'form-control', 'placeholder':'Confirm password'}))"""
+        PasswordInput(attrs={'class':'form-control', 'placeholder':'Confirm password'}))
         
     email = forms.EmailField(
         required = True, 
