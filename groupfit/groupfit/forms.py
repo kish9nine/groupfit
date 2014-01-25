@@ -27,13 +27,13 @@ class ResetPWForm(forms.ModelForm):
         required = True,
         widget=forms.PasswordInput(attrs={
             'class': 'form-control',
-            'placeholder': 'Current Password'})
+            'placeholder': 'New Password'})
         )
     confirm_new_pw = forms.CharField(
         required = True,
         widget = forms.PasswordInput(attrs={
             'class': 'form-control',
-            'placeholder': 'Confirm Current Password'}))
+            'placeholder': 'Confirm New Password'}))
             
 
 class WorkoutGoalForm( forms.ModelForm ):
