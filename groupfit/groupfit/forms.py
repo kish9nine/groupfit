@@ -31,7 +31,7 @@ class ResetPWForm(forms.ModelForm):
         )
     confirm_new_pw = forms.CharField(
         required = True,
-        widget=fomrs.PasswordInput(attrs={
+        widget = forms.PasswordInput(attrs={
             'class': 'form-control',
             'placeholder': 'Confirm Current Password'}))
             
