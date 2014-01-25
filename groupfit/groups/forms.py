@@ -18,7 +18,7 @@ class EmailForm( forms.Form ):
 
 class GoalForm( ModelForm ):
     class Meta:
-        model = WorkoutGroup
+        model = WorkoutGoal
 
         fields = ['name', 'amount', 'activity', 'units', 'target_date']
         exclude = []
