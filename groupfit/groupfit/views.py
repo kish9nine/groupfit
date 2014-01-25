@@ -89,10 +89,12 @@ def forgot(request):
                     #send_mail('Reset Password', 'Reset Password link', settings.EMAIL_HOST_USER, [user.email])
                     
                     password_reset(request, 
-                        template_name='password_reset_form.html', 
+                        #template_name='password_reset_form.html', 
                         #email_template_name='password_reset_email.html'
                         )
-                    return password_reset_done(request, 'email_sent.html')
+                    return password_reset_done(request, 
+                        #'email_sent.html'
+                        )
                     #return render(request, 'email_sent.html')
             except User.DoesNotExist:
                 pass 
