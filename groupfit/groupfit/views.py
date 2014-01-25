@@ -60,11 +60,14 @@ def forgot(request):
             inp_username = forgot_password_form.cleaned_data.get('username')
             inp_email = forgot_password_form.cleaned_data.get('email')
             
-            #If the input username is in User database and email corresponds to that username return email_sent page.
-            if User.objects.get(username=inp_username) is not User.DoesNotExist:
-                if User.objects.get(username=inp_username).email == inp_email:
-                    #send_email('Reset Password', 'Reset Password link', 'admin@groupfit.rouly.net', inp_email)
-                    return render(request, 'email_sent.html') #It might be nice if we could turn this into a pop-up instead.
+            #If the input username is valid, email them the link.
+            try:
+                user = User.objects.get(username=inp_username)
+                if inp_email == user.email:
+                    send_email('Reset Password', 'Reset Password link', 'admin@groupfit.rouly.net', user.email)
+                else:
+                    return render(request, 'email_not_sent.html')
+            except User.DoesNotExist:
                 return render(request, 'email_not_sent.html')
     else: 
         forgot_password_form = ForgotPasswordForm(request.POST)
