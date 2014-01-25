@@ -1,5 +1,6 @@
 from django import forms
 from groupfit.models import WorkoutGoal
+from django.contrib.auth.forms import PasswordResetForm
 
 class ForgotPasswordForm(forms.Form):
     username = forms.CharField(
