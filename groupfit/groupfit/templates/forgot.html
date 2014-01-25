@@ -49,6 +49,34 @@ GroupFit &middot; Reset Password
                 {% endfor %}
               </div>
             </div>
+            
+            <div class="form-group{% if form.errors %} has-error{% endif %}">
+              <div class="col-lg-12">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="fa fa-envelope"></i>
+                  </span>
+                  {{ forgot_password_form.new_pw }}
+                </div>
+                {% for error in forgot_password_form.new_pw.errors %}
+                  <span class="help-block">{{ error }}</span>
+                {% endfor %}
+              </div>
+            </div>
+            
+            <div class="form-group{% if form.errors %} has-error{% endif %}">
+              <div class="col-lg-12">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="fa fa-envelope"></i>
+                  </span>
+                  {{ forgot_password_form.confirm_new_pw }}
+                </div>
+                {% for error in forgot_password_form.confirm_new_pw.errors %}
+                  <span class="help-block">{{ error }}</span>
+                {% endfor %}
+              </div>
+            </div>
 
             <input type="submit" name="submit" id="submit"
             class="btn btn-danger btn-lg btn-block" value="Submit" />
