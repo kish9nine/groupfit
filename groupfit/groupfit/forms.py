@@ -60,3 +60,5 @@ class WorkoutGoalForm( forms.ModelForm ):
                 'class': 'form-control',
                 'placeholder': 'Target Date (eg 10/20/2014)',
             }),
+        }
+
