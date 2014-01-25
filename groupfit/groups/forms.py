@@ -32,12 +32,6 @@ class GroupRegisterForm(ModelForm):
         fields = ['name']
         exclude = ['tags']
 
-        # REMAINING FIELDS TO IMPLEMENT:
-        # 'goal', 'group_num' -- need to be implemented in the WorkoutGroup
-        # model before we can add them in here safely...
-
-        #goal_num is the e.g. 50 miles for group_goal of running
-
         #Labels for each field.
         label = {
             'name': 'Name Your Group',

@@ -55,7 +55,7 @@ def forgot(request):
         forgot_password_form = ForgotPasswordForm(request.POST)
 
         if forgot_password_form.is_valid():
-            forgot_password_form.save(commit=False)
+            #forgot_password_form.save(commit=False)
 
             #These are the username and email that the user put in. 
             inp_username = forgot_password_form.cleaned_data.get('username')
