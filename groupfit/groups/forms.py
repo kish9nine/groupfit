@@ -30,6 +30,7 @@ class GroupRegisterForm(ModelForm):
         # out that functionality into some logic in the view, then add this
         # new group to all the invited users.
         fields = ['name']
+        exclude = ['tags']
 
         # REMAINING FIELDS TO IMPLEMENT:
         # 'goal', 'group_num' -- need to be implemented in the WorkoutGroup
@@ -40,7 +41,6 @@ class GroupRegisterForm(ModelForm):
         #Labels for each field.
         label = {
             'name': 'Name Your Group',
-            'member': 'Member',
             #'goal_name': 'Set a Goal',
             #'goal_num': '',
             }
@@ -49,10 +49,6 @@ class GroupRegisterForm(ModelForm):
             'name': forms.TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Group Name',
-            }),
-            'member': forms.TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Member Name',
             }),
             #'goal': forms.TextInput(attrs={
             #    'class': 'form-control',

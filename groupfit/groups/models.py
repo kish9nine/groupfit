@@ -1,7 +1,7 @@
 from django.db import models
 from django.core.urlresolvers import reverse
 from tags.models import Tag
-#from users.models import UserProfile
+from groupfit.models import WorkoutGoal
 
 
 class WorkoutGroup( models.Model ):
@@ -16,13 +16,13 @@ class WorkoutGroup( models.Model ):
         max_length = 50,
     )
 
-    """
-    goal = models.CharField(
+    goal = models.ForeignKey(
+        WorkoutGoal,
         blank = False,
         help_text = "Your Group Goal (e.g. Weight Loss)",
-        max_length = 50,
     )
-    
+
+    """
     goal_num = models.CharField(
         blank = False,
         help_text = "Your Group Goal Number (e.g. 100lbs)",
