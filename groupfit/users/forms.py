@@ -8,36 +8,36 @@ class RegisterForm(ModelForm):
     username = forms.CharField(
         required = True, 
         label="USERNAME", 
-        widget=TextInput(attrs={'class':'form-control', 'placeholer':'Username'})
+        widget=TextInput(attrs={'class':'form-control', 'placeholder':'Username'})
         )
         
     first_name = forms.CharField(
         required = True, 
         label="FIRSTNAME", 
-        widget=TextInput(attrs={'class':'form-control', 'placeholer': 'Firstname'})
+        widget=TextInput(attrs={'class':'form-control', 'placeholder': 'Firstname'})
         )
         
     last_name = forms.CharField(
         required = True, 
         label="LASTNAME", 
-        widget=TextInput(attrs={'class':'form-control', 'placeholer':'Lastname'})
+        widget=TextInput(attrs={'class':'form-control', 'placeholder':'Lastname'})
         )
         
     password = forms.CharField(
         required = True, 
         label="PASSWORD", 
-        widget=PasswordInput(attrs={'class':'form-control', 'placeholer':'Password'})
+        widget=PasswordInput(attrs={'class':'form-control', 'placeholder':'Password'})
         )
         
     """confirm_password = models.CharField(
         required = True, 
         label="CONFIRM_PASSWORD", 
-        PasswordInput(attrs={'class':'form-control', 'placeholer':'Confirm password'}))"""
+        PasswordInput(attrs={'class':'form-control', 'placeholder':'Confirm password'}))"""
         
     email = forms.EmailField(
         required = True, 
         label="EMAIL", 
-        widget=EmailInput(attrs={'class':'form-control', 'placeholer':'Email'})
+        widget=EmailInput(attrs={'class':'form-control', 'placeholder':'Email'})
         )
 
     class Meta:
