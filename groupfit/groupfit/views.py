@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+#from django.contrib.auth.forms import PasswardResetForm
 from django.core.mail import send_mail
 from forms import ForgotPasswordForm
 from django.core.exceptions import ObjectDoesNotExist
@@ -65,7 +66,10 @@ def forgot(request):
             try:
                 user = User.objects.get(username=inp_username)
                 if inp_email == user.email:
-                    send_mail('Reset Password', 'Reset Password link', settings.EMAIL_HOST_USER, [user.email])
+                    #send_mail('Reset Password', 'Reset Password link', settings.EMAIL_HOST_USER, [user.email])
+                    user.reset_password(request, 
+                        template_name='password_reset_form.html', 
+                        email_template_name='password_reset_email.html')
                     return render(request, 'email_sent.html')
             except User.DoesNotExist:
                 pass 
@@ -77,13 +81,12 @@ def forgot(request):
     return render(request, 'forgot.html', {'forgot_password_form': forgot_password_form},)
     
     
-""" 
+
 #Reset password upon request.  
 def reset_pw(request):
     if (request.method == 'POST'):
         #Create an object of ResetPasswordForm from the user input.
-        reset_pw_form = ResetPasswordForm(request.POST)
-        
+        reset_pw_form = PasswordResetForm(request.POST)
         if reset_pw_form.is_valid():
-            pass
-"""
+            
+
