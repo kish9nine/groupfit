@@ -25,10 +25,10 @@ class RegisterForm(ModelForm):
         label="PASSWORD", 
         PasswordInput(attrs={'class':'form-control', 'placeholer':'Password'}))
         
-    confirm_password = models.CharField(
+    """confirm_password = models.CharField(
         required = True, 
         label="CONFIRM_PASSWORD", 
-        PasswordInput(attrs={'class':'form-control', 'placeholer':'Confirm password'}))
+        PasswordInput(attrs={'class':'form-control', 'placeholer':'Confirm password'}))"""
         
     email = models.CharField(
         required = True, 
