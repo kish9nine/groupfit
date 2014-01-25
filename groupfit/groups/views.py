@@ -19,6 +19,13 @@ def view_group(request, group_pk):
     },
     )
 
+@login_required
+def create_goal(request):
+    """
+    This view presents the user with a form which lets them create a new goal.
+    """
+    return render(request, 'create_goal.html',{},)
+    
 
 @login_required
 def leave_group(request, group_pk):
