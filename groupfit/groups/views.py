@@ -28,7 +28,7 @@ def leave_group(request, group_pk):
     if group in user_groups:
         request.user.userprofile.groups.remove( group )
 
-    return redirect('users.views.view_user', request.user.userprofile.pk)
+    return redirect('groups.views.view_group', group.pk)
 
 @login_required
 def create_group(request):
@@ -72,3 +72,8 @@ def create_group(request):
         'email_formset': email_formset,
     },
     )
+
+def join_group(request, group_pk):
+    group = get_object_or_404( WorkoutGroup, pk=group_pk )
+    group.members.add( request.user.userprofile )
+    return redirect('groups.views.view_group', group_pk)
