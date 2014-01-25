@@ -45,6 +45,8 @@
             <li><a href="{% url 'playlists.views.create_playlist' %}">Create Playlist</a></li>
           </ul>
         </li>
+
+        <li><a href="{% url 'groupfit.views.community' %}">Community</a></li>
         {% endif %}
 
       </ul>
@@ -61,7 +63,7 @@
         </li>
         <li><a href="{% url 'django.contrib.auth.views.logout' %}">Log Out</a></li>
         {% else %}
-        <li><a href="{% url 'users.views.create_user' %}">Register</a></li>
+        <li><a href="{% url 'register' %}">Register</a></li>
         <li><a href="{% url 'django.contrib.auth.views.login' %}">Log In</a></li>
         {% endif %}
       </ul>
