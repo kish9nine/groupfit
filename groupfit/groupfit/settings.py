@@ -51,7 +51,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.core.mail'
+    'django.core.mail',
     'groupfit',
     'users',
     'groups',
