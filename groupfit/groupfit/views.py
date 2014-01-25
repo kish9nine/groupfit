@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from forms import ForgotPasswordForm
 from django.core.exceptions import ObjectDoesNotExist
+import settings
 
 def landing_page(request):
     """
@@ -64,8 +65,8 @@ def forgot(request):
             try:
                 user = User.objects.get(username=inp_username)
                 if inp_email == user.email:
-                    send_email('Reset Password', 'Reset Password link', 'admin@groupfit.rouly.net', user.email)
-                    return render(request, 'email_not_sent.html')
+                    #send_email('Reset Password', 'Reset Password link', settings.EMAIL_HOST_USER, user.email)
+                    return render(request, 'email_sent.html')
             except User.DoesNotExist:
                 pass 
             return render(request, 'email_not_sent.html')
