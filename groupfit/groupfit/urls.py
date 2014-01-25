@@ -3,7 +3,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 from groupfit.views import landing_page, about, contact, terms
-from groupfit.views import privacy, forgot, community, reset_password
+from groupfit.views import privacy, forgot, community
 from django.contrib.auth.views import login, logout
 from users.views import view_user, create_user
 
@@ -25,9 +25,6 @@ urlpatterns = patterns('',
     
     ## Forgot password?
     url(r'^forgot$', forgot, name = 'forgot'),
-    
-    ## Reset password?
-    url(r'^reset_password', reset_password, {'template_name': 'reset_password.html'}),
 
     ## Register shortcut
     url(r'^register$', create_user, name = 'register'),
