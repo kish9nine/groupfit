@@ -16,7 +16,7 @@ class WorkoutGroup( models.Model ):
         max_length = 50,
     )
 
-    goal = models.ManyToManyField(
+    goals = models.ManyToManyField(
         WorkoutGoal,
         null = True,
         blank = True,
