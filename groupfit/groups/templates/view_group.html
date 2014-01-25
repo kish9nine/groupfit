@@ -67,12 +67,9 @@ GroupFit
     <div class="row">
       <div class="col-lg-12">
 
-        <div class="panel panel-default">
-          <a href="{% url 'groups.views.leave_group' group.pk %}"
-          class="btn btn-lg btn-block btn-danger">
-          Leave Group
-          </a>
-        </div>
+        <a href="{% url 'groups.views.leave_group' group.pk %}">
+        Leave Group
+        </a>
 
       </div>
     </div>
@@ -101,10 +98,25 @@ GroupFit
 
         <div class="panel panel-info">
           <div class="panel-heading">
-            <h1 class="panel-title">Goal 1</h1>
+            <h1 class="panel-title">{{ goal.name }}</h1>
           </div>
           <div class="panel-body">
-            {{ goal.name }}
+            <p><strong>
+              {{ goal.target_date|timeuntil }} remaining!
+            </strong></p>
+            {% if goal.description %}
+            <p>
+              <strong><em>{{ goal.description }}</em></strong>
+            </p>
+            {% endif %}
+            <p>
+              <strong>Activity:</strong>
+              {{ goal.activity }}
+            </p>
+            <p>
+              <strong>Target:</strong>
+              {{ goal.amount }} <em>{{ goal.units }}</em>
+            </p>
           </div>
         </div>
 
@@ -123,6 +135,8 @@ GroupFit
       </div>
     </div>
 
+    {% endfor %}
+
     {% if user.userprofile in group.members.all %}
 
     <div class="row">
@@ -140,9 +154,6 @@ GroupFit
     </div>
 
     {% endif %}
-
-    {% endfor %}
-
 
   </div>
 
