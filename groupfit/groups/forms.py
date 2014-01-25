@@ -34,12 +34,13 @@ class GroupRegisterForm(ModelForm):
         # can't actually define it as a field. Instead, we need to separate
         # out that functionality into some logic in the view, then add this
         # new group to all the invited users.
-        fields = ['name']
+        fields = ['name', 'description']
         exclude = ['goal', 'tags']
 
         #Labels for each field.
         label = {
             'name': 'Name Your Group',
+            'description': 'Describe Your Group',
             #'goal_name': 'Set a Goal',
             #'goal_num': '',
             }
@@ -48,6 +49,11 @@ class GroupRegisterForm(ModelForm):
             'name': forms.TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Group Name',
+            }),
+            'description': forms.Textarea(attrs={
+                'class': 'form-control',
+                'placeholder': 'Group Description',
+                'rows': 3,
             }),
             #'goal': forms.TextInput(attrs={
             #    'class': 'form-control',
