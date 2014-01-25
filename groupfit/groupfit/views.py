@@ -65,10 +65,10 @@ def forgot(request):
                 user = User.objects.get(username=inp_username)
                 if inp_email == user.email:
                     send_email('Reset Password', 'Reset Password link', 'admin@groupfit.rouly.net', user.email)
-                else:
                     return render(request, 'email_not_sent.html')
             except User.DoesNotExist:
-                return render(request, 'email_not_sent.html')
+                pass 
+            return render(request, 'email_not_sent.html')
     else: 
         forgot_password_form = ForgotPasswordForm(request.POST)
 
