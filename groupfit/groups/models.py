@@ -23,7 +23,8 @@ class WorkoutGroup( models.Model ):
     )
 
     tags = models.ManyToManyField(
-        Tag
+        Tag,
+        blank = True,
     )
 
     def __unicode__(self):
