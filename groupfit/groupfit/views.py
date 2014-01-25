@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.contrib.auth import views.reset_password
+from django.contrib.auth.views import reset_password
 #from django.contrib.auth.forms import PasswardResetForm
 from django.core.mail import send_mail
 from groupfit.forms import ForgotPasswordForm, PasswordResetForm
