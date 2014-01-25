@@ -30,13 +30,15 @@ GroupFit
         </div>
       </div>
 
+      {% if user.pk == profile.user.pk %}
       <div class="col-xs-8 col-md-6">
         <div class="panel panel-default">
           <div class="panel-body">
-            <button class="btn btn-info btn-sm btn-block">Edit Profile</button>
+              <button class="btn btn-info btn-sm btn-block">Edit Profile</button>
           </div>
         </div>
       </div>
+      {% endif %}
 
     </div>
 
@@ -48,7 +50,7 @@ GroupFit
               <span class="pull-left">
                 <i class="fa fa-trophy"></i>
               </span>
-              My Trophies
+              Trophies
             </h1>
           </div>
           <div class="panel-body">
@@ -69,7 +71,7 @@ GroupFit
           <div class="panel-heading">
             <h1 class="panel-title text-center">
               <span class="pull-left"><i class="fa fa-users"></i></span>
-              My Groups
+              Groups
               <span class="pull-right">
                 <a href="{% url 'groups.views.create_group' %}">
                   <i class="fa fa-plus-square"></i>
@@ -81,14 +83,14 @@ GroupFit
             {% for group in profile.groups.all %}
               <a href="{{ group.get_absolute_url }}">
                 {{ group.name }}
-              </a> &middot;
+              </a>{% if user.pk == profile.user.pk %} &middot;
               <a href="{% url 'groups.views.leave_group' group.pk %}">
               (leave)
-              </a>
+              </a>{% endif %}
               <br/>
             {% empty %}
             <div class="text-center">
-              You do not belong to any groups yet.
+              No groups found.
             </div>
             {% endfor %}
           </div>
@@ -102,7 +104,7 @@ GroupFit
           <div class="panel-heading">
             <h1 class="panel-title text-center">
               <span class="pull-left"><i class="fa fa-music"></i></span>
-              My Playlists
+              Playlists
               <span class="pull-right">
                 <a href="{% url 'playlists.views.create_playlist' %}">
                   <i class="fa fa-plus-square"></i>
@@ -114,14 +116,14 @@ GroupFit
             {% for playlist in profile.playlists.all %}
             <a href="{{ playlist.get_absolute_url }}">
               {{ playlist.name }}
-            </a> &middot;
+            </a>{% if user.pk == profile.user.pk %} &middot;
             <a href="{% url 'playlists.views.delete_playlist' playlist.pk %}">
               (delete)
-            </a>
+            </a>{% endif %}
             <br/>
             {% empty %}
             <div class="text-center">
-              You haven't made any playlists.
+              No playlists found.
             </div>
             {% endfor %}
           </div>
