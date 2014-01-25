@@ -6,6 +6,7 @@ from django.core.mail import send_mail
 from groupfit.forms import ForgotPasswordForm, PasswordResetForm
 from groups.models import WorkoutGroup
 from users.models import UserProfile
+from tags.models import Tag
 from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
 
@@ -45,12 +46,19 @@ def privacy(request):
     },
     )
 
+
+
+
+
+@login_required
 def community(request):
     users = UserProfile.objects.all()
     groups = WorkoutGroup.objects.all()
+    tags = Tag.objects.all()
     return render(request, 'community.html', {
         'users' : users,
         'groups' : groups,
+        'tags' : tags,
     },
     )
 
