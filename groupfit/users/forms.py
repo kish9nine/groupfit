@@ -8,32 +8,37 @@ class RegisterForm(ModelForm):
     username = forms.CharField(
         required = True, 
         #label="USERNAME", 
-        #TextInput(attrs={'class':'form-control', 'placeholer':'Username'}))
+        #TextInput(attrs={'class':'form-control', 'placeholer':'Username'})
+        )
         
     first_name = forms.CharField(
         required = True, 
         #label="FIRSTNAME", 
-        #TextInput(attrs={'class':'form-control', 'placeholer': 'Firstname'}))
+        #TextInput(attrs={'class':'form-control', 'placeholer': 'Firstname'})
+        )
         
     last_name = forms.CharField(
         required = True, 
         #label="LASTNAME", 
-        #TextInput(attrs={'class':'form-control', 'placeholer':'Lastname'}))
+        #TextInput(attrs={'class':'form-control', 'placeholer':'Lastname'})
+        )
         
     password = forms.CharField(
         required = True, 
         #label="PASSWORD", 
-        #PasswordInput(attrs={'class':'form-control', 'placeholer':'Password'}))
+        #PasswordInput(attrs={'class':'form-control', 'placeholer':'Password'})
+        )
         
     """confirm_password = models.CharField(
         required = True, 
         label="CONFIRM_PASSWORD", 
         PasswordInput(attrs={'class':'form-control', 'placeholer':'Confirm password'}))"""
         
-    email = forms.CharField(
+    email = forms.EmailField(
         required = True, 
         #label="EMAIL", 
-        #EmailInput(attrs={'class':'form-control', 'placeholer':'Email'}))
+        #EmailInput(attrs={'class':'form-control', 'placeholer':'Email'})
+        )
     
     class Meta:
         model = User
