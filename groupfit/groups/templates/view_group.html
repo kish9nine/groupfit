@@ -45,7 +45,8 @@ GroupFit
         </div>
       </div>
     </div>
-    
+
+    {% if user.userprofile in group.members.all %}
     <div class="row">
       <div class="col-lg-12">
 
@@ -62,10 +63,39 @@ GroupFit
 
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+
+        <div class="panel panel-default">
+          <a href="{% url 'groups.views.leave_group' group.pk %}"
+          class="btn btn-lg btn-block btn-danger">
+          Leave Group
+          </a>
+        </div>
+
+      </div>
+    </div>
+    {% else %}
+    <div class="row">
+      <div class="col-lg-12">
+
+        <div class="panel panel-default">
+          <a href="{% url 'groups.views.join_group' group.pk %}"
+          class="btn btn-lg btn-block btn-success">
+          Join
+          </a>
+        </div>
+
+      </div>
+    </div>
+    {% endif %}
+
   </div>
 
   <div class="col-md-8">
 
+    {% for goal in group.goals.all %}
     <div class="row">
       <div class="col-lg-12">
 
@@ -74,34 +104,31 @@ GroupFit
             <h1 class="panel-title">Goal 1</h1>
           </div>
           <div class="panel-body">
-            Progress Charts for Goal 1 should go here
+            {{ goal.name }}
           </div>
         </div>
 
       </div>
     </div>
-    
+
+    {% empty %}
+
     <div class="row">
       <div class="col-lg-12">
 
-        <div class="panel panel-info">
-          <div class="panel-heading">
-            <h1 class="panel-title">Goal 2</h1>
-          </div>
-          <div class="panel-body">
-            Progress Charts for Goal 2 should go here
-          </div>
+        <div class="alert alert-danger text-center">
+          This group has no goal set! Oh no!
         </div>
 
       </div>
     </div>
-    
-    
+
+    {% if user.userprofile in group.members.all %}
 
     <div class="row">
       <div class="col-lg-12">
 
-        <div class="panel">
+        <div class="panel panel-default">
           <button class="btn btn-primary btn-lg btn-block">
             <i class="fa fa-plus"></i>
             &nbsp;
@@ -111,6 +138,12 @@ GroupFit
 
       </div>
     </div>
+
+    {% endif %}
+
+    {% endfor %}
+
+
   </div>
 
 </div>
