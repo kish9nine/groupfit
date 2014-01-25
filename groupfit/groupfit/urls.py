@@ -2,7 +2,8 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-from groupfit.views import landing_page, about, contact, terms, privacy, forgot #reset_pw
+from groupfit.views import landing_page, about, contact, terms
+from groupfit.views import privacy, forgot, community #reset_pw
 from django.contrib.auth.views import login, logout
 from users.views import view_user, create_user
 
@@ -18,15 +19,18 @@ urlpatterns = patterns('',
     # User accounts app pages.
     url(r'^me$', view_user),                     # matches /me
     url(r'^user/', include('users.urls')),       # matches /user/...
+
+    # Community page.
+    url(r'community$', community),
     
     ## Forgot password?
-    url(r'^forgot/$', forgot),
-    
+    url(r'^forgot$', forgot, name = 'forgot'),
+
     ## Reset password
     #url(r'^password_reset/$', reset_pw),
-    
+
     ## Register shortcut
-    #url(r'^register/$', create_user),
+    url(r'^register$', create_user, name = 'register'),
 
     # Group app pages.
     url(r'^group/', include('groups.urls')),    # matches /group/...
