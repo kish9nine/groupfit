@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from forms import ForgotPasswordForm
 from django.core.exceptions import ObjectDoesNotExist
-import settings
+from django.conf import settings
 
 def landing_page(request):
     """
