@@ -7,22 +7,22 @@ from django.contrib.auth.models import User
 class RegisterForm(ModelForm):
     username = forms.CharField(
         required = True, 
-        label="USERNAME", 
+        #label="USERNAME", 
         TextInput(attrs={'class':'form-control', 'placeholer':'Username'}))
         
     first_name = forms.CharField(
         required = True, 
-        label="FIRSTNAME", 
+        #label="FIRSTNAME", 
         TextInput(attrs={'class':'form-control', 'placeholer': 'Firstname'}))
         
     last_name = forms.CharField(
         required = True, 
-        label="LASTNAME", 
+        #label="LASTNAME", 
         TextInput(attrs={'class':'form-control', 'placeholer':'Lastname'}))
         
     password = forms.CharField(
         required = True, 
-        label="PASSWORD", 
+        #label="PASSWORD", 
         PasswordInput(attrs={'class':'form-control', 'placeholer':'Password'}))
         
     """confirm_password = models.CharField(
@@ -32,10 +32,19 @@ class RegisterForm(ModelForm):
         
     email = forms.CharField(
         required = True, 
-        label="EMAIL", 
+        #label="EMAIL", 
         EmailInput(attrs={'class':'form-control', 'placeholer':'Email'}))
     
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'password', 'email']
-    
+        
+        #Labels for each field.
+        label = {
+            'username': 'USERNAME',
+            'first_name': 'FIRSTNAME',
+            'last_name': 'LASTNAME',
+            'password': 'PASSWORD',
+            'confirm_password': 'CONFIRM PASSWORD',
+            'email': 'EMAIL',
+            }
