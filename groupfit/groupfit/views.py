@@ -91,7 +91,7 @@ def forgot(request):
                     password_reset(request, 
                         template_name='password_reset_form.html', 
                         email_template_name='password_reset_email.html')
-                    
+                    password_reset_done(request)
                     return render(request, 'email_sent.html')
             except User.DoesNotExist:
                 pass 
