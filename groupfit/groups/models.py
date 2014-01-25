@@ -16,10 +16,6 @@ class WorkoutGroup( models.Model ):
         max_length = 50,
     )
 
-    target_date = models.DateField(
-        blank = False,
-    )
-
     """
     goal = models.CharField(
         blank = False,
