@@ -27,7 +27,7 @@ def create_user(request):
             new_UserProfile.save() #Then save. 
  
             #Send a welcome email. 
-            send_email('Welcome to GroupFit!', 'Welcome to GroupFit!', settings.EMAIL_HOST_USER, [user.email])
+            send_mail('Welcome to GroupFit!', 'Welcome to GroupFit!', settings.EMAIL_HOST_USER, [user.email])
  
             #Render a Welcome to GroupFit page if the input info is valid. 
             #No need to customize welcome page unless we want to just switch the name: Welcome, username!
