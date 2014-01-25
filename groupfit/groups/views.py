@@ -40,7 +40,7 @@ def create_group(request):
     if request.method == 'POST':
         create_group_form = GroupRegisterForm(request.POST)
         email_formset = EmailFormset(request.POST)
-        if create_group_form.is_valid():
+        if create_group_form.is_valid() and email_formset.is_valid():
 
             # 0) create a group object from the form
             new_group = create_group_form.save()
