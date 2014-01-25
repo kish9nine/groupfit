@@ -30,6 +30,12 @@ class WorkoutGoal( models.Model ):
         max_length = 50,
     )
 
+    description = models.CharField(
+        blank = True,
+        help_text = "Describe your goal.",
+        max_length = 400,
+    )
+
     target_date = models.DateField(
         blank = False,
     )
