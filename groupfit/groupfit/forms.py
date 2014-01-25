@@ -19,46 +19,39 @@ class ForgotPasswordForm(forms.Form):
         })
     )
 
+
 class WorkoutGoalForm( forms.ModelForm ):
     class Meta:
-
         model = WorkoutGoal
 
         fields = ['name', 'amount', 'activity', 'units', 'target_date']
         exclude = []
 
         label = {
-            'name': 'Name',
-            'amount': 'Amount',
+            'name': 'Goal Nickname',
+            'amount': 'Goal Amount',
             'activity': 'Activity',
-            'units': 'Units',
-            'target_date': 'Target Date',
+            'target_date': 'Target Completion Date',
         }
 
         widgets = {
             'name': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Goal Name',
+                'placeholder': 'Goal Nickname',
             }),
-
             'amount': forms.TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Goal Amount',
             }),
-
             'activity': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Goal Activity (eg. yoga, climbing)',
+                'placeholder': 'Goal Activity',
             }),
-
-            'units': forms.TextInput(attrs={
+            'units': forms.HiddenInput(),
+            'target_date': forms.DateInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Goal Units (eg. weight, miles)',
-            }),
-
-            'target_date': forms.TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Target Date (eg 10/20/2014)',
+                'placeholder': 'Goal Amount',
             }),
         }
+
 

@@ -16,41 +16,6 @@ class EmailForm( forms.Form ):
         widget = forms.HiddenInput(),
     )
 
-class GoalForm( ModelForm ):
-    class Meta:
-        model = WorkoutGoal
-
-        fields = ['name', 'amount', 'activity', 'units', 'target_date']
-        exclude = []
-
-        label = {
-            'name': 'Goal Nickname',
-            'amount': 'Goal Amount',
-            'activity': 'Activity',
-            'units': 'Goal Units',
-            'target_date': 'Target Completion Date',
-        }
-
-        widgets = {
-            'name': forms.TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Goal Nickname',
-            }),
-            'amount': forms.TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Goal Amount',
-            }),
-            'activity': forms.TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Goal Activity',
-            }),
-            'units': forms.HiddenInput(),
-            'target_date': forms.DateInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Goal Amount',
-            }),
-        }
-
 
 # This form will fill out a WorkoutGroup object. The members will be empty,
 # but if a Formset of EmailForms is provided, we will be able to stick
