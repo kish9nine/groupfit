@@ -6,32 +6,32 @@ from django.contrib.auth.models import User
 
 class RegisterForm(ModelForm):
     username = models.CharField(
-        blank=False, 
+        required = True, 
         label="USERNAME", 
         TextInput(attrs={'class':'form-control', 'placeholer':'Username'}))
         
     first_name = models.CharField(
-        blank=False, 
+        required = True, 
         label="FIRSTNAME", 
         TextInput(attrs={'class':'form-control', 'placeholer': 'Firstname'}))
         
     last_name = models.CharField(
-        blank=False, 
+        required = True, 
         label="LASTNAME", 
         TextInput(attrs={'class':'form-control', 'placeholer':'Lastname'}))
         
     password = models.CharField(
-        blank=False, 
+        required = True, 
         label="PASSWORD", 
         TextInput(attrs={'class':'form-control', 'placeholer':'Password'}))
         
     confirm_password = models.CharField(
-        blank=False, 
+        required = True, 
         label="CONFIRM_PASSWORD", 
         TextInput(attrs={'class':'form-control', 'placeholer':'Confirm password'}))
         
     email = models.CharField(
-        blank=False, 
+        required = True, 
         label="EMAIL", 
         TextInput(attrs={'class':'form-control', 'placeholer':'Email'}))
     
