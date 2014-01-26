@@ -9,6 +9,7 @@ from users.models import UserProfile
 from tags.models import Tag
 from django.core.exceptions import ObjectDoesNotExist, ValidationError
 from django.conf import settings
+from django import forms
 
 def landing_page(request):
     """
@@ -86,12 +87,9 @@ def forgot(request):
             #If the input username is valid, email them the link.
             try:
                 user = User.objects.get(username=inp_username)
-                if inp_new_pw != inp_confirm_new_pw:
-                    raise forms.ValidationError("Passwords do not match.")
-                else:
-                    if inp_email == user.email:
-                        user.set_password(inp_new_pw)
-                        send_mail('Reset Password', 'Your password has been reset.', settings.EMAIL_HOST_USER, [user.email])
+                if inp_new_pw == inp_confirm_new_pw and inp_email == user.email:
+                    user.set_password(inp_new_pw)
+                    send_mail('Reset Password', 'Your password has been reset.', settings.EMAIL_HOST_USER, [user.email])
                     return render(request, 'email_sent.html')
             except User.DoesNotExist:
                 pass 
