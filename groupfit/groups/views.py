@@ -6,6 +6,7 @@ from groupfit.forms import WorkoutGoalForm
 from groupfit.models import WorkoutGoal
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
 
 def view_group(request, group_pk):
     """
@@ -67,6 +68,9 @@ def create_group(request):
                         try:
                             member = User.objects.get( email = email )
                             new_group.members.add( member.userprofile )
+                            #Send email to the members who were added. 
+                            #Is this the right place to write send_mail?
+                            
                         except User.DoesNotExist:
                             pass
 
