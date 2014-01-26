@@ -108,6 +108,14 @@ LOGIN_REDIRECT_URL = '/'
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 
+FACEBOOK_APP_ID = secret.FACEBOOK_APP_ID
+FACEBOOK_API_SECRET = secret.FACEBOOK_API_SECRET
+
+GOOGLE_CONSUMER_KEY          = secret.GOOGLE_CONSUMER_KEY
+GOOGLE_CONSUMER_SECRET       = secret.GOOGLE_CONSUMER_SECRET
+GOOGLE_OAUTH2_CLIENT_ID      = secret.GOOGLE_OAUTH2_CLIENT_ID
+GOOGLE_OAUTH2_CLIENT_SECRET  = secret.GOOGLE_OAUTH2_CLIENT_SECRET
+
 ###############################################################################
 
 """
