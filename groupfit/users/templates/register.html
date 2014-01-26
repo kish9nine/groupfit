@@ -7,6 +7,21 @@ GroupFit &middot; Register
 
 {% block content %}
 
+<script>
+  $("#id_password").change(function(){ checkPass(); });
+  $("#id_confirm_password").change(function(){ checkPass(); });
+  
+  function checkPass(){
+    if(document.getElementById("id_password").value == document.getElementById("id_confirm_password").value){
+      document.getElementById("passmatch").display = "none";
+    }
+    else{
+      document.getElementById("passmatch").display = "block";
+    }
+  }
+  
+</script>
+
 <div class="row vertical-offset-100">
   <div class="col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
     <form id="register-form" method="post" class="form-horizontal"
@@ -74,6 +89,20 @@ GroupFit &middot; Register
                 {% for error in create_user_form.password.errors %}
                   <span class="help-block">{{ error }}</span>
                 {% endfor %}
+              </div>
+            </div>
+
+            <div id="passmatch" class="form-group" style="display:none;">
+              <div class="col-lg-12">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="fa fa-exclamation-circle"></i>
+                  </span>
+                  <span class="form-control" >Passwords don't match</span>
+                  <span class="input-group-addon">
+                    <i class="fa fa-exclamation-circle"></i>
+                  </span>
+                </div>
               </div>
             </div>
 
