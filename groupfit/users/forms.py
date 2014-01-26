@@ -47,8 +47,8 @@ class RegisterForm(ModelForm):
        
 
     def clean(self):
-        pw1 = self.cleaned_data['password']
-        pw2 = self.cleaned_data['confirm_password']
+        pw1 = self.cleaned_data.get('password')
+        pw2 = self.cleaned_data.('confirm_password')
         
         if pw1 != pw2:
             raise forms.ValidationError('Passwords do not match!')
