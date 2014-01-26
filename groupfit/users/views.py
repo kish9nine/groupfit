@@ -41,6 +41,7 @@ def create_user(request):
     else:
         #If the user didn't plug in anything, create_user_form will be an empty shell?
         create_user_form = RegisterForm()
+        confirm_password_form = PasswordForm()
     return render(request, 'register.html', {'create_user_form': create_user_form, "confirm_password_form": confirm_password_form})
  
  
