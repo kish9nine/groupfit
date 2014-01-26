@@ -7,20 +7,6 @@ GroupFit &middot; Register
 
 {% block content %}
 
-<script>
-  document.getElementById("id_password").onchange = function(){ checkPass(); };
-  document.getElementById("id_confirm_password").onchange = function(){ checkPass(); };
-  
-  function checkPass(){
-    if(document.getElementById("id_password").value == document.getElementById("id_confirm_password").value){
-      document.getElementById("passmatch").display = "none";
-    }
-    else{
-      document.getElementById("passmatch").display = "block";
-    }
-  }
-  
-</script>
 
 <div class="row vertical-offset-100">
   <div class="col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
@@ -145,5 +131,20 @@ GroupFit &middot; Register
     </form>
   </div>
 </div>
+
+<script>
+  document.getElementById("id_password").onchange = function(){ checkPass(); };
+  document.getElementById("id_confirm_password").onchange = function(){ checkPass(); };
+  
+  function checkPass(){
+    if(document.getElementById("id_password").value == document.getElementById("id_confirm_password").value){
+      document.getElementById("passmatch").display = "none";
+    }
+    else{
+      document.getElementById("passmatch").display = "block";
+    }
+  }
+  
+</script>
 
 {% endblock %}
