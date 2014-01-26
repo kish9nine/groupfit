@@ -40,7 +40,14 @@ class WorkoutGoalForm( forms.ModelForm ):
     class Meta:
         model = WorkoutGoal
 
-        fields = ['name', 'amount', 'activity', 'units', 'target_date']
+        fields = [
+            'name',
+            'amount',
+            'activity',
+            'units',
+            'target_date',
+            'description'
+        ]
         exclude = []
 
         label = {
@@ -48,6 +55,7 @@ class WorkoutGoalForm( forms.ModelForm ):
             'amount': 'Goal Amount',
             'activity': 'Activity',
             'target_date': 'Target Completion Date',
+            'description': 'Goal Description',
         }
 
         widgets = {
@@ -59,14 +67,16 @@ class WorkoutGoalForm( forms.ModelForm ):
                 'class': 'form-control',
                 'placeholder': 'Goal Amount',
             }),
-            'activity': forms.TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Goal Activity',
-            }),
+            'activity': forms.HiddenInput(),
             'units': forms.HiddenInput(),
             'target_date': forms.DateInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Goal Amount',
+                'placeholder': 'Target Date (eg. 10/20/2014)',
+            }),
+            'description': forms.Textarea(attrs={
+                'class': 'form-control',
+                'placeholder': 'Goal Description',
+                'rows': 3,
             }),
         }
 
