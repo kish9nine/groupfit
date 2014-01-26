@@ -25,14 +25,14 @@ class ForgotPasswordForm(forms.Form):
         widget=forms.PasswordInput(attrs={
             'class': 'form-control',
             'placeholder': 'New Password', 
-            'id': 'pw'})
+            })
         )
     confirm_new_pw = forms.CharField(
         required = True,
         widget = forms.PasswordInput(attrs={
             'class': 'form-control',
             'placeholder': 'Confirm New Password',
-            'id': 'confirm_pw'}))
+            }))
 
             
 
