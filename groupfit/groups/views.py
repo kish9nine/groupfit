@@ -21,7 +21,7 @@ def view_group(request, group_pk):
             goal = goal_form.save(commit=False)
             goal.save()
             group.goals.add( goal )
-            goal_form = WorkoutGoalForm()
+            return redirect('groups.views.view_group', group_pk)
     else:
         goal_form = WorkoutGoalForm()
 
