@@ -39,11 +39,11 @@ class RegisterForm(ModelForm):
         label="EMAIL", 
         widget=EmailInput(attrs={'class':'form-control', 'placeholder':'Email'})
         )
-
+    """
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'password', 'confirm_password', 'email']
-        
+    """    
        
 
     def clean(self):
