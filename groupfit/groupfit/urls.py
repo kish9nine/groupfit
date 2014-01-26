@@ -28,6 +28,8 @@ urlpatterns = patterns('',
 
     ## Register shortcut
     url(r'^register$', create_user, name = 'register'),
+    ## Register or login using Facebook, Twitter, or Google Account.
+    url(r'', include('social_auth.urls')),
 
     # Group app pages.
     url(r'^group/', include('groups.urls')),    # matches /group/...
