@@ -59,7 +59,7 @@ def view_user(request, user_pk=-1):
             goal = goal_form.save(commit=False)
             goal.save()
             user.goals.add( goal )
-            return redirect('user.views.view_user', user_pk)
+            return redirect('users.views.view_user', user_pk)
     else:
         goal_form = WorkoutGoalForm()
 
