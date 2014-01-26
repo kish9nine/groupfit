@@ -25,7 +25,22 @@ def create_group_goal(request):
     """
     This view presents the user with a form which lets them create a new goal.
     """
-    return render(request, 'create_goal.html',{},)
+
+    if request.method == 'POST':
+        goal_form = WorkoutGoalForm(request.POST)
+        if goal_form.is_valid():
+            goal = goal_form.save(commit=False)
+            goal.save()
+            return redirect('/')
+
+    else:
+        goal_form = WorkoutGoalForm()
+
+    return render(request, 'create_goal.html',
+    {
+        'goal_form' : goal_form,
+    },
+    )
 
 
 @login_required
