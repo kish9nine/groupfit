@@ -60,6 +60,7 @@ INSTALLED_APPS = (
     'django_gravatar',
     'south',
     'easy_thumbnails',
+    'social_auth'
 )
 
 TEMPLATE_LOADERS = (
