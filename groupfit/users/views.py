@@ -18,7 +18,7 @@ def create_user(request):
         if create_user_form.is_valid() and confirm_password_form.is_valid():
             #Don't save the user in creation as a new user yet. 
             new_user = create_user_form.save()
-            confirm_password = confirm_password_form.save()
+            #confirm_password = confirm_password_form.save()
             
             pw = create_user_form.cleaned_data.get('password')
             confirm_pw = confirm_password.cleaned_data.get('confirm_password')
