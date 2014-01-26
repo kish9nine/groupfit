@@ -4,6 +4,7 @@ from groups.models import WorkoutGroup
 from django.db.models.signals import post_save
 from django.core.urlresolvers import reverse
 from tags.models import Tag
+from groupfit.models import WorkoutGoal
 from playlists.models import Playlist
 
 
@@ -33,6 +34,15 @@ class UserProfile( models.Model ):
         Playlist,
         blank = True,
     )
+
+    goals = models.ManyToManyField(
+        WorkoutGoal,
+        null = True,
+        blank = True,
+        help_text = "Your Goal (e.g. Weight Loss)",
+        related_name = "users",
+    )
+
 
     def __unicode__(self):
         return "%s" % self.user.username
