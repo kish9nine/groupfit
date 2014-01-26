@@ -41,17 +41,18 @@ class RegisterForm(ModelForm):
         label="EMAIL", 
         widget=EmailInput(attrs={'class':'form-control', 'placeholder':'Email'})
         )
-    """
+    
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'password', 'email']
-    """    
        
-
+       
+    """
     def clean(self):
         pw1 = self.cleaned_data.get('password')
-        pw2 = self.cleaned_data.('confirm_password')
+        pw2 = self.cleaned_data.get('confirm_password')
         
         if pw1 != pw2:
             raise forms.ValidationError('Passwords do not match!')
         return pw2
+    """
