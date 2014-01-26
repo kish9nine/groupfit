@@ -8,8 +8,8 @@ GroupFit &middot; Register
 {% block content %}
 
 <script>
-  $("#id_password").change(function(){ checkPass(); });
-  $("#id_confirm_password").change(function(){ checkPass(); });
+  document.getElementById("id_password").onchange = function(){ checkPass(); };
+  document.getElementById("id_confirm_password").onchange = function(){ checkPass(); };
   
   function checkPass(){
     if(document.getElementById("id_password").value == document.getElementById("id_confirm_password").value){
