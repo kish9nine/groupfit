@@ -14,30 +14,19 @@ def view_group(request, group_pk):
     """
 
     group = get_object_or_404( WorkoutGroup, pk=group_pk )
-    return render(request, 'view_group.html', {
-        'group': group,
-    },
-    )
-
-
-@login_required
-def create_group_goal(request):
-    """
-    This view presents the user with a form which lets them create a new goal.
-    """
 
     if request.method == 'POST':
         goal_form = WorkoutGoalForm(request.POST)
         if goal_form.is_valid():
             goal = goal_form.save(commit=False)
             goal.save()
-            return redirect('/')
-
+            group.goals.add( goal )
+            goal_form = WorkoutGoalForm()
     else:
         goal_form = WorkoutGoalForm()
 
-    return render(request, 'create_goal.html',
-    {
+    return render(request, 'view_group.html', {
+        'group': group,
         'goal_form' : goal_form,
     },
     )
