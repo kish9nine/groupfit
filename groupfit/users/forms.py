@@ -3,6 +3,13 @@ from django.forms import ModelForm, TextInput, PasswordInput, EmailInput
 from users.models import UserProfile
 from django.contrib.auth.models import User
 
+class PasswordForm(forms.Form):
+    confirm_password = forms.CharField(
+        required = True, 
+        label="CONFIRM_PASSWORD", 
+        widget=PasswordInput(attrs={'class':'form-control', 'placeholder':'Confirm password'}))
+    
+
 class RegisterForm(ModelForm):
 
     username = forms.CharField(
@@ -29,11 +36,6 @@ class RegisterForm(ModelForm):
         widget=PasswordInput(attrs={'class':'form-control', 'placeholder':'Password'})
         )
         
-    confirm_password = forms.CharField(
-        required = True, 
-        label="CONFIRM_PASSWORD", 
-        widget=PasswordInput(attrs={'class':'form-control', 'placeholder':'Confirm password'}))
-        
     email = forms.EmailField(
         required = True, 
         label="EMAIL", 
@@ -42,7 +44,7 @@ class RegisterForm(ModelForm):
     """
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'last_name', 'password', 'confirm_password', 'email']
+        fields = ['username', 'first_name', 'last_name', 'password', 'email']
     """    
        
 
