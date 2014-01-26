@@ -7,7 +7,7 @@ class PasswordForm(forms.Form):
     confirm_password = forms.CharField(
         required = True, 
         label="CONFIRM_PASSWORD", 
-        widget=PasswordInput(attrs={'class':'form-control', 'placeholder':'Confirm password', 'id':'confirm_pw'}))
+        widget=PasswordInput(attrs={'class':'form-control', 'placeholder':'Confirm password',}))
     
 
 class RegisterForm(ModelForm):
@@ -33,7 +33,7 @@ class RegisterForm(ModelForm):
     password = forms.CharField(
         required = True, 
         label="PASSWORD", 
-        widget=PasswordInput(attrs={'class':'form-control', 'placeholder':'Password', 'id':'confirm_pw'})
+        widget=PasswordInput(attrs={'class':'form-control', 'placeholder':'Password',})
         )
         
     email = forms.EmailField(
