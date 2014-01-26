@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from users.models import UserProfile, create_user_profile
 from users.forms import RegisterForm, PasswordForm
+from groupfit.forms import WorkoutGoalForm
 from django.contrib.auth.hashers import make_password
 from django.core.mail import send_mail
 from django.conf import settings
@@ -51,7 +52,19 @@ def view_user(request, user_pk=-1):
     if user_pk == -1:
         user_pk = request.user.userprofile.pk
     user = get_object_or_404( UserProfile, pk=user_pk )
+
+    if request.method == 'POST':
+        goal_form = WorkoutGoalForm(request.POST)
+        if goal_form.is_valid():
+            goal = goal_form.save(commit=False)
+            goal.save()
+            user.goals.add( goal )
+            return redirect('user.views.view_user', user_pk)
+    else:
+        goal_form = WorkoutGoalForm()
+
     return render(request, 'view_user.html', {
         'profile': user,
+        'goal_form': goal_form,
     },
     )
