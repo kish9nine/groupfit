@@ -17,7 +17,7 @@ def create_user(request):
         #And password and confirm password identical, 
         if create_user_form.is_valid() and confirm_password_form.is_valid():
             #Don't save the user in creation as a new user yet. 
-            new_user = create_user_form.save()
+            new_user = create_user_form.save(commit=False)
             #confirm_password = confirm_password_form.save()
             
             pw = create_user_form.cleaned_data.get('password')
