@@ -22,7 +22,7 @@ urlpatterns = patterns('',
 
     # Community page.
     url(r'community$', community),
-    
+
     ## Forgot password?
     url(r'^forgot$', forgot, name = 'forgot'),
 

@@ -101,6 +101,4 @@ def forgot(request):
 
     #Otherwise, stay on that page with the incompelete form. 
     return render(request, 'forgot.html', {'forgot_password_form': forgot_password_form},)
-    
-    
 
