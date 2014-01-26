@@ -21,7 +21,7 @@ def create_user(request):
             #confirm_password = confirm_password_form.save()
             
             pw = create_user_form.cleaned_data.get('password')
-            confirm_pw = confirm_password.cleaned_data.get('confirm_password')
+            confirm_pw = confirm_password_form.cleaned_data.get('confirm_password')
             if pw == confirm_pw:
                 new_user.set_password( pw )
                 new_user.save()
