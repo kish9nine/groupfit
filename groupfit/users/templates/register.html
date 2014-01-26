@@ -133,17 +133,24 @@ GroupFit &middot; Register
 </div>
 
 <script>
-  document.getElementById("id_password").onchange = function(){ checkPass(); };
-  document.getElementById("id_confirm_password").onchange = function(){ checkPass(); };
-  
-  function checkPass(){
-    if(document.getElementById("id_password").value == document.getElementById("id_confirm_password").value){
-      document.getElementById("passmatch").display = "none";
-    }
-    else{
-      document.getElementById("passmatch").display = "block";
-    }
+$(function () {
+  $("#id_password").change(function() {
+    checkPass();
+  });
+});
+$(function () {
+  $("#id_confirm_password").change(function() {
+    checkPass();
+  });
+});
+function checkPass(){
+  if(document.getElementById("id_password").value == document.getElementById("id_confirm_password").value){
+    document.getElementById("passmatch").display = "none";
   }
+  else{
+    document.getElementById("passmatch").display = "block";
+  }
+}
   
 </script>
 
