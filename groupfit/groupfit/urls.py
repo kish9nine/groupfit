@@ -47,4 +47,7 @@ urlpatterns = patterns('',
     url(r'^login/$', login, {'template_name': 'login.html'}),
     url(r'^logout/$', logout, {'next_page': '/'}),
 
+    # Social_Auth urls
+    url(r'', include('social_auth.urls')),
+
 )
