@@ -8,7 +8,7 @@ class ForgotPasswordForm(forms.Form):
         max_length = 20,
         widget = forms.TextInput(attrs={
             'class': 'form-control',
-            "placeholder": "Username"
+            "placeholder": "Username",
         })
     )
 
@@ -24,13 +24,15 @@ class ForgotPasswordForm(forms.Form):
         required = True,
         widget=forms.PasswordInput(attrs={
             'class': 'form-control',
-            'placeholder': 'New Password'})
+            'placeholder': 'New Password', 
+            'id': 'pw'})
         )
     confirm_new_pw = forms.CharField(
         required = True,
         widget = forms.PasswordInput(attrs={
             'class': 'form-control',
-            'placeholder': 'Confirm New Password'}))
+            'placeholder': 'Confirm New Password',
+            'id': 'confirm_pw'}))
 
             
 
