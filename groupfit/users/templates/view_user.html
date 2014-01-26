@@ -42,6 +42,8 @@ GroupFit
 
     </div>
 
+
+
     <div class="row">
       <div class="col-lg-12">
         <div class="panel panel-default">
@@ -72,11 +74,13 @@ GroupFit
             <h1 class="panel-title text-center">
               <span class="pull-left"><i class="fa fa-users"></i></span>
               Groups
+              {% if user.pk == profile.user.pk %}
               <span class="pull-right">
                 <a href="{% url 'groups.views.create_group' %}">
                   <i class="fa fa-plus-square"></i>
                 </a>
               </span>
+              {% endif %}
             </h1>
           </div>
           <div class="panel-body">
@@ -105,11 +109,13 @@ GroupFit
             <h1 class="panel-title text-center">
               <span class="pull-left"><i class="fa fa-music"></i></span>
               Playlists
+              {% if user.pk == profile.user.pk %}
               <span class="pull-right">
                 <a href="{% url 'playlists.views.create_playlist' %}">
                   <i class="fa fa-plus-square"></i>
                 </a>
               </span>
+              {% endif %}
             </h1>
           </div>
           <div class="panel-body">
@@ -150,11 +156,12 @@ GroupFit
       </div>
     </div>
 
+    {% if user.pk == profile.user.pk %}
     <div class="row">
       <div class="col-lg-12">
 
         <div class="panel">
-          <button class="btn btn-primary btn-lg btn-block">
+          <button class="btn btn-success btn-lg btn-block">
             <i class="fa fa-plus"></i>
             &nbsp;
             Add Workout
@@ -163,21 +170,71 @@ GroupFit
 
       </div>
     </div>
+    {% endif %}
 
+    <hr/>
+
+    {% if user.pk == profile.user.pk %}
+    <div class="row">
+      <div class="col-lg-12">
+
+        <div class="panel panel-default">
+          <a class="btn btn-primary btn-lg btn-block"
+          href="{% url 'users.views.create_user_goal' %}">
+            <i class="fa fa-plus"></i>
+            &nbsp;
+            Add Goal
+          </a>
+        </div>
+
+      </div>
+    </div>
+    {% endif %}
+
+
+
+    {% for goal in profile.goals.all %}
     <div class="row">
       <div class="col-lg-12">
 
         <div class="panel panel-info">
           <div class="panel-heading">
-            <h1 class="panel-title">Delicious Stuff</h1>
+            <h1 class="panel-title">{{ goal.name }}</h1>
           </div>
           <div class="panel-body">
-            More things can go here.
+            <p><strong>
+              {{ goal.target_date|timeuntil }} remaining!
+            </strong></p>
+            {% if goal.description %}
+            <p>
+              <strong><em>{{ goal.description }}</em></strong>
+            </p>
+            {% endif %}
+            <p>
+              <strong>Activity:</strong>
+              {{ goal.activity }}
+            </p>
+            <p>
+              <strong>Target:</strong>
+              {{ goal.amount }} <em>{{ goal.units }}</em>
+            </p>
           </div>
         </div>
 
       </div>
     </div>
+    {% empty %}
+    <div class="row">
+      <div class="col-lg-12">
+
+        <div class="alert alert-danger text-center">
+          No goals set!
+        </div>
+
+      </div>
+    </div>
+    {% endfor %}
+
 
 
   </div>
