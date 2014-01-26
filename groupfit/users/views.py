@@ -55,3 +55,12 @@ def view_user(request, user_pk=-1):
         'profile': user,
     },
     )
+
+
+@login_required
+def create_user_goal(request):
+    """
+    This view presents the user with a form which lets them create a new goal.
+    """
+    return render(request, 'create_goal.html',{},)
+
