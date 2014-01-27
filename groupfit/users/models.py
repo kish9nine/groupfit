@@ -6,6 +6,7 @@ from django.core.urlresolvers import reverse
 from tags.models import Tag
 from groupfit.models import WorkoutGoal
 from playlists.models import Playlist
+from social_auth.backends.facebook import FacebookBackend
 
 
 class UserProfile( models.Model ):
@@ -59,3 +60,4 @@ def create_user_profile( sender, instance, created, **kwargs ):
     if created:
         UserProfile.objects.create(user=instance)
 #post_save.connect(create_user_profile, sender=User)
+#post_save.connect(create_user_profile, sender=FacebookBackend)
