@@ -3,6 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth.views import password_reset
 from django.core.mail import send_mail
+from django.http import HttpResponse
+import json
 from groupfit.forms import ForgotPasswordForm
 from groups.models import WorkoutGroup
 from users.models import UserProfile
@@ -51,6 +53,19 @@ def privacy(request):
 # Facebook login
 def facebook_login(request):
     return render(request, 'facebook_login.html', {})
+
+def facebook_login_connector(request):
+    if request.method != "POST":
+        return redirect("/")
+
+    response_data = {}
+    fb_json = request.POST.get('fb_json')
+    response_data = fb_json
+
+    return HttpResponse(
+        json.dumps(response_data),
+        content_type="application/json"
+    )
 
 
 
