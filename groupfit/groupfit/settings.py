@@ -106,8 +106,7 @@ LOGIN_URL = '/login/'
 LOGOUT_URL = '/logout/'
 LOGIN_REDIRECT_URL = '/'
 
-# We remove this because social_auth doesn't like it.
-#SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 
 FACEBOOK_APP_ID = secret.FACEBOOK_APP_ID
 FACEBOOK_API_SECRET = secret.FACEBOOK_API_SECRET
