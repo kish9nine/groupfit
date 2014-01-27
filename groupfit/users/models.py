@@ -56,8 +56,7 @@ class UserProfile( models.Model ):
 This post_save function is triggered when a User object is created,
 creating a UserProfile object along with it.
 """
-def create_user_profile( sender, instance, **kwargs ):
-    UserProfile(user=instance).save()
-    return True
-#post_save.connect(create_user_profile, sender=User)
-post_save.connect(create_user_profile, sender=FacebookBackend)
+def create_user_profile( sender, instance, created, **kwargs ):
+    if created:
+        UserProfile.objects.create(user=instance)
+post_save.connect(create_user_profile, sender=User)

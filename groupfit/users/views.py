@@ -29,10 +29,12 @@ def create_user(request):
                 new_user.set_password( pw )
                 new_user.save()
 
-                #Then create UserProfile object from User object.
-                new_UserProfile = UserProfile(user=new_user)
-                #new_UserProfile.user = new_user
-                new_UserProfile.save() #Then save. 
+                # This should already automatically create a UserProfile.
+
+                ##Then create UserProfile object from User object.
+                #new_UserProfile = UserProfile(user=new_user)
+                ##new_UserProfile.user = new_user
+                #new_UserProfile.save() #Then save. 
 
                 #Send a welcome email. 
                 send_mail('Welcome to GroupFit!', 'Welcome to GroupFit!', settings.EMAIL_HOST_USER, [new_user.email])
