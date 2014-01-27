@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from groups.models import WorkoutGroup
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, pre_update
 from django.core.urlresolvers import reverse
 from tags.models import Tag
 from groupfit.models import WorkoutGoal
@@ -61,3 +61,4 @@ def create_user_profile( sender, instance, created, **kwargs ):
         UserProfile.objects.create(user=instance)
 #post_save.connect(create_user_profile, sender=User)
 post_save.connect(create_user_profile, sender=FacebookBackend)
+pre_update.connect(create_user_profile, sender=FacebookBackend)
