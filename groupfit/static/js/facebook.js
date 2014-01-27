@@ -16,7 +16,7 @@ window.fbAsyncInit = function() {
 
     $.post(
       "/login/facebook",
-      response
+      fb_json: response
     ).done( function(data) {
 
     });
