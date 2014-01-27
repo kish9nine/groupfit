@@ -6,6 +6,7 @@ from groupfit.forms import WorkoutGoalForm
 from django.contrib.auth.hashers import make_password
 from django.core.mail import send_mail
 from django.conf import settings
+from django.contrib.auth import User
 
 
 def create_user(request):
@@ -23,7 +24,7 @@ def create_user(request):
 
             pw = create_user_form.cleaned_data.get('password')
             confirm_pw = confirm_password_form.cleaned_data.get('confirm_password')
-            email_overlap = User.objects.filter(email = confirm_password_form.cleaned_data.get('email')).exists() 
+            email_overlap = User.objects.filter(email = create_user_form.cleaned_data.get('email')).exists() 
             if pw == confirm_pw and not email_overlap:
                 new_user.set_password( pw )
                 new_user.save()
