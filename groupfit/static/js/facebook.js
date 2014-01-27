@@ -12,18 +12,6 @@ window.fbAsyncInit = function() {
   // whenever someone who was previously logged out tries to log in again, the correct case below 
   // will be handled. 
   FB.Event.subscribe('auth.authResponseChange', function(response) {
-
-
-    $.post(
-      "/login/facebook",
-      {
-        fb_json: response,
-      }
-    ).done( function(data) {
-
-    });
-
-
     // Here we specify what we do with the response anytime this event occurs. 
     if (response.status === 'connected') {
       // The response object is returned with a status field that lets the app know the current
