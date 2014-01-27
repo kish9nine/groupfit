@@ -60,18 +60,35 @@ def view_user(request, user_pk=-1):
     workouts = Workout.objects.filter(user__pk=user_pk)
 
     if request.method == 'POST':
-        goal_form = WorkoutGoalForm(request.POST)
-        if goal_form.is_valid():
-            goal = goal_form.save(commit=False)
-            goal.save()
-            user.goals.add( goal )
-            return redirect('users.views.view_user', user_pk)
+
+        if 'submit-goal' in request.POST:
+            goal_form = WorkoutGoalForm(request.POST)
+            if goal_form.is_valid():
+                goal = goal_form.save(commit=False)
+                goal.save()
+                user.goals.add( goal )
+                return redirect('users.views.view_user', user_pk)
+        else:
+            goal_form = WorkoutGoalForm()
+
+        if 'submit-workout' in request.POST:
+            workout_form = WorkoutForm(request.POST)
+            if workout_form.is_valid():
+                workout = workout_form.save(commit=False)
+                workout.user = request.user.userprofile
+                workout.save()
+                return redirect('users.views.view_user', user_pk)
+        else:
+            workout_form = WorkoutForm()
+
     else:
         goal_form = WorkoutGoalForm()
+        workout_form = WorkoutForm()
 
     return render(request, 'view_user.html', {
         'profile': user,
         'workouts': workouts,
         'goal_form': goal_form,
+        'workout_form': workout_form,
     },
     )
