@@ -23,7 +23,8 @@ def create_user(request):
 
             pw = create_user_form.cleaned_data.get('password')
             confirm_pw = confirm_password_form.cleaned_data.get('confirm_password')
-            if pw == confirm_pw:
+            email_overlap = User.objects.filter(email = confirm_password_form.cleaned_data.get('email')).exists() 
+            if pw == confirm_pw and not email_overlap:
                 new_user.set_password( pw )
                 new_user.save()
 
