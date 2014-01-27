@@ -49,7 +49,6 @@ urlpatterns = patterns('',
 
     # Facebook login
     url(r'^facebook_login/$', facebook_login, name='facebook_login'),
-    url(r'^login/facebook$', facebook_login_connector),
     
 
 )
