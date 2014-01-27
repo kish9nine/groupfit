@@ -48,6 +48,9 @@ def privacy(request):
     )
 
 
+# Facebook login
+def facebook_login(request):
+    return render(request, 'facebook_login.html', {})
 
 
 
