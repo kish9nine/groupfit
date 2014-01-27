@@ -1,15 +1,3 @@
-<div class="page-header" id="banner">
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="jumbotron">
-        <h1>Group<strong>Fit</strong></h1>
-        <p>Get Fit with friends! Yay! And groups! And you can even log in
-        with Facebook! How awesome is that? Really awesome!</p>
-      </div>
-    </div>
-  </div>
-</div>
-
 <div class="row">
   <div class="col-lg-12">
 
@@ -20,7 +8,9 @@
         <div class="list-group">
           <a class="list-group-item" href="{{group.get_absolute_url}}">
             <h4 class="list-group-item-heading">{{goal.name}}</h4>
-            <p class="list-group-item-text">{{</p>
+            <p class="list-group-item-text">
+              {{ goal.target_date|timeuntil }} remaining!
+            </p>
           </a>
         </div>
       {% endfor %}
