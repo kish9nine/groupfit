@@ -196,6 +196,17 @@ LOGGING = {
     }
 }
 
+
+
+"""
+Social Auth Login
+"""
+SOCIAL_AUTH_DEFAULT_USERNAME = 'new_social_auth_user'
+SOCIAL_AUTH_UUID_LENGTH = 16
+#SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
+SOCIAL_AUTH_FORCE_POST_DISCONNECT = True
+SOCIAL_AUTH_PROTECTED_USER_FIELDS = ['email',]
+
 ###############################################################################
 
 """
@@ -220,3 +231,4 @@ EMAIL_HOST_PASSWORD = secret.EMAIL_HOST_PASSWORD
 
 
 ##############################################################################
+
