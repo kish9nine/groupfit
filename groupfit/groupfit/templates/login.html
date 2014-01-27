@@ -7,7 +7,7 @@ GroupFit &middot; Login
 
 {% block content %}
 
-
+<div id="fb-root"><fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button></div>
 <div class="row vertical-offset-100">
   <div class="col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
     <form id="login-form" method="post" class="form-horizontal"
@@ -52,7 +52,6 @@ GroupFit &middot; Login
             class="btn btn-success btn-lg btn-block" value="Log In" />
             
             <a href="{% url 'forgot' %}">Forgot password?</a>
-            <div id="fb-root"><fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button></div>
             
           </div>
         </div>
