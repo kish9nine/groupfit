@@ -69,8 +69,8 @@ def create_group(request):
                     email = email_form.cleaned_data.get('email')
                     if email and len(email) > 0:
                         try:
-                            #member = User.objects.get( email = email )
-                            member = UserProfile.objects.get( user.email = email )
+                            member_user = User.objects.get( email = email )
+                            member = UserProfile.objects.get( user=member_user )
                             new_group.members.add( member )
                             #Send email to the members who were added. 
                             send_mail('You have been invited to join ' + str(new_group.name) + ' in Groupfit!',
