@@ -6,7 +6,7 @@ from groupfit.forms import WorkoutGoalForm
 from django.contrib.auth.hashers import make_password
 from django.core.mail import send_mail
 from django.conf import settings
-from django.contrib.auth import User
+from django.contrib.auth.models import User
 
 
 def create_user(request):
