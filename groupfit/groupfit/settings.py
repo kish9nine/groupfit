@@ -207,6 +207,7 @@ SOCIAL_AUTH_UUID_LENGTH = 16
 #SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
 SOCIAL_AUTH_FORCE_POST_DISCONNECT = True
 SOCIAL_AUTH_PROTECTED_USER_FIELDS = ['email',]
+SOCIAL_AUTH_SESSION_EXPIRATION=False
 
 ###############################################################################
 
