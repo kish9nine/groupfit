@@ -48,7 +48,7 @@ urlpatterns = patterns('',
     url(r'^logout/$', logout, {'next_page': '/'}),
 
     # Facebook login
-    url(r'^facebook_login/$', facebook_login, {}),
+    url(r'^facebook_login/$', facebook_login,),
     
 
 )
