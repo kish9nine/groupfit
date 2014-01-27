@@ -18,7 +18,9 @@ def landing_page(request):
     different template.
     """
 
+    groups = request.user.userprofile.groups.all()
     return render(request, 'landing_page.html', {
+        'groups': groups,
     },
     )
 
