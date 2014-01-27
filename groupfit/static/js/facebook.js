@@ -30,7 +30,6 @@ FB.Event.subscribe('auth.authResponseChange', function(response) {
     FB.login();
   }
 });
-};
 
 (function(d, s, id){
   var js, fjs = d.getElementsByTagName(s)[0];
