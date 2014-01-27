@@ -71,7 +71,7 @@ def create_group(request):
                             new_group.members.add( member.userprofile )
                             #Send email to the members who were added. 
                             send_mail('You have been invited to join ' + str(new_group.name) + ' in Groupfit!',
-                                'You have been invited to join ' + str(group_name) + ' in Groupfit!',
+                                'You have been invited to join ' + str(new_group.name) + ' in Groupfit!',
                                 'groupfit6470@gmail.com', [email])
                             
                         except (User.DoesNotExist, User.MultipleObjectsReturned) as e:
