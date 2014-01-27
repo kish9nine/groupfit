@@ -8,7 +8,7 @@ window.fbAsyncInit = function() {
 };
 
 
-
+/*
 // Here we subscribe to the auth.authResponseChange JavaScript event. This event is fired
 // for any authentication related change, such as login, logout or session refresh. This means that
 // whenever someone who was previously logged out tries to log in again, the correct case below 
@@ -45,10 +45,10 @@ FB.Event.subscribe('auth.authResponseChange', function(response) {
     });
   }
 });
+*/
 
 
 
-/*
 FB.Event.subscribe('auth.authResponseChange', function(response) {
   // Here we specify what we do with the response anytime this event occurs. 
   if (response.status === 'connected') {
@@ -74,7 +74,6 @@ FB.Event.subscribe('auth.authResponseChange', function(response) {
     FB.login();
   }
 });
-*/
 
 
 (function(d, s, id){
