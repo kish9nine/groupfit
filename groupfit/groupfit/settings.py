@@ -106,7 +106,8 @@ LOGIN_URL = '/login/'
 LOGOUT_URL = '/logout/'
 LOGIN_REDIRECT_URL = '/'
 
-SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
+#SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 
 FACEBOOK_APP_ID = secret.FACEBOOK_APP_ID
 FACEBOOK_API_SECRET = secret.FACEBOOK_API_SECRET
@@ -207,7 +208,6 @@ SOCIAL_AUTH_UUID_LENGTH = 16
 #SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
 SOCIAL_AUTH_FORCE_POST_DISCONNECT = True
 SOCIAL_AUTH_PROTECTED_USER_FIELDS = ['email',]
-SOCIAL_AUTH_SESSION_EXPIRATION=False
 
 ###############################################################################
 
