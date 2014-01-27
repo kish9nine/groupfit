@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 
+@login_required
 def view_group(request, group_pk):
     """
     This view simply displays the group page to the user, depending on the
