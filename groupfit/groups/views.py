@@ -71,7 +71,7 @@ def create_group(request):
                             #Send email to the members who were added. 
                             #Is this the right place to write send_mail?
                             
-                        except (User.DoesNotExist, MultipleObjectsReturned) as e:
+                        except (User.DoesNotExist, User.MultipleObjectsReturned) as e:
                             pass
 
             # 3) add the creating user to the groups' roster
