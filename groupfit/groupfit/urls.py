@@ -3,7 +3,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 from groupfit.views import landing_page, about, contact, terms
-from groupfit.views import privacy, forgot, community
+from groupfit.views import privacy, forgot, community, facebook_login
 from django.contrib.auth.views import login, logout
 from users.views import view_user, create_user
 
@@ -47,7 +47,10 @@ urlpatterns = patterns('',
     url(r'^login/$', login, {'template_name': 'login.html'}),
     url(r'^logout/$', logout, {'next_page': '/'}),
 
+    # Facebook login
+    url(r'^facebook_login/$', facebook_login, {'template_name': 'facebook_login.html'}),
+    
     # Social_Auth urls
-    url(r'', include('social_auth.urls')),
+    #url(r'', include('social_auth.urls')),
 
 )
