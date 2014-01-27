@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from groups.models import WorkoutGroup
-from django.db.models.signals import post_save, pre_update
+from django.db.models.signals import post_save
 from django.core.urlresolvers import reverse
 from tags.models import Tag
 from groupfit.models import WorkoutGoal
@@ -56,9 +56,8 @@ class UserProfile( models.Model ):
 This post_save function is triggered when a User object is created,
 creating a UserProfile object along with it.
 """
-def create_user_profile( sender, instance, created, **kwargs ):
-    if created:
-        UserProfile.objects.create(user=instance)
+def create_user_profile( sender, instance, **kwargs ):
+    UserProfile(user=instance).save()
+    return True
 #post_save.connect(create_user_profile, sender=User)
 post_save.connect(create_user_profile, sender=FacebookBackend)
-pre_update.connect(create_user_profile, sender=FacebookBackend)
