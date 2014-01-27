@@ -101,4 +101,4 @@ class Workout( models.Model ):
 
 
     def __unicode__(self):
-        return "%s" % self.name
+        return "%s, %d" % (self.user, self.pk)
