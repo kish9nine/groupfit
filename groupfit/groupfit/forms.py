@@ -90,7 +90,7 @@ class WorkoutForm( forms.ModelForm ):
             'amount',
             'activity',
             'units',
-            'description'
+            'description',
             'energy_level'
         ]
         exclude = ['user']
