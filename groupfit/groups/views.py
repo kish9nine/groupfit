@@ -7,6 +7,7 @@ from groupfit.models import WorkoutGoal
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
+from django.conf import settings
 
 @login_required
 def view_group(request, group_pk):
@@ -72,7 +73,7 @@ def create_group(request):
                             #Send email to the members who were added. 
                             send_mail('You have been invited to join ' + str(new_group.name) + ' in Groupfit!',
                                 'You have been invited to join ' + str(new_group.name) + ' in Groupfit!',
-                                'groupfit6470@gmail.com', [email])
+                                settings.EMAIL_HOST_USER, [email])
                             
                         except (User.DoesNotExist, User.MultipleObjectsReturned) as e:
                             pass
