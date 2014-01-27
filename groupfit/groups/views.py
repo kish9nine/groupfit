@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.forms.models import formset_factory
 from groups.models import WorkoutGroup
 from groups.forms import GroupRegisterForm, EmailForm
+from users.models import UserProfile
 from groupfit.forms import WorkoutGoalForm
 from groupfit.models import WorkoutGoal
 from django.contrib.auth.decorators import login_required
