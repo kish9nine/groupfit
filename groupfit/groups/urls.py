@@ -9,5 +9,5 @@ urlpatterns = patterns('',
     url(r'^join/(?P<group_pk>\d+)$', join_group), # matches /groups/leave/<pk>
     url(r'^leave/(?P<group_pk>\d+)$', leave_group), # matches /groups/leave/<pk>
     url(r'^(?P<group_pk>\d+)$', view_group),    # matches /groups/<pk>
-    #url(r'^add_member(?P<group_pk>\d+)$')     #I probably won't need them since it's a modal.
+    url(r'^add_member/(?P<group_pk>\d+)$', add_member)     #matches /groups/add_member/<pk>
 )
