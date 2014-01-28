@@ -1,0 +1,172 @@
+
+
+<div class="form-group{%if goal_form.errors%} has-error{%endif%}">
+  {% for error in goal_form.non_field_errors %}
+    <span class="col-lg-2 control-label"></span>
+    <span class="col-lg-10 help-block">{{error}}</span>
+  {% endfor %}
+</div>
+
+<div class="form-group{%if goal_form.name.errors%} has-error{%endif%}">
+  <div class="col-lg-12">
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i class="fa fa-pencil"></i>
+      </span>
+      {{ goal_form.name }}
+    </div>
+    {% for error in goal_form.name.errors %}
+      <span class="help-block">{{ error }}</span>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-lg-12">
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i class="fa fa-flag"></i>
+      </span>
+      <select class="form-control" id="activity-dropdown">
+        <option selected value="weightloss">Weight Loss</option>
+        <option value="running">Running</option>
+        <option value="lifting">Lifting</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+{{ goal_form.activity }}
+{{ goal_form.units }}
+
+<div class="form-group" id="activity-input-frame">
+  <div class="col-lg-12">
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i class="fa fa-flag"></i>
+      </span>
+      <input type="text" placeholder="Activity Type"
+      class="form-control" id="activity-input" />
+    </div>
+  </div>
+</div>
+
+<div class="form-group" id="units-input-frame">
+  <div class="col-lg-12">
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i class="fa fa-flag"></i>
+      </span>
+      <input type="text" placeholder="Activity Units"
+      class="form-control" id="units-input" />
+    </div>
+  </div>
+</div>
+
+<div class="form-group{%if goal_form.amount.errors%} has-error{%endif%}">
+  <div class="col-lg-12">
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i class="fa fa-flag"></i>
+      </span>
+      {{ goal_form.amount }}
+      <span class="input-group-addon" id="units-display">lbs</span>
+    </div>
+    {% for error in goal_form.amount.errors %}
+      <span class="help-block">{{ error }}</span>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="form-group{%if goal_form.target_date.errors%} has-error{%endif%}">
+  <div class="col-lg-12">
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i class="fa fa-calendar"></i>
+      </span>
+      {{ goal_form.target_date }}
+    </div>
+    {% for error in goal_form.target_date.errors %}
+      <span class="help-block">{{ error }}</span>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="form-group{%if goal_form.description.errors%} has-error{%endif%}">
+  <div class="col-lg-12">
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i class="fa fa-pencil"></i>
+      </span>
+      {{ goal_form.description }}
+    </div>
+    {% for error in goal_form.description.errors %}
+      <span class="help-block">{{ error }}</span>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+$(function() {
+
+  // Set up references to the hidden fields.
+  var activity_field = $("#{{goal_form.activity.id_for_label}}");
+  var units_field = $("#{{goal_form.units.id_for_label}}");
+  var units_display = $("#units-display");
+
+  // Add a listener to the dropdown menu.
+  $("#activity-dropdown").change(function(){
+
+    // Get the selected activity.
+    var activity = $("#activity-dropdown").find(":selected").text();
+    var units = 'units';
+
+    // Hide the inputs by default. Show only if necessary.
+    $("#activity-input-frame").hide();
+    $("#units-input-frame").hide();
+
+    // Depending on the activity, set units differently.
+    switch( activity ){
+    case 'Weight Loss':
+      units = 'lbs';
+      break;
+    case 'Running':
+      units = 'miles';
+      break;
+    case 'Lifting':
+      units = 'reps';
+      break;
+    default:
+      $("#activity-input-frame").show();
+      $("#units-input-frame").show();
+      var input_activity = $("#activity-input").val();
+      var input_units = $("#units-input").val();
+      if( input_activity != "" ) { activity = input_activity; }
+      if( input_units != "" ) { units = input_units; }
+    }
+
+    // Set the appropriate activity after a change is made.
+    activity_field.val( activity );
+    units_field.val( units );
+    units_display.html( units );
+  });
+
+  // Initialize the two hidden fields with the initial values.
+  $("#activity-dropdown").change();
+
+  // Always tie the input field to the appropriate form field.
+  $("#activity-input").bind('input', function(){
+    activity_field.val( $("#activity-input").val() );
+  });
+  $("#units-input").bind('input', function(){
+    var units = $("#units-input").val();
+    if( units == "" ) {
+      units = "units";
+    }
+    units_field.val( units );
+    units_display.html( units );
+  });
+
+});
+</script>
