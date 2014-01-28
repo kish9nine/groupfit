@@ -62,9 +62,15 @@ $(function(){
 			]
 		};
 		data.datasets.pop();
-
+		{% for member in group.members.all %}
+			var legend = document.createElement("span");
+			legend.style.color = "rgb("+colorDict["{{member.user.username}}"]+")";
+			legend.innerHTML = "{{member.user.username}}";
+			document.getElementById("{{goal.name}}Panel").appendChild(legend);
+		{% endfor %}
+		
+		
 		var goalChart = new Chart(ctx).Line(data);
-		console.log(goalChart);
 	{% endfor %}
 });	
 </script>
@@ -214,7 +220,7 @@ $(function(){
               {{ goal.name }}
               <span class="pull-right">
               {% if not goal.achieved %}
-                <a href="/group/complete/{{group.pk}}/{{goal.pk}}">
+                <a href="/user/complete/{{goal.pk}}">
                   <i class="fa fa-check"></i>
                 </a>
               {% else %}
@@ -223,7 +229,7 @@ $(function(){
               </span>
             </h1>
           </div>
-          <div class="panel-body">
+          <div class="panel-body" id="{{goal.name}}Panel">
             <p><strong>
               {{ goal.target_date|timeuntil }} remaining!
             </strong></p>
