@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import ModelForm, TextInput, PasswordInput, EmailInput
+from django.forms import ModelForm, TextInput, PasswordInput, EmailInput, HiddenInput
 from users.models import UserProfile
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
