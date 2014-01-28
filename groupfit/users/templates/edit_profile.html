@@ -1,26 +1,40 @@
 
-
-<div class="form-group{%if goal_form.errors%} has-error{%endif%}">
-  {% for error in goal_form.non_field_errors %}
+<div class="form-group{%if edit_profile.errors%} has-error{%endif%}">
+  {% for error in edit_profile.non_field_errors %}
     <span class="col-lg-2 control-label"></span>
     <span class="col-lg-10 help-block">{{error}}</span>
   {% endfor %}
 </div>
 
-<div class="form-group{%if goal_form.name.errors%} has-error{%endif%}">
+<div class="form-group{%if edit_profile.first_name.errors%} has-error{%endif%}">
   <div class="col-lg-12">
     <div class="input-group">
       <span class="input-group-addon">
         <i class="fa fa-pencil"></i>
       </span>
-      {{ goal_form.name }}
+      {{ edit_profile.first_name }}
     </div>
-    {% for error in goal_form.name.errors %}
+    {% for error in edit_profile.first_name.errors %}
       <span class="help-block">{{ error }}</span>
     {% endfor %}
   </div>
 </div>
 
+<div class="form-group{%if edit_profile.last_name.errors%} has-error{%endif%}">
+  <div class="col-lg-12">
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i class="fa fa-pencil"></i>
+      </span>
+      {{ edit_profile.last_name }}
+    </div>
+    {% for error in edit_profile.last_name.errors %}
+      <span class="help-block">{{ error }}</span>
+    {% endfor %}
+  </div>
+</div>
+
+<!--
 <div class="form-group">
   <div class="col-lg-12">
     <div class="input-group">
@@ -37,29 +51,30 @@
   </div>
 </div>
 
-{{ goal_form.activity }}
-{{ goal_form.units }}
 
-<div class="form-group" id="activity-input-frame">
+
+{{ edit_profile.password }}
+
+<div class="form-group" id="new_password">
   <div class="col-lg-12">
     <div class="input-group">
       <span class="input-group-addon">
         <i class="fa fa-flag"></i>
       </span>
-      <input type="text" placeholder="Activity Type"
-      class="form-control" id="activity-input" />
+      <input type="text" placeholder="New Password"
+      class="form-control" id="new_password" />
     </div>
   </div>
 </div>
 
-<div class="form-group" id="units-input-frame">
+<div class="form-group" id="confirm_new_password">
   <div class="col-lg-12">
     <div class="input-group">
       <span class="input-group-addon">
         <i class="fa fa-flag"></i>
       </span>
-      <input type="text" placeholder="Activity Units"
-      class="form-control" id="units-input" />
+      <input type="text" placeholder="Confirm New Password"
+      class="form-control" id="confirm_new_password" />
     </div>
   </div>
 </div>
@@ -73,39 +88,26 @@
       {{ goal_form.amount }}
       <span class="input-group-addon" id="units-display">lbs</span>
     </div>
-    {% for error in goal_form.amount.errors %}
+    {% for error in edit_profile.amount.errors %}
       <span class="help-block">{{ error }}</span>
     {% endfor %}
   </div>
 </div>
 
-<div class="form-group{%if goal_form.target_date.errors%} has-error{%endif%}">
+<div class="form-group{%if edit_profile.email.errors%} has-error{%endif%}">
   <div class="col-lg-12">
     <div class="input-group">
       <span class="input-group-addon">
         <i class="fa fa-calendar"></i>
       </span>
-      {{ goal_form.target_date }}
+      {{ edit_profile.email }}
     </div>
-    {% for error in goal_form.target_date.errors %}
+    {% for error in edit_profile.email.errors %}
       <span class="help-block">{{ error }}</span>
     {% endfor %}
   </div>
 </div>
 
-<div class="form-group{%if goal_form.description.errors%} has-error{%endif%}">
-  <div class="col-lg-12">
-    <div class="input-group">
-      <span class="input-group-addon">
-        <i class="fa fa-pencil"></i>
-      </span>
-      {{ goal_form.description }}
-    </div>
-    {% for error in goal_form.description.errors %}
-      <span class="help-block">{{ error }}</span>
-    {% endfor %}
-  </div>
-</div>
 
 <script>
 $(function() {
@@ -170,3 +172,4 @@ $(function() {
 
 });
 </script>
+-->
