@@ -20,7 +20,7 @@ class PrivacyForm(forms.Form):
         label = "PRIVACY SETTING",
         widget=CheckboxInput(attrs={
            'class':'form-control',
-           'placeholder':'Check the box to go private',
+           'placeholder':'Check if you do not want other users to see your presence.',
         })
     )
 
