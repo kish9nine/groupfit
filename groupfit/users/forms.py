@@ -59,36 +59,6 @@ class RegisterForm(ModelForm):
     """
 
 
-#@login_required
-#I am not sure if I should add login_required here. 
-# nope! only used in views :)
-class EditUserProfileForm(forms.ModelForm):
-    class Meta:
-
-        model = User
-        fields = ['first_name', 'last_name', 'password']
-        exclude = ['username', 'email'] #These data should not be altered. 
-
-        label = {
-            'first_name': 'First Name',
-            'last_name': 'Last Name',
-            'new_password': 'New Password',
-        }
-        
-        widgets = {
-            'first_name': forms.TextInput(attrs={
-                'class':'form-control',
-                'placeholder': 'Reset your first name here.'
-                }),
-            'last_name': forms.TextInput(attrs={
-                'class':'form-control',
-                'placeholder': 'Reset your last name here.'
-                }),
-            'password': forms.PasswordInput(attrs={
-                'class':'form-control',
-                'placeholder': 'Reset Your Password.'
-                }) 
-        }
 
 class EditUserProfileForm(forms.Form):
 
