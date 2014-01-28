@@ -230,6 +230,28 @@ $(function(){
 
   <div class="col-md-8">
 
+
+
+    {% if user.pk == profile.user.pk %}
+    <div class="row">
+      <div class="col-lg-12">
+
+        <div class="panel panel-default">
+          <button class="btn btn-success btn-lg btn-block" data-toggle="modal"
+          data-target="#WorkoutFormModal">
+            <i class="fa fa-plus"></i>
+            &nbsp;
+            Add Workout
+          </button>
+        </div>
+
+      </div>
+    </div>
+    {% endif %}
+
+    <hr/>
+
+
     <div class="row">
       <div class="col-lg-12">
 
@@ -272,25 +294,6 @@ $(function(){
 
       </div>
     </div>
-
-    {% if user.pk == profile.user.pk %}
-    <div class="row">
-      <div class="col-lg-12">
-
-        <div class="panel panel-default">
-          <button class="btn btn-success btn-lg btn-block" data-toggle="modal"
-          data-target="#WorkoutFormModal">
-            <i class="fa fa-plus"></i>
-            &nbsp;
-            Add Workout
-          </button>
-        </div>
-
-      </div>
-    </div>
-    {% endif %}
-
-    <hr/>
 
 <!--
     {% if user.pk == profile.user.pk %}
