@@ -55,7 +55,8 @@ GroupFit
             </h1>
           </div>
           <div class="panel-body">
-            {% for trophy in profile.trophies.all %}
+            {% for completed_goal in completed_goals %}
+              <img src="{% static "img/trophy.png" %}"/>
             {% empty %}
             <div class="text-center">
               No trophies won yet.

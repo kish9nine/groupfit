@@ -57,7 +57,9 @@ def view_user(request, user_pk=-1):
     if user_pk == -1:
         user_pk = request.user.userprofile.pk
     user = get_object_or_404( UserProfile, pk=user_pk )
-    workouts = Workout.objects.filter(user__pk=user_pk)
+    workouts = user.workout_set.all()
+    completed_goals = user.goals.filter( achieved = True )
+
 
     if request.method == 'POST' and request.user == user.user:
 
@@ -112,6 +114,7 @@ def view_user(request, user_pk=-1):
     return render(request, 'view_user.html', {
         'profile': user,
         'workouts': workouts,
+        'completed_goals': completed_goals,
         'goal_form': goal_form,
         'workout_form': workout_form,
         'edit_profile_form': edit_profile_form,
