@@ -40,9 +40,9 @@
       <span class="input-group-addon">
         <i class="fa fa-pencil"></i>
       </span>
-      {{ edit_profile_form.new_password }}
+      {{ edit_profile_form.password }}
     </div>
-    {% for error in edit_profile_form.new_password.errors %}
+    {% for error in edit_profile_form.password.errors %}
       <span class="help-block">{{ error }}</span>
     {% endfor %}    
   </div>
