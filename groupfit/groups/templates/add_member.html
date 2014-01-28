@@ -30,9 +30,9 @@ GroupFit
                   <span class="input-group-addon">
                     <i class="fa fa-pencil"></i>
                   </span>
-                  {{ new_member_form.name }}
+                  {{ new_member_form.email }}
                 </div>
-                {% for error in new_member_form.name.errors %}
+                {% for error in new_member_form.email.errors %}
                   <span class="help-block">{{ error }}</span>
                 {% endfor %}
               </div>
