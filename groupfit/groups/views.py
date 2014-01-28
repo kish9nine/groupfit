@@ -35,6 +35,7 @@ def view_group(request, group_pk):
                 goal.save()
                 group.goals.add( goal )
                 return redirect('groups.views.view_group', group_pk)
+           goal_form = WorkoutGoalForm() 
         
         if 'new-member-submit' in request.POST:
             new_member_form = EmailForm(request.POST, prefix='new')
@@ -43,6 +44,7 @@ def view_group(request, group_pk):
                 new_member = User.objects.get(email=new_member_email)
                 group.members.add(new_member)
                 return redirect('groups.views.view_group', group_pk, {'new_member_form':new_member_form})
+            new_member_form = EmailForm(request.POST)
     else:
         goal_form = WorkoutGoalForm()
         new_member_form = EmailForm(request.POST)
