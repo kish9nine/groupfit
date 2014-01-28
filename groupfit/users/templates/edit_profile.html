@@ -14,17 +14,9 @@ $(function() {
     // Hide the inputs by default. Show only if necessary.
     $("#privacy-input-frame").hide();
 
-    // Depending on the activity, set units differently.
-    switch( privacy ){
-    case 'Public':
-      break;
-    case 'Private':
-      break;
-    default:
-      $("#privacy-input-frame").show();
-      var input_privacy = $("#privacy-input").val();
-      if( input_privacy != "" ) { privacy = input_privacy; }
-    }
+    $("#privacy-input-frame").show();
+    var input_privacy = $("#privacy-input").val();
+    if( input_privacy != "" ) { privacy = input_privacy; }
 
     // Set the appropriate activity after a change is made.
     privacy_field.val( privacy );
@@ -40,7 +32,7 @@ $(function() {
 
 });
 
-</scrip>
+</script>
 
 <div class="form-group{%if edit_profile_form.errors%} has-error{%endif%}">
   {% for error in edit_profile_form.errors %}
