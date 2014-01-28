@@ -78,6 +78,15 @@ def view_user(request, user_pk=-1):
                 workout.user = request.user.userprofile
                 workout.save()
                 return redirect('users.views.view_user', user_pk)
+        
+        if 'submit-new-profile' in request.POST:
+            edit_profile_form = EditUserProfileForm(request.POST)
+            if edit_profile_form.is_valid():
+                edit_profile_form = edit_profile_form.save(commit=False)
+                edit_profile_form.user = request.user.userprofile
+                edit_profile.save()
+                return redirect('users.views.view_user', user_pk)
+            
         else:
             workout_form = WorkoutForm()
 
@@ -92,3 +101,8 @@ def view_user(request, user_pk=-1):
         'workout_form': workout_form,
     },
     )
+
+
+@login_required
+def edit_profile(request):
+    if request
