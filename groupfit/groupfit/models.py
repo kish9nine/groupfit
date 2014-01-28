@@ -6,6 +6,10 @@ class WorkoutGoal( models.Model ):
     This model represents the goal of an individual or group.
     """
 
+    achieved = models.BooleanField(
+        default = False,
+    )
+
     name = models.CharField(
         blank = False,
         help_text = "Name Your Goal",
