@@ -7,6 +7,7 @@ GroupFit &middot; Register
 
 {% block content %}
 <script>
+window.onclick = checkPass;
 function checkPass(){
   console.log(document.getElementById("id_password").value);
   console.log(document.getElementById("id_confirm_password").value);
