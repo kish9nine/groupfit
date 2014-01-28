@@ -25,7 +25,7 @@
       <span class="input-group-addon">
         <i class="fa fa-user"></i>
       </span>
-      <span placeholder="{{ user.firstname }}">{{ edit_profile_form.first_name }}</span>
+      <span placeholder={{ user.firstname }}>{{ edit_profile_form.first_name }}</span>
     </div>
     {% for error in edit_profile_form.first_name.errors %}
       <span class="help-block">{{ error }}</span>
