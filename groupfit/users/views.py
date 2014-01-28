@@ -97,6 +97,7 @@ def view_user(request, user_pk=-1):
                 new_last_name = edit_profile_form.cleaned_data.get('last_name')
                 new_password = edit_profile_form.cleaned_data.get('new_password')
                 confirm_password = edit_profile_form.cleaned_data.get('confirm_password')
+                privacy = edit_profile_form.cleaned_data.get('privacy')
 
 
                 if len( new_first_name ) > 0:
@@ -105,6 +106,7 @@ def view_user(request, user_pk=-1):
                     request.user.last_name = new_last_name
                 if len( new_password ) > 0 and new_password == confirm_password:
                     request.user.set_password( new_password )
+                request.user.userprofile = privacy
                 request.user.save()
 
                 #edit_profile_form.save()
