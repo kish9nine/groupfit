@@ -133,6 +133,6 @@ def add_member(request, group_pk):
     new_member_email = new_member_form.cleaned_data.get('email')
     new_member = User.objects.get(email=new_member_email)
     group.members.add(new_member)
-    return redirect('groups.views.view_group', group_pk)
+    return redirect('groups.views.view_group', group_pk {'new_member_form':new_member_form})
     
     
