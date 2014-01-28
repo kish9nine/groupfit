@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from users.models import UserProfile, create_user_profile, EditUserProfileForm
-from users.forms import RegisterForm, PasswordForm
+from users.models import UserProfile, create_user_profile
+from users.forms import RegisterForm, PasswordForm, EditUserProfileForm
 from groupfit.forms import WorkoutGoalForm, WorkoutForm
 from groupfit.models import Workout
 from django.contrib.auth.hashers import make_password
