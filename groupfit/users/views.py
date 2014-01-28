@@ -125,7 +125,7 @@ def view_user(request, user_pk=-1):
         'workouts': workouts,
         'goal_form': goal_form,
         'workout_form': workout_form,
-        'edit_profile': edit_profile_form,
+        'edit_profile_form': edit_profile_form,
         'confirm_password_form': confirm_password_form,
     },
     )
