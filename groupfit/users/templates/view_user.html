@@ -310,26 +310,6 @@ aria-labelledby="GoalFormModalLabel" aria-hidden="true">
 </div>
 
 
-{% if goal_form.errors %}
-<script>
-$(function() {
-  $("#GoalFormModal").modal('show');
-});
-</script>
-{% endif %}
-
-
-{% if workout_form.errors %}
-<script>
-$(function() {
-  $("#WorkoutFormModal").modal('show');
-});
-</script>
-{% endif %}
-
-
-
-
 
 
 {% if user.pk == profile.user.pk %}
@@ -364,6 +344,34 @@ $(function() {
 {% endif %}
 
 
+
+
+
+{% if goal_form.errors %}
+<script>
+$(function() {
+  $("#GoalFormModal").modal('show');
+});
+</script>
+{% endif %}
+
+
+{% if workout_form.errors %}
+<script>
+$(function() {
+  $("#WorkoutFormModal").modal('show');
+});
+</script>
+{% endif %}
+
+
+{% if workout_form.errors %}
+<script>
+$(function() {
+  $("#EditProfileModal").modal('show');
+});
+</script>
+{% endif %}
 
 
 
