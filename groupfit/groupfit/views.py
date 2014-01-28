@@ -52,7 +52,7 @@ def privacy(request):
 
 @login_required
 def community(request):
-    users = UserProfile.objects.all()
+    users = UserProfile.objects.filter(privacy='public')
     groups = WorkoutGroup.objects.filter(privacy='public')
     #Append to groups, groups that the user belongs to. 
     tags = Tag.objects.all()
