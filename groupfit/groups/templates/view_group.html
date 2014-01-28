@@ -16,6 +16,7 @@ $(function(){
 	
 	{% for goal in group.goals.all %}
 		var ctx = $("{{goal.name}}").get(0).getContext("2d");
+		console.log(ctx);
   		var data = {
 			labels : ["January","February","March","April","May","June","July"],
 			datasets : [
