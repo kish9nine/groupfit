@@ -5,9 +5,35 @@
 {% block title %}{% trans "Password recovery" %}{% endblock %}
 
 {% block content %}
-	<form method="post" action="{{ url }}">
-		{% csrf_token %}
-		{{ form.as_p }}
-		<p><input type="submit" value="{% trans "Recover my password" %}"></p>
-	</form>
+
+
+<div class="row vertical-offset-100">
+  <div class="col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+    <form method="post" class="form-horizontal" action="{{ url }}">
+      {% csrf_token %}
+      <div class="panel panel-default">
+
+        <div class="panel-heading">
+          <h1 class="panel-title">
+            Reset Password
+          </h1>
+        </div>
+
+        <div class="panel-body">
+
+          <div class="form-group">
+            <div class="col-lg-12 text-center">
+              {{ form.as_p }}
+              <input type="submit" value="{% trans "Recover my password" %}"
+              class="btn btn-lg btn-danger btn-block">
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </form>
+  </div>
+</div.
 {% endblock %}
