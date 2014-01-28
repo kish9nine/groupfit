@@ -14,6 +14,16 @@ class PasswordForm(forms.Form):
         })
     )
     
+class PrivacyForm(forms.Form):
+    privacy_setting = forms.BooleanField(
+        required = True,
+        label = "PRIVACY SETTING",
+        widget=CheckboxInput(attrs={
+           'class':'form-control',
+           'placeholder':'Check the box to go private',
+        })
+    )
+
 
 class RegisterForm(ModelForm):
 
