@@ -10,11 +10,8 @@ GroupFit
 
 <script>
 $(function(){
-	{% for memberWList in member_workouts %}
-		{% for member in group.members.all %}
-			console.log(memberWList[member]);
-		{% empty %}
-		{% endfor %}
+	{% for member in group.members.all %}
+		console.log(member_workouts[member]);
 	{% empty %}
 	{% endfor %}
 	
