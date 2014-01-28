@@ -24,6 +24,46 @@ $(function() {
   });
 
 });
+
+$(function() {
+
+  // Set up references to the hidden fields.
+  var privacy_field = $("#{{group_form.privacy.id_for_label}}");
+
+  // Add a listener to the dropdown menu.
+  $("#privacy-dropdown").change(function(){
+
+    // Get the selected privacy setting.
+    var privacy = $("#privacy-dropdown").find(":selected").text();
+
+    // Hide the inputs by default. Show only if necessary.
+    $("#privacy-input-frame").hide();
+
+    // Depending on the activity, set units differently.
+    switch( privacy ){
+    case 'Public':
+      break;
+    case 'Private':
+      break;
+    default:
+      $("#privacy-input-frame").show();
+      var input_privacy = $("#privacy-input").val();
+      if( input_privacy != "" ) { privacy = input_privacy; }
+    }
+
+    // Set the appropriate activity after a change is made.
+    privacy_field.val( privacy );
+  });
+
+  // Initialize the two hidden fields with the initial values.
+  $("#privacy-dropdown").change();
+
+  // Always tie the input field to the appropriate form field.
+  $("#privacy-input").bind('input', function(){
+    privacy_field.val( $("#privacy-input").val() );
+  });
+
+});
 </script>
 
 <div class="row vertical-offset-100">
@@ -52,6 +92,34 @@ $(function() {
                   <span class="help-block">{{ error }}</span>
                 {% endfor %}
               </div>
+            </div>
+
+            <div class="form-group">
+               <div class="col-lg-12">
+                  <div class="input-group">
+                    <span class="input-group-addon">
+                      <i class="fa fa-flag"></i>
+                    </span>
+                    <select class="form-control" id="privacy-dropdown">
+                      <option selected value="public">Public</option>
+                      <option value="private">Private</option>
+                    </select>
+                 </div>
+              </div>
+            </div>
+            
+            {{ group_form.privacy }}
+            
+            <div class="form-group" id="privacy-input-frame">
+                <div class="col-lg-12">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-flag"></i>
+                        </span>
+                        <input type="text" placeholder="Privacy Setting"
+                            class="form-control" id="privacy-input" />
+                    </div>
+                </div>
             </div>
 
             <div class="form-group{% if create_user_form.first_name.errors %} has-error{% endif %}">
