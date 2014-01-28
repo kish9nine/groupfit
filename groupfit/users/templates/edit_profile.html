@@ -1,5 +1,5 @@
 <div class="form-group{%if edit_profile.errors%} has-error{%endif%}">
-  {% for error in edit_profile.non_field_errors %}
+  {% for error in edit_profile_form.non_field_errors %}
     <span class="col-lg-2 control-label"></span>
     <span class="col-lg-10 help-block">{{error}}</span>
   {% endfor %}
@@ -11,9 +11,9 @@
       <span class="input-group-addon">
         <i class="fa fa-user"></i>
       </span>
-      {{ edit_profile.first_name }}
+      {{ edit_profile_form.first_name }}
     </div>
-    {% for error in edit_profile.first_name.errors %}
+    {% for error in edit_profile_form.first_name.errors %}
       <span class="help-block">{{ error }}</span>
     {% endfor %}
   </div>
@@ -25,9 +25,9 @@
       <span class="input-group-addon">
         <i class="fa fa-user"></i>
       </span>
-      {{ edit_profile.last_name }}
+      {{ edit_profile_form.last_name }}
     </div>
-    {% for error in edit_profile.last_name.errors %}
+    {% for error in edit_profile_form.last_name.errors %}
       <span class="help-block">{{ error }}</span>
     {% endfor %}
   </div>
@@ -40,9 +40,9 @@
       <span class="input-group-addon">
         <i class="fa fa-pencil"></i>
       </span>
-      {{ edit_profile.new_password }}
+      {{ edit_profile_form.new_password }}
     </div>
-    {% for error in edit_profile.new_password.errors %}
+    {% for error in edit_profile_form.new_password.errors %}
       <span class="help-block">{{ error }}</span>
     {% endfor %}    
   </div>
