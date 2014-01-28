@@ -7,16 +7,23 @@ GroupFit &middot; Register
 
 {% block content %}
 <script>
-window.onclick = checkPass;
-function checkPass(){
-  if(document.getElementById("id_password").value == document.getElementById("id_confirm_password").value){
-    document.getElementById("passmatch").style.display = "none";
+$(function() {
+
+  function passMatcher( pass, match ) {
+    if( match === pass ) {
+      $("#passmatch").collapse('hide');
+    } else {
+      $("#passmatch").collapse('show');
+    }
   }
-  else{
-    document.getElementById("passmatch").style.display = "block";
-  }
-}
-  
+
+  $("#id_password, #id_confirm_password").bind('input', function(){
+    var match = $("#id_confirm_password").val();
+    var pass  = $("#id_password").val();
+    passMatcher( pass, match );
+  });
+
+});
 </script>
 
 <div class="row vertical-offset-100">
@@ -89,7 +96,7 @@ function checkPass(){
               </div>
             </div>
 
-            <div id="passmatch" class="form-group" style="display:none;">
+            <div id="passmatch" class="form-group collapse">
               <div class="col-lg-12">
                 <div class="input-group">
                   <span class="input-group-addon">
