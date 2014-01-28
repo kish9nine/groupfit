@@ -1,4 +1,3 @@
-
 <div class="form-group{%if edit_profile.errors%} has-error{%endif%}">
   {% for error in edit_profile.non_field_errors %}
     <span class="col-lg-2 control-label"></span>
@@ -10,7 +9,7 @@
   <div class="col-lg-12">
     <div class="input-group">
       <span class="input-group-addon">
-        <i class="fa fa-pencil"></i>
+        <i class="fa fa-user"></i>
       </span>
       {{ edit_profile.first_name }}
     </div>
@@ -24,7 +23,7 @@
   <div class="col-lg-12">
     <div class="input-group">
       <span class="input-group-addon">
-        <i class="fa fa-pencil"></i>
+        <i class="fa fa-user"></i>
       </span>
       {{ edit_profile.last_name }}
     </div>
@@ -34,81 +33,37 @@
   </div>
 </div>
 
-<!--
+
 <div class="form-group">
   <div class="col-lg-12">
     <div class="input-group">
       <span class="input-group-addon">
-        <i class="fa fa-flag"></i>
+        <i class="fa fa-pencil"></i>
       </span>
-      <select class="form-control" id="activity-dropdown">
-        <option selected value="weightloss">Weight Loss</option>
-        <option value="running">Running</option>
-        <option value="lifting">Lifting</option>
-        <option value="other">Other</option>
-      </select>
+      {{ edit_profile.new_password }}
     </div>
-  </div>
-</div>
-
-
-
-{{ edit_profile.password }}
-
-<div class="form-group" id="new_password">
-  <div class="col-lg-12">
-    <div class="input-group">
-      <span class="input-group-addon">
-        <i class="fa fa-flag"></i>
-      </span>
-      <input type="text" placeholder="New Password"
-      class="form-control" id="new_password" />
-    </div>
-  </div>
-</div>
-
-<div class="form-group" id="confirm_new_password">
-  <div class="col-lg-12">
-    <div class="input-group">
-      <span class="input-group-addon">
-        <i class="fa fa-flag"></i>
-      </span>
-      <input type="text" placeholder="Confirm New Password"
-      class="form-control" id="confirm_new_password" />
-    </div>
-  </div>
-</div>
-
-<div class="form-group{%if goal_form.amount.errors%} has-error{%endif%}">
-  <div class="col-lg-12">
-    <div class="input-group">
-      <span class="input-group-addon">
-        <i class="fa fa-flag"></i>
-      </span>
-      {{ goal_form.amount }}
-      <span class="input-group-addon" id="units-display">lbs</span>
-    </div>
-    {% for error in edit_profile.amount.errors %}
+    {% for error in edit_profile.new_password.errors %}
       <span class="help-block">{{ error }}</span>
-    {% endfor %}
+    {% endfor %}    
   </div>
 </div>
 
-<div class="form-group{%if edit_profile.email.errors%} has-error{%endif%}">
+
+<div class="form-group">
   <div class="col-lg-12">
     <div class="input-group">
       <span class="input-group-addon">
-        <i class="fa fa-calendar"></i>
+        <i class="fa fa-pencil"></i>
       </span>
-      {{ edit_profile.email }}
+      {{ confirm_password_form.confirm_password }}
     </div>
-    {% for error in edit_profile.email.errors %}
+    {% for error in confirm_password_form.confirm_password.errors %}
       <span class="help-block">{{ error }}</span>
-    {% endfor %}
+    {% endfor %}    
   </div>
 </div>
 
-
+<!--
 <script>
 $(function() {
 
