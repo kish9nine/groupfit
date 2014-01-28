@@ -63,7 +63,6 @@ class RegisterForm(ModelForm):
 #I am not sure if I should add login_required here. 
 # nope! only used in views :)
 class EditUserProfileForm(forms.ModelForm):
-
     class Meta:
 
         model = User
@@ -75,35 +74,20 @@ class EditUserProfileForm(forms.ModelForm):
             'last_name': 'Last Name',
             'new_password': 'New Password',
         }
-
-
-
-        ## Once you're done, everything below this line should be deleted.
-
-        first_name = forms.CharField(
-            required = False, 
-            label = "FIRSTNAME", 
-            widget = TextInput(attrs={
+        
+        widgets = {
+            'first_name': forms.TextInput(attrs={
                 'class':'form-control',
-                'placeholder': 'First Name',
-            })
-        )
-
-        last_name = forms.CharField(
-            required = False, 
-            label = "LASTNAME", 
-            widget = TextInput(attrs={
+                'placeholder': 'Reset Your First Name.'
+                }),
+            'last_name': forms.TextInput(attrs={
                 'class':'form-control',
-                'placeholder':'Last Name'
-            })
-        )
-
-        new_password = forms.CharField(
-            required = False, 
-            label="PASSWORD", 
-            widget=PasswordInput(attrs={
+                'placeholder': 'Reset Your Last Name.'
+                }),
+            'new_password': forms.PasswordInput(attrs={
                 'class':'form-control',
-                'placeholder':'Reset password',
-            })
-        )
+                'placeholder': 'Reset Your Password.'
+                }) 
+        }
+
 
