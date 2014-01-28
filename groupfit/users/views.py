@@ -84,7 +84,7 @@ def view_user(request, user_pk=-1):
             if edit_profile_form.is_valid():
                 edit_profile_form = edit_profile_form.save(commit=False)
                 edit_profile_form.user = request.user.userprofile
-                edit_profile.save()
+                edit_profile_form.save()
                 return redirect('users.views.view_user', user_pk)
             
         else:
@@ -99,6 +99,7 @@ def view_user(request, user_pk=-1):
         'workouts': workouts,
         'goal_form': goal_form,
         'workout_form': workout_form,
+        'edit_profile': edit_profile_form,
     },
     )
 
