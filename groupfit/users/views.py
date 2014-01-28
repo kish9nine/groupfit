@@ -62,28 +62,28 @@ def view_user(request, user_pk=-1):
     if request.method == 'POST':
 
         if 'submit-goal' in request.POST:
-            goal_form = WorkoutGoalForm(request.POST)
+            goal_form = WorkoutGoalForm(request.POST, prefix="goal")
             if goal_form.is_valid():
                 goal = goal_form.save(commit=False)
                 goal.save()
                 user.goals.add( goal )
                 return redirect('users.views.view_user', user_pk)
         else:
-            goal_form = WorkoutGoalForm()
+            goal_form = WorkoutGoalForm(prefix="goal")
 
         if 'submit-workout' in request.POST:
-            workout_form = WorkoutForm(request.POST)
+            workout_form = WorkoutForm(request.POST, prefix="workout")
             if workout_form.is_valid():
                 workout = workout_form.save(commit=False)
                 workout.user = request.user.userprofile
                 workout.save()
                 return redirect('users.views.view_user', user_pk)
         else:
-            workout_form = WorkoutForm()
+            workout_form = WorkoutForm(prefix="workout")
         
         if 'submit-new-profile' in request.POST:
-            edit_profile_form = EditUserProfileForm(request.POST)
-            confirm_password_form = PasswordForm(request.POST)
+            edit_profile_form = EditUserProfileForm(request.POST, prefix="edit")
+            confirm_password_form = PasswordForm(request.POST, prefix="password")
             if edit_profile_form.is_valid() and confirm_password_form.is_valid():
                 edit_profile = edit_profile_form.save(commit=False)
                 
@@ -105,15 +105,15 @@ def view_user(request, user_pk=-1):
                 #edit_profile_form.save()
                 return redirect('users.views.view_user', user_pk)
         else:
-            edit_profile_form = EditUserProfileForm()
-            confirm_password_form = PasswordForm()
+            edit_profile_form = EditUserProfileForm(prefix="edit")
+            confirm_password_form = PasswordForm(prefix="password")
         
 
     else:
-        goal_form = WorkoutGoalForm()
-        workout_form = WorkoutForm()
-        edit_profile_form = EditUserProfileForm()
-        confirm_password_form = PasswordForm()
+        goal_form = WorkoutGoalForm(prefix="goal")
+        workout_form = WorkoutForm(prefix="workout")
+        edit_profile_form = EditUserProfileForm(prefix="edit")
+        confirm_password_form = PasswordForm(prefix="password")
 
     return render(request, 'view_user.html', {
         'profile': user,
