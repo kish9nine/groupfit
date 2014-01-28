@@ -213,7 +213,9 @@ aria-labelledby="GoalFormModalLabel" aria-hidden="true">
 <script>
 $(function() {
   $("#GoalFormModal").modal('show');
-  var ctx = $("#goalChart").get(0).getContext("2d");
+});
+$(function(){
+	var ctx = $("#goalChart").get(0).getContext("2d");
   var goalChart = new Chart(ctx);
   var data = {
 	labels : ["January","February","March","April","May","June","July"],
@@ -233,8 +235,9 @@ $(function() {
 			data : [28,48,40,19,96,27,100]
 		}
 	]
-}
-new Chart(ctx).Line(data,options);
+	};
+	new Chart(ctx).Line(data,options);
+	
 });
 </script>
 {% endif %}
