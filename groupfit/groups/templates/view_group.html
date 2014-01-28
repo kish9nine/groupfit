@@ -23,7 +23,9 @@ EXAMPLE USAGE
 <script>
 $(function(){
 	{% for member in group.members.all %}
-		console.log( {{ member_workouts|get_value:member }} );
+		{% with value=member_workouts|get_value:key %}
+			console.log({{value}})
+		{% endwith %}
 	{% endfor %}
 	
 	{% for goal in group.goals.all %}
