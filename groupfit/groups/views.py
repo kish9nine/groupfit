@@ -39,7 +39,7 @@ def view_group(request, group_pk):
             goal_form = WorkoutGoalForm() 
         
         if 'new-member-submit' in request.POST:
-            new_member_form = EmailForm(request.POST, prefix='new')
+            new_member_form = EmailForm(request.POST)
             if new_member_form.is_valid():
                 new_member_email = new_member_form.cleaned_data.get('email')
                 new_user = User.objects.get(email = new_member_email)
