@@ -22,7 +22,7 @@ class RegisterForm(ModelForm):
     first_name = forms.CharField(
         required = True, 
         label="FIRSTNAME", 
-        widget=TextInput(attrs={'class':'form-control', 'placeholder': 'First Name'})
+        #widget=TextInput(attrs={'class':'form-control', 'placeholder': 'First Name'})
         )
         
     last_name = forms.CharField(
