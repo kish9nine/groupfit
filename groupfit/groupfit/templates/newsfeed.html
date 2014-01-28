@@ -4,7 +4,7 @@
     <h1 class="page-header">Your Current Goals</h1>
 
     {% for group in groups %}
-      {% if group.user = user %}
+      {% if group.user == user %}
         {% for goal in group.goals.all %}
         <div class="list-group">
           <a class="list-group-item" href="{{group.get_absolute_url}}">
