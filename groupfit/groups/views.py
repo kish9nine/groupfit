@@ -4,7 +4,7 @@ from groups.models import WorkoutGroup
 from groups.forms import GroupRegisterForm, EmailForm
 from users.models import UserProfile
 from groupfit.forms import WorkoutGoalForm
-from groupfit.models import WorkoutGoal
+from groupfit.models import WorkoutGoal, Workout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
@@ -18,6 +18,10 @@ def view_group(request, group_pk):
     """
 
     group = get_object_or_404( WorkoutGroup, pk=group_pk )
+    member_workouts = {}
+    for member in group.members.all():
+        workouts = Workout.objects.filter(user = member)
+        member_workouts[member.user.username] = workouts
 
     if request.method == 'POST':
         goal_form = WorkoutGoalForm(request.POST)
@@ -32,6 +36,7 @@ def view_group(request, group_pk):
     return render(request, 'view_group.html', {
         'group': group,
         'goal_form' : goal_form,
+        'member_workouts' : member_workouts,
     },
     )
 
