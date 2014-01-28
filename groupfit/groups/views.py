@@ -19,13 +19,12 @@ def view_group(request, group_pk):
     """
 
     date = datetime.date.today()
-    start_of_week = date - datetime.timedelta( date.weekday() )
-    end_of_week = start_of_week + datetime.timedelta(7)
+    start_of_week = date - datetime.timedelta( 7 )
 
     group = get_object_or_404( WorkoutGroup, pk=group_pk )
     member_workouts = {}
     for member in group.members.all():
-        workouts = Workout.objects.filter(user = member).filter( date__range=[start_of_week, end_of_week] )
+        workouts = member.workout_set.all()
         member_workouts[member] = workouts
 
     if request.method == 'POST':
