@@ -28,25 +28,23 @@ def view_group(request, group_pk):
         member_workouts[member] = workouts
 
     if request.method == 'POST':
-        goal_form = WorkoutGoalForm(request.POST)
-        if goal_form.is_valid():
-            goal = goal_form.save(commit=False)
-            goal.save()
-            group.goals.add( goal )
-            return redirect('groups.views.view_group', group_pk)
-            ## Adding new members
+        if 'new-goal-submit' in request.POST:
+            goal_form = WorkoutGoalForm(request.POST)
+            if goal_form.is_valid():
+                goal = goal_form.save(commit=False)
+                goal.save()
+                group.goals.add( goal )
+                return redirect('groups.views.view_group', group_pk)
+        
+        if 'new-member-submit' in request.POST:
+        new_member_form = EmailForm(request.POST, prefix='new')
+            if new_member_form.is_valid():
+                new_member_email = new_member_form.cleaned_data.get('email')
+                new_member = User.objects.get(email=new_member_email)
+                group.members.add(new_member)
+                return redirect('groups.views.view_group', group_pk, {'new_member_form':new_member_form})
     else:
         goal_form = WorkoutGoalForm()
-        
-        
-    if request.method == 'POST':
-        new_member_form = EmailForm(request.POST, prefix='new')
-        if 'new-member-submit' in request.POST and new_member_form.is_valid():
-            new_member_email = new_member_form.cleaned_data.get('email')
-            new_member = User.objects.get(email=new_member_email)
-            group.members.add(new_member)
-            return redirect('groups.views.view_group', group_pk, {'new_member_form':new_member_form})
-    else: 
         new_member_form = EmailForm(request.POST)
         
 
