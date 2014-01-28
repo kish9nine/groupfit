@@ -47,11 +47,11 @@ $(function(){
 			datasets : [
 			{% for member in group.members.all %}
 				{
-					fillColor : "rgba(220,220,220,0.5)",
-					strokeColor : "rgba(220,220,220,1)",
-					pointColor : "rgba(220,220,220,1)",
+					fillColor : "rgba(Math.random()*255,Math.random()*255,Math.random()*255,0.5)",
+					strokeColor : "rgba(Math.random()*255,Math.random()*255,Math.random()*255,1)",
+					pointColor : "rgba(Math.random()*255,Math.random()*255,Math.random()*255,1)",
 					pointStrokeColor : "#fff",
-					data : dataDict["{{member.user.username}}"];
+					data : dataDict["{{member.user.username}}"]
 				},
 			{% endfor %} {} 
 			]
