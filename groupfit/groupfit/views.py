@@ -50,7 +50,6 @@ def privacy(request):
     )
 
 
-@login_required
 def community(request):
     users = UserProfile.objects.filter(privacy='public')
     groups = WorkoutGroup.objects.filter(privacy='public')
