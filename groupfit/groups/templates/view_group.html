@@ -26,6 +26,7 @@ $(function(){
 		{% with workouts=member_workouts|get_value:member %}
 			{% for workout in workouts %}
 				console.log({{workout.activity}});
+				console.log({{workout}});
 			{% endfor %}
 		{% endwith %}
 	{% endfor %}
