@@ -38,10 +38,10 @@ $(function(){
 			while(dataDict["{{member.user.username}}"].length < 7){
 				dataDict["{{member.user.username}}"][dataDict["{{member.user.username}}"].length] = 0;	
 			}
-			var curmemval1 = Math.floor(Math.random()*255);
-			var curmemval2 = Math.floor(Math.random()*255);
-			var curmemval3 = Math.floor(Math.random()*255);
-			colorDict["{{member.user.username}}"] = curmemval1.toString() + "," curmemval2.toString() + "," curmemval3.toString();
+			var red = Math.floor(Math.random()*255);
+			var green = Math.floor(Math.random()*255);
+			var blue = Math.floor(Math.random()*255);
+			colorDict["{{member.user.username}}"] = red.toString() + "," + green.toString() + "," + blue.toString();
 		{% endfor %}
 		
 		
