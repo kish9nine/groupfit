@@ -83,5 +83,6 @@ class EditUserProfileForm:
         
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'password', 'email']
+        fields = ['first_name', 'last_name', 'password']
+        exclude = ['username', 'email'] #These data should not be altered. 
         
