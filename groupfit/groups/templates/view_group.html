@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load groupfit_extras %}
 {% load gravatar %}
 {% load staticfiles %}
 
@@ -7,6 +8,17 @@ GroupFit
 {% endblock %}
 
 {% block content %}
+
+
+{% comment %}
+
+EXAMPLE USAGE
+{% for member in group.members.all %}
+  {{ member }}:
+  {{ member_workouts|get_value:member.user.username }}
+{% endfor %}
+
+{% endcomment %}
 
 <script>
 $(function(){

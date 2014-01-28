@@ -1,5 +1,5 @@
 from django import template
-register = template.Library
+register = template.Library()
 
 @register.filter
 def get_value( dictionary, key ):
