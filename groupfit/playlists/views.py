@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.forms.models import modelformset_factory
 from playlists.models import Playlist, Track
 from playlists.forms import PlaylistForm, TrackForm
+from groups.models import WorkoutGroup
 
 @login_required
 def create_playlist(request):
@@ -71,3 +72,10 @@ def view_playlist(request, playlist_pk):
         'playlist': playlist,
     },
     )
+
+@login_required
+def share_playlist(request, playlist_pk, group_pk):
+    playlist = get_object_or_404( Playlist, pk=playlist_pk )
+    group = get_object_or_404( WorkoutGroup, pk=group_pk )
+    group.playlists.add( playlist )
+    return redirect('groups.views.view_group', group_pk)

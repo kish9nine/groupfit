@@ -14,7 +14,7 @@ GroupFit
       <h1>
         <i class="fa fa-music"></i>
         {{ playlist.name }}
-        <a href="#">
+        <a data-toggle="modal" data-target="#ShareModal" href="#">
           <i class="fa fa-share"></i>
         </a>
       </h1>
@@ -48,5 +48,48 @@ GroupFit
     </table>
   </div>
 </div>
+
+
+
+<div class="modal fade" id="ShareModal" tabindex="-1" role="dialog"
+aria-labelledby="GroupSelectorModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="register-form" method="post" class="form-horizontal"
+      action=""> {% csrf_token %}
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"
+          aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="GroupSelectorModalLabel">Share Playlist</h4>
+        </div>
+
+        <div class="modal-body">
+
+          <h1>Share with . . .</h1>
+          <p class="text-center">
+            {% for group in user.userprofile.groups.all %}
+              <a href="{% url 'playlists.views.share_playlist' playlist.pk group.pk %}">
+                {{ group.name }}
+              </a><br/>
+            {% empty %}
+              You do not belong to any groups!
+            {% endfor %}
+          </p>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <input type="submit" name="submit-goal" class="btn btn-success"
+          value="Make Goal"/>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+
 
 {% endblock %}
