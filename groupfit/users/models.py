@@ -19,7 +19,14 @@ class UserProfile( models.Model ):
     user = models.OneToOneField(
         User,
     )
-
+    
+    privacy = models.CharField(
+        blank = False,
+        help_text = "If you choose private, other users will not be able to see you",
+        max_length = 50
+        
+    )
+    
     groups = models.ManyToManyField(
         WorkoutGroup,
         blank = True,
