@@ -103,4 +103,4 @@ def forgot(request):
 
 
 def reset_password(request):
-    return password_reset(request, template_name='forgot.html')
+    return password_reset(request, template_name='forgot.html', post_reset_redirect='email_sent.html')
