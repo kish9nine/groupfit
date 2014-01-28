@@ -8,7 +8,95 @@ GroupFit
 
 {% block content %}
 
+<script>
+$(function(){
+      var weightData = [];
+      var runData = [];
+      var liftData = [];
+    	{% for workout in profile.workout_set.all %}
+				if("Weight Loss" == "{{workout.activity}}"){
+					if(weightData.length < 7)
+						weightData[weightData.length] = {{workout.amount}};
+				}
+				if("Running" == "{{workout.activity}}"){
+					if(runData.length < 7)
+						runData[runData.length] = {{workout.amount}};
+				}
+				if("Lifting" == "{{workout.activity}}"){
+					if(liftData.length < 7)
+						liftData[liftData.length] = {{workout.amount}};
+				}
+			{% endfor %}
+			while(weightData.length < 7){
+				weightData[weightData.length] = 0;	
+			}
+			while(runData.length < 7){
+				runData[runData.length] = 0;	
+			}			
+			while(liftData.length < 7){
+				liftData[liftData.length] = 0;	
+			}
+		var red = Math.floor(Math.random()*255);
+		var green = Math.floor(Math.random()*255);
+		var blue = Math.floor(Math.random()*255);
+		var colorString = red.toString() + "," + green.toString() + "," + blue.toString();
+		
+		
+		var weightctx = document.getElementById("weightloss").getContext("2d");
+		var weightdata = {
+			labels : ["Workout 1","Workout 2","Workout 3","Workout 4","Workout 5","Workout 6","Workout 7"],
+			datasets : [
+				{
+					fillColor : "rgba("+colorString+",.5)",
+					strokeColor : "rgba("+colorString+",1)",
+//					pointColor : "rgba("+colorDict["{{member.user.username}}"]+",1)",
+//					pointStrokeColor : "#fff",
+					data : weightData
+				} 
+			]
+		};
+		
+		var runctx = document.getElementById("running").getContext("2d");
+		var rundata = {
+			labels : ["Workout 1","Workout 2","Workout 3","Workout 4","Workout 5","Workout 6","Workout 7"],
+			datasets : [
+				{
+					fillColor : "rgba("+colorString+",.5)",
+					strokeColor : "rgba("+colorString+",1)",
+//					pointColor : "rgba("+colorDict["{{member.user.username}}"]+",1)",
+//					pointStrokeColor : "#fff",
+					data : runData
+				} 
+			]
+		};
+		
+		var liftctx = document.getElementById("lifting").getContext("2d");
+		var liftdata = {
+			labels : ["Workout 1","Workout 2","Workout 3","Workout 4","Workout 5","Workout 6","Workout 7"],
+			datasets : [
+				{
+					fillColor : "rgba("+colorString+",.5)",
+					strokeColor : "rgba("+colorString+",1)",
+//					pointColor : "rgba("+colorDict["{{member.user.username}}"]+",1)",
+//					pointStrokeColor : "#fff",
+					data : liftData
+				} 
+			]
+		};
+		
+		var weightChart = new Chart(weightctx).Bar(weightdata);
+		var runChart = new Chart(runctx).Bar(rundata);
+		var liftChart = new Chart(liftctx).Bar(liftdata);
+});	
+</script>
 
+<style>
+  canvas {
+            width: 100% !important;
+            max-width: 700;
+            height: auto !important;
+        }
+</style>
 <div class="page-header">
   <div class="row">
     <h1>{{ profile.user.first_name }} {{ profile.user.last_name }}</h1>
@@ -147,10 +235,38 @@ GroupFit
 
         <div class="panel panel-info">
           <div class="panel-heading">
-            <h1 class="panel-title">Progress Charts</h1>
+            <h1 class="panel-title">Weight Loss Activity</h1>
           </div>
           <div class="panel-body">
-            Charts go here?
+          <canvas id="weightloss" height="500" width="700"></canvas>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h1 class="panel-title">Running Activity</h1>
+          </div>
+          <div class="panel-body">
+          <canvas id="running" height="500" width="700"></canvas>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h1 class="panel-title">Lifting Activity</h1>
+          </div>
+          <div class="panel-body">
+          <canvas id="lifting" height="500" width="700"></canvas>
           </div>
         </div>
 
@@ -195,7 +311,7 @@ GroupFit
     {% endif %}
 -->
 
-
+<!--
     {% for goal in profile.goals.all %}
     <div class="row">
       <div class="col-lg-12">
@@ -248,7 +364,7 @@ GroupFit
       </div>
     </div>
     {% endfor %}
-
+-->
   </div>
 
 </div>
