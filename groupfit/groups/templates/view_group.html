@@ -23,8 +23,10 @@ EXAMPLE USAGE
 <script>
 $(function(){
 	{% for member in group.members.all %}
-		{% with workout=member_workouts|get_value:member %}
-			console.log({{workout.activity}});
+		{% with workouts=member_workouts|get_value:member %}
+			{% for workout in workouts %}
+				console.log({{workout.activity}});
+			{% endfor %}
 		{% endwith %}
 	{% endfor %}
 	
