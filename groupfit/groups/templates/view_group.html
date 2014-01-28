@@ -24,6 +24,7 @@ EXAMPLE USAGE
 $(function(){
 	{% for goal in group.goals.all %}
 		var dataDict = {}
+		var colorDict = {}
 		{% for member in group.members.all %}
 			dataDict["{{member.user.username}}"] = [];
 			{% with workouts=member_workouts|get_value:member %}
@@ -37,6 +38,8 @@ $(function(){
 			while(dataDict["{{member.user.username}}"].length < 7){
 				dataDict["{{member.user.username}}"][dataDict["{{member.user.username}}"].length] = 0;	
 			}
+			var curmemval = Math.random()*255;
+			colorDict["{{member.user.username}}"] = curmemval.toString();
 		{% endfor %}
 		
 		
@@ -47,9 +50,9 @@ $(function(){
 			datasets : [
 			{% for member in group.members.all %}
 				{
-					fillColor : "rgba(Math.random()*255,Math.random()*255,Math.random()*255,0.5)",
-					strokeColor : "rgba(Math.random()*255,Math.random()*255,Math.random()*255,1)",
-					pointColor : "rgba(Math.random()*255,Math.random()*255,Math.random()*255,1)",
+					fillColor : "rgba("+colorDict["{{member.user.username}}"]+","+colorDict["{{member.user.username}}"]+","+colorDict["{{member.user.username}}"]+",.5)",
+					strokeColor : "rgba("+colorDict["{{member.user.username}}"]+","+colorDict["{{member.user.username}}"]+","+colorDict["{{member.user.username}}"]+",1)",
+					pointColor : "rgba("+colorDict["{{member.user.username}}"]+","+colorDict["{{member.user.username}}"]+","+colorDict["{{member.user.username}}"]+",1)",
 					pointStrokeColor : "#fff",
 					data : dataDict["{{member.user.username}}"]
 				},
