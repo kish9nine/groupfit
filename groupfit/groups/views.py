@@ -124,3 +124,10 @@ def complete_goal(request, group_pk, goal_pk):
             goal.achieved = True
             goal.save()
     return redirect('groups.views.view_group', group.pk)
+
+
+def add_member(request, group_pk):
+    group = get_obejct_or_404( WorkoutGroup, pk=group_pk )
+    return redirect('groups.views.view_group', group_pk)
+    
+    
