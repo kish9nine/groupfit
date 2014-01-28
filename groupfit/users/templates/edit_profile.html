@@ -7,13 +7,14 @@
 
 <div class="form-group{%if edit_profile.first_name.errors%} has-error{%endif%}">
   <div class="col-lg-12">
+    {% if user.is_authenticated %}
     <div class="input-group">
-      {% if user.is_authenticated %}
       <span class="input-group-addon">
         <i class="fa fa-user"></i>
       </span>
+      {{ user.username }}
     </div>
-    {{ user.username }}
+    {% endif  %}
   </div>
 </div>
 
