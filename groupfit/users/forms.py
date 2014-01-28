@@ -78,11 +78,11 @@ class EditUserProfileForm(forms.ModelForm):
         widgets = {
             'first_name': forms.TextInput(attrs={
                 'class':'form-control',
-                #'placeholder': 'Reset Your First Name.'
+                'placeholder': 'Reset your first name here.'
                 }),
             'last_name': forms.TextInput(attrs={
                 'class':'form-control',
-                'placeholder': 'Reset Your Last Name.'
+                'placeholder': 'Reset your last name here.'
                 }),
             'password': forms.PasswordInput(attrs={
                 'class':'form-control',
