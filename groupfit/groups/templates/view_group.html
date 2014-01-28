@@ -66,6 +66,7 @@ $(function(){
 			var legend = document.createElement("span");
 			legend.style.color = "rgb("+colorDict["{{member.user.username}}"]+")";
 			legend.innerHTML = "{{member.user.username}}";
+			legend.className = "legend";
 			document.getElementById("{{goal.name}}Panel").appendChild(legend);
 		{% endfor %}
 		
@@ -80,7 +81,11 @@ $(function(){
             width: 100% !important;
             max-width: 700;
             height: auto !important;
-}	
+	}
+	
+	.legend{
+		margin-right: 5px;
+	}
 </style>
 
 
