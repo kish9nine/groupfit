@@ -29,7 +29,7 @@ def view_group(request, group_pk):
 
     if request.method == 'POST':
         goal_form = WorkoutGoalForm(request.POST)
-        if goal_form.is_valid() and :
+        if goal_form.is_valid():
             goal = goal_form.save(commit=False)
             goal.save()
             group.goals.add( goal )
