@@ -10,9 +10,9 @@ GroupFit
 
 <script>
 $(function(){
-	{% for member, workouts in member_workouts %}
-		console.log( {{ workouts }} );
-	{% endfor %}
+//	{% for member, workouts in member_workouts %}
+//		console.log( {{ workouts }} );
+//	{% endfor %}
 	
 	{% for goal in group.goals.all %}
 		console.log($("{{goal.name}}"));
@@ -37,7 +37,6 @@ $(function(){
 		]
 		};
 		var goalChart = new Chart(ctx).Line(data);
-	{% empty %}
 	{% endfor %}
 });	
 </script>
@@ -164,7 +163,7 @@ $(function(){
               <strong>Target:</strong>
               {{ goal.amount }} <em>{{ goal.units }}</em>
             </p>
-            <canvas id="{{goal.name}}" style="width: 600px; height: 500px;"></canvas>
+            <div class="col-sm-1-2"><canvas id="{{goal.name}}"></canvas></div>
           </div>
         </div>
       </div>
