@@ -23,8 +23,8 @@ EXAMPLE USAGE
 <script>
 $(function(){
 	{% for member in group.members.all %}
-		{% with value=member_workouts|get_value:key %}
-			console.log({{value}})
+		{% with workout=member_workouts|get_value:member %}
+			console.log({{workout.activity}});
 		{% endwith %}
 	{% endfor %}
 	
@@ -32,7 +32,7 @@ $(function(){
 		var ctx = document.getElementById("{{goal.name}}").getContext("2d");
 		console.log(ctx);
   		var data = {
-			labels : ["January","February","March","April","May","June","July"],
+			labels : ["7","6","5","4","3","2","1"],
 			datasets : [
 			{
 				fillColor : "rgba(220,220,220,0.5)",
