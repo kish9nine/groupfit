@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.contrib.auth.views import password_reset
+from django.contrib.auth.views import password_reset, password_reset_done, password_reset_complete, password_reset_confirm
 from django.core.mail import send_mail
 from groupfit.forms import ForgotPasswordForm
 from groups.models import WorkoutGroup
@@ -99,3 +99,7 @@ def forgot(request):
     #Otherwise, stay on that page with the incompelete form. 
     return render(request, 'forgot.html', {'forgot_password_form': forgot_password_form},)
 
+
+
+def reset_password(request):
+    

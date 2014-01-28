@@ -22,16 +22,18 @@ EXAMPLE USAGE
 
 <script>
 $(function(){
-	{% for member in group.members.all %}
-		{% with workouts=member_workouts|get_value:member %}
-			{% for workout in workouts %}
-				console.log({{workout.activity}});
-				console.log({{workout}});
-			{% endfor %}
-		{% endwith %}
-	{% endfor %}
-	
 	{% for goal in group.goals.all %}
+		var dataDict = {}
+		{% for member in group.members.all %}
+			{% with workouts=member_workouts|get_value:member %}
+				{% for workout in workouts %}
+					if("{{goal.activity}}" == "{{workout.activity}}"){
+						
+					}
+				{% endfor %}
+			{% endwith %}
+		{% endfor %}
+		
 		var ctx = document.getElementById("{{goal.name}}").getContext("2d");
 		console.log(ctx);
   		var data = {
