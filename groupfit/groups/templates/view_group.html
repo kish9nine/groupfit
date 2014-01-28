@@ -214,6 +214,9 @@ aria-labelledby="GoalFormModalLabel" aria-hidden="true">
 $(function() {
   $("#GoalFormModal").modal('show');
 });
+</script>
+{% endif %}
+<script>
 $(function(){
 	var ctx = $("#goalChart").get(0).getContext("2d");
   var goalChart = new Chart(ctx);
@@ -238,9 +241,8 @@ $(function(){
 	};
 	new Chart(ctx).Line(data,options);
 	
-});
+});	
 </script>
-{% endif %}
 
 
 
