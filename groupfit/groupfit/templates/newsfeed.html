@@ -1,23 +1,83 @@
+<div id="banner">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Welcome back, {{ user.first_name }}!</h1>
+    </div>
+  </div>
+</div>
+
 <div class="row">
-  <div class="col-lg-12">
 
-    <h1 class="page-header">Your Current Goals</h1>
-
-    {% for group in groups %}
-      {% if group.user == user %}
-        {% for goal in group.goals.all %}
-        <div class="list-group">
-          <a class="list-group-item" href="{{group.get_absolute_url}}">
-            <h4 class="list-group-item-heading">{{goal.name}}</h4>
-            <p class="list-group-item-text">
-              {{ goal.target_date|timeuntil }} remaining!
-            </p>
+  <div class="col-lg-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="panel-title text-center">
+          <i class="fa fa-user"></i>
+          <a href="{{user.userprofile.get_absolute_url}}">
+            Your Workouts
           </a>
         </div>
-        {% endfor %}
-      {% endif %}
-    {% empty %}
-    no groups
-    {% endfor %}
+      </div>
+      <div class="panel-body">
+        <p>
+          Keep track of your
+          <a href="{{user.userprofile.get_absolute_url}}">workouts</a>
+          and monitor your progress over time. Keep up the good work!
+        </p>
+      </div>
+    </div>
   </div>
+
+  <div class="col-lg-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="panel-title text-center">
+          <i class="fa fa-users"></i>
+          Your Groups
+        </div>
+      </div>
+      <div class="panel-body">
+        <p>
+          Watch the progress of your groups and work together with your
+          friends.
+        </p>
+        {% for group in user.userprofile.groups.all %}
+        <a href="{{group.get_absolute_url}}">{{group.name}}</a><br/>
+        {% empty %}
+        <p>
+          You're not in any groups yet! Check out the
+          <a href="/community">community</a> to find some.
+        </p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="panel-title text-center">
+          <i class="fa fa-music"></i>
+          Your Playlists
+        </div>
+      </div>
+      <div class="panel-body">
+        <p>
+          <a href="{% url 'playlists.views.create_playlist'%}">
+            Create awesome workout playlists
+          </a> and share them with your groups!
+        </p>
+        {% for playlist in user.userprofile.playlists.all %}
+        <a href="{{playlist.get_absolute_url}}">{{playlist.name}}</a><br/>
+        {% empty %}
+        <p>
+          You don't have any playlists yet! Maybe try
+          <a href="{% url 'playlists.views.create_playlist'%}">creating</a>
+          some!
+        </p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
 </div>
