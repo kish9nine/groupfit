@@ -15,13 +15,10 @@ class PasswordForm(forms.Form):
     )
     
 class PrivacyForm(forms.Form):
-    privacy_setting = forms.BooleanField(
+    privacy_setting = forms.CharField(
         required = True,
         label = "PRIVACY SETTING",
-        widget=CheckboxInput(attrs={
-           'class':'form-control',
-           'placeholder':'Check if you do not want other users to see your presence.',
-        })
+        widget=HiddenInput()
     )
 
 
