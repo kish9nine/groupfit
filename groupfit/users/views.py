@@ -88,11 +88,10 @@ def view_user(request, user_pk=-1):
                 edit_profile_form = edit_profile_form.save(commit=False)
                 
                 #Change first or last name.
-                try: 
-                    new_first_name = edit_profile_form.cleaned_data.get('first_name')
-                    user.user.first_name = new_first_name
-                except:
-                    return render(request, 'welcome.html')
+                
+                new_first_name = edit_profile_form.cleaned_data.get('first_name')
+                user.user.first_name = new_first_name
+                
                 try:
                     new_last_name = edit_profile_form.cleaned_data.get('last_name')
                     user.user.last_name = new_last_name
