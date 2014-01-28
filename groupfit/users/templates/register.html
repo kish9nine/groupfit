@@ -133,16 +133,6 @@ GroupFit &middot; Register
 </div>
 
 <script>
-$(function () {
-  $("#id_password").change(function() {
-    checkPass();
-  });
-});
-$(function () {
-  $("#id_confirm_password").change(function() {
-    checkPass();
-  });
-});
 function checkPass(){
   if(document.getElementById("id_password").value == document.getElementById("id_confirm_password").value){
     document.getElementById("passmatch").display = "none";
