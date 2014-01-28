@@ -47,7 +47,7 @@ def view_group(request, group_pk):
                 group.members.add(new_member)
                 return redirect('groups.views.view_group', group_pk, {'new_member_form':new_member_form})
         else:
-            new_member_form = EmailForm(request.POST)
+            new_member_form = EmailForm()
     else:
         goal_form = WorkoutGoalForm()
         new_member_form = EmailForm()
