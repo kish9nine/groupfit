@@ -83,16 +83,36 @@ def view_user(request, user_pk=-1):
             
         if 'submit-new-profile' in request.POST:
             edit_profile_form = EditUserProfileForm(request.POST)
-            confirm_profile_form = PasswordForm(request.POST)
-            if edit_profile_form.is_valid() and confirm_profile_form.is_valid():
+            confirm_password_form = PasswordForm(request.POST)
+            if edit_profile_form.is_valid() and confirm_password_form.is_valid():
                 edit_profile_form = edit_profile_form.save(commit=False)
-                confirm_profile_form = confirm_profile_form(commit=False)
-                edit_profile_form.user = request.user.userprofile
+                
+                #Change first or last name.
+                try: 
+                    new_first_name = edit_profile_form.cleaned_data.get('first_name')
+                    user.user.first_name = new_first_name
+                except:
+                    pass
+                try:
+                    new_last_name = edit_profile_form.cleaned_data.get('last_name')
+                    user.user.last_name = new_last_name
+                except:
+                    pass
+                
+                
+                #Password change part. 
+                try:
+                    new_pw = edit_profile_form.cleaned_data.get('new_password')
+                    confirm_new_pw = confirm_password_form.cleaned_data.get('confirm_password') 
+                    if new_pw == confirm_new_pw:
+                        user.user.set_password(new_pw) #Change the password if the two match. 
+                except: 
+                    pass
                 edit_profile_form.save()
                 return redirect('users.views.view_user', user_pk)
         else:
             edit_profile_form = EditUserProfileForm()
-            confirm_profile_form = PasswordForm()
+            confirm_password_form = PasswordForm()
 
     else:
         goal_form = WorkoutGoalForm()
