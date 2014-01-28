@@ -129,10 +129,11 @@ def complete_goal(request, group_pk, goal_pk):
 def add_member(request, group_pk):
     group = get_obejct_or_404( WorkoutGroup, pk=group_pk )
     new_member_form = EmailForm(request.POST)
-    new_member_form.save(commit=False)
-    new_member_email = new_member_form.cleaned_data.get('email')
-    new_member = User.objects.get(email=new_member_email)
-    group.members.add(new_member)
-    return redirect('groups.views.view_group', group_pk {'new_member_form':new_member_form})
+    if new_member_form.is_valid():
+        new_member_form.save(commit=False)
+        new_member_email = new_member_form.cleaned_data.get('email')
+        new_member = User.objects.get(email=new_member_email)
+        group.members.add(new_member)
+    return redirect('groups.views.view_group', group_pk, {'new_member_form':new_member_form})
     
     
