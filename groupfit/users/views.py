@@ -106,8 +106,9 @@ def view_user(request, user_pk=-1):
                     request.user.last_name = new_last_name
                 if len( new_password ) > 0 and new_password == confirm_password:
                     request.user.set_password( new_password )
-                if len( privacy ) > 0:
+                if privacy == "Private" or privacy == "Public":
                     request.user.userprofile.privacy = privacy
+                    request.user.userprofile.save()
                 request.user.save()
 
                 #edit_profile_form.save()
