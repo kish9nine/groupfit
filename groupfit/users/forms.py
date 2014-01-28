@@ -61,7 +61,7 @@ class RegisterForm(ModelForm):
 
 #@login_required
 #I am not sure if I should add login_required here. 
-class EditUserProfileForm:
+class EditUserProfileForm(forms.Form):
     first_name = forms.CharField(
         required = False, 
         label="FIRSTNAME", 
