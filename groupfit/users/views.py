@@ -80,7 +80,7 @@ def view_user(request, user_pk=-1):
                 return redirect('users.views.view_user', user_pk)
         else:
             workout_form = WorkoutForm()
-            
+        
         if 'submit-new-profile' in request.POST:
             edit_profile_form = EditUserProfileForm(request.POST)
             confirm_password_form = PasswordForm(request.POST)
@@ -107,6 +107,7 @@ def view_user(request, user_pk=-1):
         else:
             edit_profile_form = EditUserProfileForm()
             confirm_password_form = PasswordForm()
+        
 
     else:
         goal_form = WorkoutGoalForm()
