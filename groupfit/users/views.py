@@ -85,28 +85,23 @@ def view_user(request, user_pk=-1):
             edit_profile_form = EditUserProfileForm(request.POST)
             confirm_password_form = PasswordForm(request.POST)
             if edit_profile_form.is_valid() and confirm_password_form.is_valid():
-                edit_profile_form = edit_profile_form.save(commit=False)
+                edit_profile = edit_profile_form.save(commit=False)
                 
                 #Change first or last name.
                 
-                new_first_name = edit_profile_form.first_name
+                new_first_name = edit_profile.first_name
                 user.user.first_name = new_first_name
                 
-                try:
-                    new_last_name = edit_profile_form.cleaned_data.get('last_name')
-                    user.user.last_name = new_last_name
-                except:
-                    return render(request, 'welcome.html')
+                new_last_name = edit_profile.last_name
+                user.user.last_name = new_last_name
                 
                 
                 #Password change part. 
-                try:
-                    new_pw = edit_profile_form.cleaned_data.get('new_password')
-                    confirm_new_pw = confirm_password_form.cleaned_data.get('confirm_password') 
-                    if new_pw == confirm_new_pw:
-                        user.user.set_password(new_pw) #Change the password if the two match. 
-                except: 
-                    return render(request, 'welcome.html')
+                new_pw = edit_profile_form.cleaned_data.get('new_password')
+                confirm_new_pw = confirm_password_form.cleaned_data.get('confirm_password') 
+                if new_pw == confirm_new_pw:
+                    user.user.set_password(new_pw) #Change the password if the two match. 
+
                 edit_profile_form.save()
                 return redirect('users.views.view_user', user_pk)
         else:
