@@ -10,9 +10,8 @@ GroupFit
 
 <script>
 $(function(){
-	{% for member in group.members.all %}
-		console.log(member_workouts[member]);
-	{% empty %}
+	{% for member, workouts in member_workouts %}
+		console.log( {{ workouts }} );
 	{% endfor %}
 	
 	{% for goal in group.goals.all %}
