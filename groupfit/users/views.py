@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from users.models import UserProfile, create_user_profile
 from users.forms import RegisterForm, PasswordForm, EditUserProfileForm
 from groupfit.forms import WorkoutGoalForm, WorkoutForm
-from groupfit.models import Workout
+from groupfit.models import Workout, WorkoutGoal
 from django.contrib.auth.hashers import make_password
 from django.core.mail import send_mail
 from django.conf import settings
@@ -127,3 +127,10 @@ def edit_profile(request):
     if request.method == 'POST':
         edit_user_form = EditUserProfileForm(request.POST)
 """
+
+def complete_goal(request, goal_pk):
+    goal = get_object_or_404(WorkoutGoal, pk=goal_pk)
+    if goal in request.user.userprofile.goals.all():
+        goal.achieved = True
+        goal.save()
+    return redirect('users.views.view_user', request.user.userprofile.pk)
