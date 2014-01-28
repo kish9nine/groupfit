@@ -54,8 +54,8 @@ $(function(){
 				{
 					fillColor : "rgba("+colorDict["{{member.user.username}}"]+",.5)",
 					strokeColor : "rgba("+colorDict["{{member.user.username}}"]+",1)",
-					pointColor : "rgba("+colorDict["{{member.user.username}}"]+",1)",
-					pointStrokeColor : "#fff",
+//					pointColor : "rgba("+colorDict["{{member.user.username}}"]+",1)",
+//					pointStrokeColor : "#fff",
 					data : dataDict["{{member.user.username}}"]
 				},
 			{% endfor %} {} 
@@ -71,7 +71,7 @@ $(function(){
 		{% endfor %}
 		
 		
-		var goalChart = new Chart(ctx).Line(data);
+		var goalChart = new Chart(ctx).Bar(data);
 	{% endfor %}
 });	
 </script>
