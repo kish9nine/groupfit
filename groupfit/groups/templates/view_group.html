@@ -134,7 +134,8 @@ $(function(){
               No members found.
             </div>
             {% endfor %}
-            <a href={% url 'groups.views.add_member' group.pk %}> Add new members... </a>
+            <a href={% url 'groups.views.add_member' group.pk %} data-toggle="modal"
+          data-target="#AddMemberModal"> Add new members... </a>
           </div>
         </div>
       </div>
@@ -350,6 +351,39 @@ aria-labelledby="GoalFormModalLabel" aria-hidden="true">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           <input type="submit" name="submit" class="btn btn-success"
           value="Make Goal"/>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Add new members modal  -->
+<div class="modal fade" id="AddMemberModal" tabindex="-1" role="dialog"
+aria-labelledby="AddMemberModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="register-form" method="post" class="form-horizontal"
+      action=""> {% csrf_token %}
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"
+          aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="AddMemberModalLabel">Add new member</h4>
+        </div>
+
+        <div class="modal-body">
+
+          {% include 'add_member.html' %}
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <input type="submit" name="submit" class="btn btn-success"
+          value="Add New Member"/>
         </div>
 
       </form>
