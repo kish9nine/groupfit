@@ -37,10 +37,13 @@ def view_group(request, group_pk):
     else:
         goal_form = WorkoutGoalForm()
 
+    completed_goals = group.goals.filter(achieved=True)
+
     return render(request, 'view_group.html', {
         'group': group,
         'goal_form' : goal_form,
         'member_workouts' : member_workouts,
+        'completed_goals' : completed_goals,
     },
     )
 

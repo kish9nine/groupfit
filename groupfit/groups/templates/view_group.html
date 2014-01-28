@@ -128,6 +128,8 @@ $(function(){
     </div>
 
     {% if user.userprofile in group.members.all %}
+
+<!--
     <div class="row">
       <div class="col-lg-12">
 
@@ -144,6 +146,34 @@ $(function(){
 
       </div>
     </div>
+-->
+
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h1 class="panel-title text-center">
+              <span class="pull-left">
+                <i class="fa fa-trophy"></i>
+              </span>
+              Group Trophies
+            </h1>
+          </div>
+          <div class="panel-body">
+            {% for completed_goal in completed_goals %}
+              <img src="{% static "img/trophy.png" %}" width="100"
+              height="150" title="{{completed_goal.name}}"/>
+            {% empty %}
+            <div class="text-center">
+              No trophies achieved won yet.
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
 
     <div class="row">
       <div class="col-lg-12">
@@ -179,7 +209,18 @@ $(function(){
 
         <div class="panel panel-info">
           <div class="panel-heading">
-            <h1 class="panel-title">{{ goal.name }}</h1>
+            <h1 class="panel-title">
+              {{ goal.name }}
+              <span class="pull-right">
+              {% if not goal.achieved %}
+                <a href="/user/complete/{{goal.pk}}">
+                  <i class="fa fa-check"></i>
+                </a>
+              {% else %}
+                Completed!
+              {% endif %}
+              </span>
+            </h1>
           </div>
           <div class="panel-body">
             <p><strong>
