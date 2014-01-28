@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.conf import settings
+import datetime
 
 @login_required
 def view_group(request, group_pk):
@@ -17,10 +18,14 @@ def view_group(request, group_pk):
     request pk.
     """
 
+    date = datetime.date.today()
+    start_of_week = date - datetime.timedelta( date.weekday() )
+    end_of_week = start_of_week + datetime.timedelta(7)
+
     group = get_object_or_404( WorkoutGroup, pk=group_pk )
     member_workouts = {}
     for member in group.members.all():
-        workouts = Workout.objects.filter(user = member)
+        workouts = Workout.objects.filter(user = member).filter( date__range=[start_of_week, end_of_week] )
         member_workouts[member.user.username] = workouts
 
     if request.method == 'POST':
