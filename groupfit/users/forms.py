@@ -76,6 +76,12 @@ class RegisterForm(ModelForm):
 
 class EditUserProfileForm(forms.Form):
 
+    privacy = forms.CharField(
+        required = False,
+        label = "Privacy Setting",
+        widget = HiddenInput()
+    )
+    
     first_name = forms.CharField(
         required = False,
         label="FIRSTNAME",
