@@ -134,7 +134,10 @@ $(function(){
               No members found.
             </div>
             {% endfor %}
-            	<a data-toggle="modal" data-target="#AddMemberModal"> Add new members... </a>
+
+            {% if user.userprofile in group.members.all %}
+            <a href="#" data-toggle="modal" data-target="#AddMemberModal">Add new members</a>
+            {% endif %}
           </div>
         </div>
       </div>
