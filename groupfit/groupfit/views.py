@@ -90,6 +90,7 @@ def forgot(request):
                     user.set_password(inp_new_pw)
                     send_mail('Reset Password', 'Your password has been reset.', settings.EMAIL_HOST_USER, [user.email])
                     return render(request, 'email_sent.html')
+                    
             except User.DoesNotExist:
                 pass 
             return render(request, 'email_not_sent.html')
@@ -102,4 +103,4 @@ def forgot(request):
 
 
 def reset_password(request):
-    pass
+    return password_reset(request, template_name='forgot.html')
