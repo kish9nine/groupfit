@@ -25,6 +25,7 @@ urlpatterns = patterns('',
 
     ## Forgot password?
     url(r'^forgot$', forgot, name = 'forgot'),
+    url(r'^reset_password$', reset_password, name='reset_password'),
 
     ## Register shortcut
     url(r'^register$', create_user, name = 'register'),
