@@ -16,7 +16,12 @@ class WorkoutGroup( models.Model ):
         help_text = "The name of your workout group.",
         max_length = 50,
     )
-
+    
+    privacy = models.CharField(
+        blank = False,
+        help_text = "Choose your group's privacy setting.",
+        )
+    
     goals = models.ManyToManyField(
         WorkoutGoal,
         null = True,
