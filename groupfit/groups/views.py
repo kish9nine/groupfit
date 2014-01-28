@@ -34,12 +34,7 @@ def view_group(request, group_pk):
             goal.save()
             group.goals.add( goal )
             return redirect('groups.views.view_group', group_pk)
-    else:
-        goal_form = WorkoutGoalForm()
-
-    completed_goals = group.goals.filter(achieved=True)
-    
-    ## Adding new members
+            ## Adding new members
         if 'new-member-submit' in request.POST:
             new_member_form = EmailForm(request.POST, prefix='new')
             if new_member_form.is_valid():
@@ -48,7 +43,11 @@ def view_group(request, group_pk):
                 group.members.add(new_member)
                 group.save()
                 return redirect('groups.views.view_group', group_pk, {'new_member_form':new_member_form})
-            
+    else:
+        goal_form = WorkoutGoalForm()
+        new_member_form = EmailForm(request.POST)
+
+    completed_goals = group.goals.filter(achieved=True)
         
 
     return render(request, 'view_group.html', {
