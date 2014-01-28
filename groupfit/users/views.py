@@ -89,7 +89,7 @@ def view_user(request, user_pk=-1):
                 
                 #Change first or last name.
                 
-                new_first_name = edit_profile_form.cleaned_data.get('first_name')
+                new_first_name = edit_profile_form.fields['first_name']
                 user.user.first_name = new_first_name
                 
                 try:
