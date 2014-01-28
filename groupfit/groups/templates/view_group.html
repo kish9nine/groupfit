@@ -69,7 +69,7 @@ GroupFit
             Member Newsfeed</h1>
           </div>
           <div class="panel-body">
-            Maybe put members of the group here (their avatars, etc)?
+            News
           </div>
         </div>
 
@@ -129,6 +129,7 @@ GroupFit
               <strong>Target:</strong>
               {{ goal.amount }} <em>{{ goal.units }}</em>
             </p>
+            <canvas id="goalChart" width="100%" height="500"></canvas>
           </div>
         </div>
 
@@ -212,6 +213,28 @@ aria-labelledby="GoalFormModalLabel" aria-hidden="true">
 <script>
 $(function() {
   $("#GoalFormModal").modal('show');
+  var ctx = $("#goalChart").get(0).getContext("2d");
+  var goalChart = new Chart(ctx);
+  var data = {
+	labels : ["January","February","March","April","May","June","July"],
+	datasets : [
+		{
+			fillColor : "rgba(220,220,220,0.5)",
+			strokeColor : "rgba(220,220,220,1)",
+			pointColor : "rgba(220,220,220,1)",
+			pointStrokeColor : "#fff",
+			data : [65,59,90,81,56,55,40]
+		},
+		{
+			fillColor : "rgba(151,187,205,0.5)",
+			strokeColor : "rgba(151,187,205,1)",
+			pointColor : "rgba(151,187,205,1)",
+			pointStrokeColor : "#fff",
+			data : [28,48,40,19,96,27,100]
+		}
+	]
+}
+new Chart(ctx).Line(data,options);
 });
 </script>
 {% endif %}
