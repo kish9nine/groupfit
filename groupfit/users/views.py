@@ -59,7 +59,7 @@ def view_user(request, user_pk=-1):
     user = get_object_or_404( UserProfile, pk=user_pk )
     workouts = Workout.objects.filter(user__pk=user_pk)
 
-    if request.method == 'POST':
+    if request.method == 'POST' and request.user == user.user:
 
         if 'submit-goal' in request.POST:
             goal_form = WorkoutGoalForm(request.POST, prefix="goal")
@@ -83,37 +83,32 @@ def view_user(request, user_pk=-1):
         
         if 'submit-new-profile' in request.POST:
             edit_profile_form = EditUserProfileForm(request.POST, prefix="edit")
-            confirm_password_form = PasswordForm(request.POST, prefix="password")
-            if edit_profile_form.is_valid() and confirm_password_form.is_valid():
-                edit_profile = edit_profile_form.save(commit=False)
-                
-                #Change first or last name.
-                
-                new_first_name = edit_profile.first_name
-                user.user.first_name = new_first_name
-                
-                new_last_name = edit_profile.last_name
-                user.user.last_name = new_last_name
-                
-                
-                #Password change part. 
-                new_pw = edit_profile_form.cleaned_data.get('new_password')
-                confirm_new_pw = confirm_password_form.cleaned_data.get('confirm_password') 
-                if new_pw == confirm_new_pw:
-                    user.user.set_password(new_pw) #Change the password if the two match. 
+            if edit_profile_form.is_valid():
+
+                new_first_name = edit_profile_form.cleaned_data.get('first_name')
+                new_last_name = edit_profile_form.cleaned_data.get('last_name')
+                new_password = edit_profile_form.cleaned_data.get('new_password')
+                confirm_password = edit_profile_form.cleaned_data.get('confirm_password')
+
+
+                if len( new_first_name ) > 0:
+                    request.user.first_name = new_first_name
+                if len( new_last_name ) > 0:
+                    request.user.last_name = new_last_name
+                if len( new_password ) > 0:
+                    request.user.set_password( new_password )
+                request.user.save()
 
                 #edit_profile_form.save()
                 return redirect('users.views.view_user', user_pk)
         else:
             edit_profile_form = EditUserProfileForm(prefix="edit")
-            confirm_password_form = PasswordForm(prefix="password")
         
 
     else:
         goal_form = WorkoutGoalForm(prefix="goal")
         workout_form = WorkoutForm(prefix="workout")
         edit_profile_form = EditUserProfileForm(prefix="edit")
-        confirm_password_form = PasswordForm(prefix="password")
 
     return render(request, 'view_user.html', {
         'profile': user,
@@ -121,7 +116,6 @@ def view_user(request, user_pk=-1):
         'goal_form': goal_form,
         'workout_form': workout_form,
         'edit_profile_form': edit_profile_form,
-        'confirm_password_form': confirm_password_form,
     },
     )
 

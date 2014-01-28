@@ -90,4 +90,48 @@ class EditUserProfileForm(forms.ModelForm):
                 }) 
         }
 
+class EditUserProfileForm(forms.Form):
 
+    first_name = forms.CharField(
+        required = False,
+        label="FIRSTNAME",
+        widget=TextInput(attrs={
+            'class':'form-control',
+            'placeholder': 'First Name'
+        })
+    )
+
+    last_name = forms.CharField(
+        required = False,
+        label="LASTNAME",
+        widget=TextInput(attrs={
+            'class':'form-control',
+            'placeholder':'Last Name'
+        })
+    )
+
+    new_password = forms.CharField(
+        required = False,
+        label="PASSWORD",
+        widget=PasswordInput(attrs={
+            'class':'form-control',
+            'placeholder':'Reset password',
+        })
+    )
+
+    confirm_password = forms.CharField(
+        required = False,
+        label="CONFIRMPASSWORD",
+        widget=PasswordInput(attrs={
+            'class':'form-control',
+            'placeholder':'Confirm password',
+        })
+    )
+
+    def clean(self):
+        cleaned_data = super(EditUserProfileForm, self).clean()
+        psw = cleaned_data.get('new_password')
+        psw2 = cleaned_data.get('confirm_password')
+        if psw != psw2:
+            raise forms.ValidationError("Passwords don't match.")
+        return cleaned_data
