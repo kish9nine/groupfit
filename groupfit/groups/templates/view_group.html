@@ -15,7 +15,7 @@ GroupFit
 EXAMPLE USAGE
 {% for member in group.members.all %}
   {{ member }}:
-  {{ member_workouts|get_value:member.user.username }}
+  {{ member_workouts|get_value:member }}
 {% endfor %}
 
 {% endcomment %}

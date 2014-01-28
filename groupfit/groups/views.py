@@ -26,7 +26,7 @@ def view_group(request, group_pk):
     member_workouts = {}
     for member in group.members.all():
         workouts = Workout.objects.filter(user = member).filter( date__range=[start_of_week, end_of_week] )
-        member_workouts[member.user.username] = workouts
+        member_workouts[member] = workouts
 
     if request.method == 'POST':
         goal_form = WorkoutGoalForm(request.POST)
