@@ -42,6 +42,7 @@ $(function(){
 			var curmemval2 = Math.floor(Math.random()*255);
 			var curmemval3 = Math.floor(Math.random()*255);
 			colorDict["{{member.user.username}}"] = curmemval1.toString() + "," curmemval2.toString() + "," curmemval3.toString();
+			console.log(colorDict["{{member.user.username}}"]);
 		{% endfor %}
 		
 		
