@@ -102,7 +102,9 @@ def view_user(request, user_pk=-1):
     },
     )
 
-
+"""
 @login_required
 def edit_profile(request):
-    if request
+    if request.method == 'POST':
+        edit_user_form = EditUserProfileForm(request.POST)
+"""
