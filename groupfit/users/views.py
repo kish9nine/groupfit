@@ -93,6 +93,7 @@ def view_user(request, user_pk=-1):
     else:
         goal_form = WorkoutGoalForm()
         workout_form = WorkoutForm()
+        edit_profile_form = EditUserProfileForm()
 
     return render(request, 'view_user.html', {
         'profile': user,
