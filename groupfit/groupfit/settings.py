@@ -61,8 +61,11 @@ INSTALLED_APPS = (
     'south',
     'easy_thumbnails',
     'social_auth',
-    'password_reset'
+    'password_reset',
+    'user_streams',
+    'user_streams.backends.user_streams_single_table_backend',
 )
+
 
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
@@ -235,3 +238,8 @@ EMAIL_HOST_PASSWORD = secret.EMAIL_HOST_PASSWORD
 
 ##############################################################################
 
+"""
+UserStreams settings
+"""
+
+USER_STREAMS_BACKEND = 'user_streams.backends.user_streams_single_table_backend.SingleTableDatabaseBackend'
