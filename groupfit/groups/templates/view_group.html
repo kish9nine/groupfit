@@ -189,6 +189,32 @@ $(function(){
 
     <div class="row">
       <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h1 class="panel-title text-center">
+              <span class="pull-left">
+                <i class="fa fa-music"></i>
+              </span>
+              Group Playlists
+            </h1>
+          </div>
+          <div class="panel-body">
+            {% for playlist in group.playlists.all %}
+              <a href="{{ playlist.get_absolute_url }}">
+                {{ playlist.name }}
+              </a><br/>
+            {% empty %}
+            <div class="text-center">
+              No playlists have been shared yet.
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
 
         <a href="{% url 'groups.views.leave_group' group.pk %}">
         Leave Group
