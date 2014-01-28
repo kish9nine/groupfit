@@ -102,7 +102,7 @@ def view_user(request, user_pk=-1):
                 if new_pw == confirm_new_pw:
                     user.user.set_password(new_pw) #Change the password if the two match. 
 
-                edit_profile_form.save()
+                #edit_profile_form.save()
                 return redirect('users.views.view_user', user_pk)
         else:
             edit_profile_form = EditUserProfileForm()
