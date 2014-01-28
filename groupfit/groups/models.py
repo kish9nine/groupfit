@@ -1,4 +1,5 @@
 from django.db import models
+from playlists.models import Playlist
 from django.core.urlresolvers import reverse
 from tags.models import Tag
 from groupfit.models import WorkoutGoal
@@ -34,6 +35,11 @@ class WorkoutGroup( models.Model ):
         Tag,
         blank = True,
         related_name = "groups",
+    )
+
+    playlists = models.ManyToManyField(
+        Playlist,
+        blank = True,
     )
 
     def __unicode__(self):
