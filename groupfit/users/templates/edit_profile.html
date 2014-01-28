@@ -20,12 +20,11 @@
 
 <div class="form-group{%if edit_profile.first_name.errors%} has-error{%endif%}">
   <div class="col-lg-12">
-    {% if user.is_authenticated  %}
     <div class="input-group">
       <span class="input-group-addon">
         <i class="fa fa-user"></i>
       </span>
-      <span placeholder={{ user.first_name }}>{{ edit_profile_form.first_name }}</span>
+      {{ edit_profile_form.first_name }}
     </div>
     {% for error in edit_profile_form.first_name.errors %}
       <span class="help-block">{{ error }}</span>
