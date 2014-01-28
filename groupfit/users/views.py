@@ -103,7 +103,6 @@ def view_user(request, user_pk=-1):
                 return redirect('users.views.view_user', user_pk)
         else:
             edit_profile_form = EditUserProfileForm(prefix="edit")
-        
 
     else:
         goal_form = WorkoutGoalForm(prefix="goal")

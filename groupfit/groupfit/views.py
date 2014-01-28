@@ -102,4 +102,4 @@ def forgot(request):
 
 
 def reset_password(request):
-    
+    pass
