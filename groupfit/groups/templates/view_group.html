@@ -134,11 +134,12 @@ $(function(){
               No members found.
             </div>
             {% endfor %}
-            <a href='/'> Add new members... </a>
+            <a href={% url 'groups.views.add_member' group.pk %}> Add new members... </a>
           </div>
         </div>
       </div>
     </div>
+    
 
     {% if user.userprofile in group.members.all %}
 
