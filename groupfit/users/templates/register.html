@@ -9,8 +9,6 @@ GroupFit &middot; Register
 <script>
 window.onclick = checkPass;
 function checkPass(){
-  console.log(document.getElementById("id_password").value);
-  console.log(document.getElementById("id_confirm_password").value);
   if(document.getElementById("id_password").value == document.getElementById("id_confirm_password").value){
     document.getElementById("passmatch").style.display = "none";
   }
