@@ -50,7 +50,7 @@ class WorkoutGoalForm( forms.ModelForm ):
         ]
         exclude = []
 
-        label = {
+        labels = {
             'name': 'Goal Nickname',
             'amount': 'Goal Amount',
             'activity': 'Activity',
@@ -95,7 +95,7 @@ class WorkoutForm( forms.ModelForm ):
         ]
         exclude = ['user']
 
-        label = {
+        labels = {
             'date': 'Workout Date',
             'amount': 'Workout Amount',
             'activity': 'Workout Activity',
