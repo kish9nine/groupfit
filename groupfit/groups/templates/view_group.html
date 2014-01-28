@@ -22,14 +22,13 @@ EXAMPLE USAGE
 
 <script>
 $(function(){
-	{% for member in group.members.all %}
-		console.log(member_workouts[member]);
-	{% empty %}
-	{% endfor %}
+//	{% for member, workouts in member_workouts %}
+//		console.log( {{ workouts }} );
+//	{% endfor %}
 	
 	{% for goal in group.goals.all %}
-		console.log($("{{goal.name}}"));
 		var ctx = $("{{goal.name}}").get(0).getContext("2d");
+		console.log(ctx);
   		var data = {
 			labels : ["January","February","March","April","May","June","July"],
 			datasets : [
@@ -50,7 +49,7 @@ $(function(){
 		]
 		};
 		var goalChart = new Chart(ctx).Line(data);
-	{% empty %}
+		console.log(goalChart);
 	{% endfor %}
 });	
 </script>
@@ -177,7 +176,7 @@ $(function(){
               <strong>Target:</strong>
               {{ goal.amount }} <em>{{ goal.units }}</em>
             </p>
-            <canvas id="{{group.name}}" style="width: 600px; height: 500px;"></canvas>
+            <canvas id="{{goal.name}}" width="500" height="500"></canvas>
           </div>
         </div>
       </div>

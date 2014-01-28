@@ -84,7 +84,7 @@ class EditUserProfileForm(forms.ModelForm):
                 'class':'form-control',
                 'placeholder': 'Reset Your Last Name.'
                 }),
-            'new_password': forms.PasswordInput(attrs={
+            'password': forms.PasswordInput(attrs={
                 'class':'form-control',
                 'placeholder': 'Reset Your Password.'
                 }) 

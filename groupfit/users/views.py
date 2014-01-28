@@ -92,12 +92,12 @@ def view_user(request, user_pk=-1):
                     new_first_name = edit_profile_form.cleaned_data.get('first_name')
                     user.user.first_name = new_first_name
                 except:
-                    pass
+                    render(request, 'welcome.html')
                 try:
                     new_last_name = edit_profile_form.cleaned_data.get('last_name')
                     user.user.last_name = new_last_name
                 except:
-                    pass
+                    render(request, 'welcome.html')
                 
                 
                 #Password change part. 
@@ -107,7 +107,7 @@ def view_user(request, user_pk=-1):
                     if new_pw == confirm_new_pw:
                         user.user.set_password(new_pw) #Change the password if the two match. 
                 except: 
-                    pass
+                    render(request, 'welcome.html')
                 edit_profile_form.save()
                 return redirect('users.views.view_user', user_pk)
         else:
