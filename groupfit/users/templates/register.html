@@ -4,7 +4,17 @@
 {% block title %}
 GroupFit &middot; Register
 {% endblock %}
-
+<script>
+function checkPass(){
+  if(document.getElementById("id_password").value == document.getElementById("id_confirm_password").value){
+    document.getElementById("passmatch").display = "none";
+  }
+  else{
+    document.getElementById("passmatch").display = "block";
+  }
+}
+  
+</script>
 {% block content %}
 
 
@@ -131,17 +141,5 @@ GroupFit &middot; Register
     </form>
   </div>
 </div>
-
-<script>
-function checkPass(){
-  if(document.getElementById("id_password").value == document.getElementById("id_confirm_password").value){
-    document.getElementById("passmatch").display = "none";
-  }
-  else{
-    document.getElementById("passmatch").display = "block";
-  }
-}
-  
-</script>
 
 {% endblock %}
