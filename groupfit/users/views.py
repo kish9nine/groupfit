@@ -78,22 +78,27 @@ def view_user(request, user_pk=-1):
                 workout.user = request.user.userprofile
                 workout.save()
                 return redirect('users.views.view_user', user_pk)
-        
+        else:
+            workout_form = WorkoutForm()
+            
         if 'submit-new-profile' in request.POST:
             edit_profile_form = EditUserProfileForm(request.POST)
-            if edit_profile_form.is_valid():
+            confirm_profile_form = PasswordForm(request.POST)
+            if edit_profile_form.is_valid() and confirm_profile_form.is_valid():
                 edit_profile_form = edit_profile_form.save(commit=False)
+                confirm_profile_form = confirm_profile_form(commit=False)
                 edit_profile_form.user = request.user.userprofile
                 edit_profile_form.save()
                 return redirect('users.views.view_user', user_pk)
-            
         else:
-            workout_form = WorkoutForm()
+            edit_profile_form = EditUserProfileForm()
+            confirm_profile_form = PasswordForm()
 
     else:
         goal_form = WorkoutGoalForm()
         workout_form = WorkoutForm()
         edit_profile_form = EditUserProfileForm()
+        confirm_password_form = PasswordForm()
 
     return render(request, 'view_user.html', {
         'profile': user,
@@ -101,6 +106,7 @@ def view_user(request, user_pk=-1):
         'goal_form': goal_form,
         'workout_form': workout_form,
         'edit_profile': edit_profile_form,
+        'confirm_password_form': confirm_password_form,
     },
     )
 
