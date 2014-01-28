@@ -4,6 +4,8 @@
 {% block title %}
 GroupFit &middot; Register
 {% endblock %}
+
+{% block content %}
 <script>
 function checkPass(){
   if(document.getElementById("id_password").value == document.getElementById("id_confirm_password").value){
@@ -15,8 +17,6 @@ function checkPass(){
 }
   
 </script>
-{% block content %}
-
 
 <div class="row vertical-offset-100">
   <div class="col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
