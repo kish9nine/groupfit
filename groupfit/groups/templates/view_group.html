@@ -54,17 +54,24 @@ $(function(){
 				{
 					fillColor : "rgba("+colorDict["{{member.user.username}}"]+",.5)",
 					strokeColor : "rgba("+colorDict["{{member.user.username}}"]+",1)",
-					pointColor : "rgba("+colorDict["{{member.user.username}}"]+",1)",
-					pointStrokeColor : "#fff",
+//					pointColor : "rgba("+colorDict["{{member.user.username}}"]+",1)",
+//					pointStrokeColor : "#fff",
 					data : dataDict["{{member.user.username}}"]
 				},
 			{% endfor %} {} 
 			]
 		};
 		data.datasets.pop();
-
-		var goalChart = new Chart(ctx).Line(data);
-		console.log(goalChart);
+		{% for member in group.members.all %}
+			var legend = document.createElement("span");
+			legend.style.color = "rgb("+colorDict["{{member.user.username}}"]+")";
+			legend.innerHTML = "{{member.user.username}}";
+			legend.className = "legend";
+			document.getElementById("{{goal.name}}Panel").appendChild(legend);
+		{% endfor %}
+		
+		
+		var goalChart = new Chart(ctx).Bar(data);
 	{% endfor %}
 });	
 </script>
@@ -74,7 +81,11 @@ $(function(){
             width: 100% !important;
             max-width: 700;
             height: auto !important;
-}	
+	}
+	
+	.legend{
+		margin-right: 5px;
+	}
 </style>
 
 
@@ -214,8 +225,8 @@ $(function(){
               {{ goal.name }}
               <span class="pull-right">
               {% if not goal.achieved %}
-                <a href="/group/complete/{{group.pk}}/{{goal.pk}}">
-                  <i class="fa fa-check"></i>
+		<a href="/group/complete/{{group.pk}}/{{goal.pk}}">
+			<i class="fa fa-check"></i>
                 </a>
               {% else %}
                 Completed!
@@ -223,7 +234,7 @@ $(function(){
               </span>
             </h1>
           </div>
-          <div class="panel-body">
+          <div class="panel-body" id="{{goal.name}}Panel">
             <p><strong>
               {{ goal.target_date|timeuntil }} remaining!
             </strong></p>
