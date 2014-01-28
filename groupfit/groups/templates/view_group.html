@@ -220,8 +220,8 @@ $(function(){
               {{ goal.name }}
               <span class="pull-right">
               {% if not goal.achieved %}
-                <a href="/user/complete/{{goal.pk}}">
-                  <i class="fa fa-check"></i>
+		<a href="/group/complete/{{group.pk}}/{{goal.pk}}">
+			<i class="fa fa-check"></i>
                 </a>
               {% else %}
                 Completed!
