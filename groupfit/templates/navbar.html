@@ -23,9 +23,7 @@
           </a>
           <ul class="dropdown-menu">
             {% for group in user.userprofile.groups.all %}
-              {% if group.privacy == 'public'  %}
             <li><a href="{{ group.get_absolute_url }}">{{ group.name }}</a></li>
-              {% endif %}
             {% empty %}
             <li class="disabled"><a>None Found</a></li>
             {% endfor %}
