@@ -38,7 +38,8 @@ $(function(){
 			while(dataDict["{{member.user.username}}"].length < 7){
 				dataDict["{{member.user.username}}"][dataDict["{{member.user.username}}"].length] = 0;	
 			}
-			var curmemval = Math.random()*255;
+			var curmemval = Math.floor(Math.random()*255);
+			console.log(curmemval);
 			colorDict["{{member.user.username}}"] = curmemval.toString();
 		{% endfor %}
 		
