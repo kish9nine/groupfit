@@ -111,3 +111,16 @@ def join_group(request, group_pk):
     group = get_object_or_404( WorkoutGroup, pk=group_pk )
     group.members.add( request.user.userprofile )
     return redirect('groups.views.view_group', group_pk)
+
+
+
+def complete_goal(request, group_pk, goal_pk):
+    goal = get_object_or_404(WorkoutGoal, pk=goal_pk)
+    group = get_object_or_404( WorkoutGroup, pk=group_pk )
+    user_groups = request.user.userprofile.groups.all()
+
+    if group in user_groups:
+        if goal in group.goals.all():
+            goal.achieved = True
+            goal.save()
+    return redirect('groups.views.view_group', group.pk)
