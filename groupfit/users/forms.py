@@ -60,6 +60,7 @@ class RegisterForm(ModelForm):
 
 
 #@login_required
+#I am not sure if I should add login_required here. 
 class EditUserProfileForm:
     username = forms.CharField(
         required = True, 
@@ -90,3 +91,8 @@ class EditUserProfileForm:
         label="EMAIL", 
         widget=EmailInput(attrs={'class':'form-control', 'placeholder':'Email'})
         )
+        
+    class Meta:
+        model = UserProfile.user
+        fields = ['username', 'first_name', 'last_name', 'password', 'email']
+        
