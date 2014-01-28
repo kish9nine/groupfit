@@ -16,9 +16,10 @@ def create_user(request):
         #Feed as arguments to RegisterForm the inputs from the user.
         create_user_form = RegisterForm(request.POST)
         confirm_password_form = PasswordForm(request.POST)
+        privacy_form = PrivacyForm(request.POST)
         #If username and password are of the right length and email is of the valid form,
         #And password and confirm password identical, 
-        if create_user_form.is_valid() and confirm_password_form.is_valid():
+        if create_user_form.is_valid() and confirm_password_form.is_valid() and privacy_form.is_valid():
             #Don't save the user in creation as a new user yet. 
             new_user = create_user_form.save(commit=False)
             #confirm_password = confirm_password_form.save()
@@ -28,7 +29,7 @@ def create_user(request):
             email_overlap = User.objects.filter(email = create_user_form.cleaned_data.get('email')).exists() 
             if pw == confirm_pw and not email_overlap:
                 new_user.set_password( pw )
-                new_user.save()
+                
 
                 # This should already automatically create a UserProfile.
 
@@ -36,7 +37,12 @@ def create_user(request):
                 #new_UserProfile = UserProfile(user=new_user)
                 ##new_UserProfile.user = new_user
                 #new_UserProfile.save() #Then save. 
-
+                
+                # Set the new user's privacy setting accordingly.
+                privacy_setting = privacy_form.cleaned_data.get('privacy_setting')
+                request.user.userprofile.privacy = privacy_settting
+                
+                new_user.save()
                 #Send a welcome email. 
                 send_mail('Welcome to GroupFit!', 'Welcome to GroupFit!', settings.EMAIL_HOST_USER, [new_user.email])
  
@@ -97,7 +103,7 @@ def view_user(request, user_pk=-1):
                     request.user.first_name = new_first_name
                 if len( new_last_name ) > 0:
                     request.user.last_name = new_last_name
-                if len( new_password ) > 0:
+                if len( new_password ) > 0 and new_password == confirm_password:
                     request.user.set_password( new_password )
                 request.user.save()
 
