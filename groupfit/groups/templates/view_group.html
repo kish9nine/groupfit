@@ -14,7 +14,9 @@ $(function(){
 		{% for member in group.members.all %}
 			console.log(memberWList[member]);
 		{% empty %}
+		{% endfor %}
 	{% empty %}
+	{% endfor %}
 	
 	{% for goal in group.goals.all %}
 		var ctx = $("{{goal.name}}").get(0).getContext("2d");
@@ -39,6 +41,7 @@ $(function(){
 		};
 		var goalChart = new Chart(ctx).Line(data);
 	{% empty %}
+	{% endfor %}
 });	
 </script>
 
